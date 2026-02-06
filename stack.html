@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Through the Wall of Lights | Skills Showcase</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600&family=Permanent+Marker&display=swap');
+
+        :root {
+            --stranger-red: #e11d27;
+            --bulb-yellow: #f1c40f;
+            --bulb-blue: #00d4ff;
+            --bulb-green: #2ecc71;
+            --bulb-red: #e74c3c;
+            --dark-bg: #050101;
+            --wire-color: #1a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--dark-bg);
+            font-family: 'Montserrat', sans-serif;
+            color: #eee;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        /* --- GLITCH TRANSITION STYLES --- */
+        #glitch-overlay {
+            position: fixed;
+            inset: 0;
+            background: black;
+            z-index: 9999;
+            display: none;
+            pointer-events: none;
+        }
+
+        .glitch-active #glitch-overlay {
+            display: block;
+            animation: glitch-vibe 0.2s steps(2) infinite;
+        }
+
+        @keyframes glitch-vibe {
+            0% { background: rgba(255, 255, 255, 0.05); transform: translate(2px, -2px); }
+            50% { background: rgba(225, 29, 39, 0.1); transform: translate(-2px, 2px); }
+            100% { background: transparent; transform: translate(0); }
+        }
+
+        /* --- BACKGROUND LAYER --- */
+        .wall-bg {
+            position: fixed;
+            inset: 0;
+            background: url('images/ed3e94021fdc485088e415630a11ee00.webp') no-repeat center center;
+            background-size: cover;
+            filter: brightness(60%) contrast(150%) saturate(0.5);
+            z-index: -5;
+        }
+
+        .wall-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 70%, #000 100%);
+            z-index: -4;
+        }
+
+        .fog-layer {
+            position: fixed;
+            inset: 0;
+            background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.15;
+            z-index: -3;
+            animation: drift 40s linear infinite;
+            pointer-events: none;
+        }
+
+        /* --- NAVIGATION --- */
+        .back-nav {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            padding: 0 30px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between; /* Pushes buttons to opposite sides */
+            pointer-events: none; /* Allows clicking items behind the nav bar */
+        }
+
+        .back-btn {
+            pointer-events: auto; /* Makes actual buttons clickable */
+            text-decoration: none;
+            color: var(--stranger-red);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 12px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            transition: 0.4s;
+            text-shadow: 0 0 10px var(--stranger-red);
+        }
+
+        .back-btn:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 20px #fff;
+            text-shadow: none;
+        }
+
+        /* --- TOP SECTION --- */
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+            animation: fadeIn 2s forwards;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            letter-spacing: 12px;
+            color: var(--stranger-red);
+            text-shadow: 0 0 20px var(--stranger-red);
+            animation: neonFlicker 5s infinite;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #444;
+        }
+
+        /* --- WALL LAYOUT --- */
+        .wall-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+        }
+
+        .wire-section {
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .category-name {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: rgba(255,255,255,0.2);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            display: block;
+            border-left: 2px solid var(--stranger-red);
+            padding-left: 15px;
+        }
+
+        .wire {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px 60px;
+            padding: 20px 0;
+            justify-content: center;
+        }
+
+        .wire::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            border-bottom: 2px solid var(--wire-color);
+            border-radius: 50%;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        /* --- SKILL LIGHTS --- */
+        .skill-bulb {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            opacity: 0;
+            animation: powerOn 0.5s forwards;
+        }
+
+        .bulb {
+            width: 14px;
+            height: 22px;
+            border-radius: 50% 50% 45% 45%;
+            margin-bottom: 12px;
+            position: relative;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .bulb::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 7px;
+            background: #111;
+            border-radius: 2px;
+        }
+
+        .letter {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.6rem;
+            color: #aaa;
+            text-transform: uppercase;
+            transition: 0.4s;
+            pointer-events: none;
+        }
+
+        /* --- COLOR SCHEMES --- */
+        .red-light .bulb { background: var(--bulb-red); color: var(--bulb-red); box-shadow: 0 0 10px var(--bulb-red); animation: flickerA 3.5s infinite; }
+        .red-light .letter { animation: textFlickerA 3.5s infinite; }
+
+        .blue-light .bulb { background: var(--bulb-blue); color: var(--bulb-blue); box-shadow: 0 0 10px var(--bulb-blue); animation: flickerB 4.2s infinite reverse; }
+        .blue-light .letter { animation: textFlickerB 4.2s infinite reverse; }
+
+        .yellow-light .bulb { background: var(--bulb-yellow); color: var(--bulb-yellow); box-shadow: 0 0 10px var(--bulb-yellow); animation: flickerC 2.8s infinite; }
+        .yellow-light .letter { animation: textFlickerC 2.8s infinite; }
+
+        .green-light .bulb { background: var(--bulb-green); color: var(--bulb-green); box-shadow: 0 0 10px var(--bulb-green); animation: flickerD 5s infinite alternate; }
+        .green-light .letter { animation: textFlickerD 5s infinite alternate; }
+
+        .skill-bulb:hover { transform: scale(1.15) translateY(5px); }
+        .skill-bulb:hover .bulb { filter: brightness(1.8); box-shadow: 0 0 30px currentColor; animation-play-state: paused; opacity: 1; }
+        .skill-bulb:hover .letter { color: #fff; text-shadow: 0 0 15px currentColor; animation-play-state: paused; opacity: 1; }
+
+        /* --- KEYFRAMES --- */
+        @keyframes powerOn { to { opacity: 1; } }
+        @keyframes neonFlicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+            20%, 22%, 24%, 55% { opacity: 0.5; text-shadow: none; }
+        }
+        @keyframes drift { from { background-position: 0 0; } to { background-position: 1000px 1000px; } }
+        
+        /* Flicker Variations */
+        @keyframes flickerA { 0%, 100% { opacity: 1; filter: brightness(1); } 30% { opacity: 0.8; filter: brightness(0.9); } 31% { opacity: 0.2; filter: brightness(0.1); } 32% { opacity: 1; filter: brightness(1.2); } }
+        @keyframes textFlickerA { 0%, 100% { text-shadow: 0 0 10px var(--bulb-red); color: #fff; } 31% { text-shadow: none; color: #444; } }
+        @keyframes flickerB { 0%, 100% { opacity: 1; } 70% { opacity: 1; } 71% { opacity: 0.4; } 73% { opacity: 1; } }
+        @keyframes textFlickerB { 0%, 100% { text-shadow: 0 0 10px var(--bulb-blue); color: #fff; } 71% { text-shadow: none; color: #444; } }
+        @keyframes flickerC { 0%, 100% { opacity: 1; } 10%, 12% { opacity: 0.5; } 11% { opacity: 0.1; } }
+        @keyframes textFlickerC { 0%, 100% { text-shadow: 0 0 10px var(--bulb-yellow); color: #fff; } 11% { text-shadow: none; color: #444; } }
+        @keyframes flickerD { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        @keyframes textFlickerD { 0%, 100% { text-shadow: 0 0 10px var(--bulb-green); color: #fff; } 50% { text-shadow: 0 0 5px var(--bulb-green); color: #ccc; } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 768px) {
+            .wire { gap: 30px 40px; }
+            .letter { font-size: 1.2rem; }
+            .bulb { width: 10px; height: 16px; }
+            h1 { font-size: 2.5rem; letter-spacing: 6px; }
+            .back-nav { top: 20px; padding: 0 15px; }
+            .back-btn { padding: 8px 16px; font-size: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="glitch-overlay"></div>
+
+    <nav class="back-nav">
+        <a href="projects.html" class="back-btn" id="dive-btn">← Dive into Upside Down</a>
+        <a href="cycle.html" class="back-btn" id="lab-btn">Step Into the Lab →</a>
+    </nav>
+
+    <div class="wall-bg"></div>
+    <div class="wall-overlay"></div>
+    <div class="fog-layer"></div>
+
+    <header>
+        <h1>Through the Wall of Lights</h1>
+        <p class="subtitle">Technology that powers the unknown</p>
+    </header>
+
+    <main class="wall-container">
+        
+        <section class="wire-section">
+            <span class="category-name">Programming</span>
+            <div class="wire">
+                <div class="skill-bulb yellow-light" style="animation-delay: 0.2s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Python</span>
+                </div>
+                <div class="skill-bulb blue-light" style="animation-delay: 0.4s;">
+                    <div class="bulb"></div>
+                    <span class="letter">C</span>
+                </div>
+                <div class="skill-bulb red-light" style="animation-delay: 0.6s;">
+                    <div class="bulb"></div>
+                    <span class="letter">HTML</span>
+                </div>
+                <div class="skill-bulb green-light" style="animation-delay: 0.8s;">
+                    <div class="bulb"></div>
+                    <span class="letter">CSS</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="wire-section">
+            <span class="category-name">AI & Machine Learning</span>
+            <div class="wire">
+                <div class="skill-bulb blue-light" style="animation-delay: 1.0s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Machine Learning</span>
+                </div>
+                <div class="skill-bulb red-light" style="animation-delay: 1.2s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Deep Learning</span>
+                </div>
+                <div class="skill-bulb yellow-light" style="animation-delay: 1.4s;">
+                    <div class="bulb"></div>
+                    <span class="letter">NLP</span>
+                </div>
+                <div class="skill-bulb green-light" style="animation-delay: 1.6s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Computer Vision</span>
+                </div>
+                <div class="skill-bulb red-light" style="animation-delay: 1.8s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Generative AI</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="wire-section">
+            <span class="category-name">Frameworks & Tools</span>
+            <div class="wire">
+                <div class="skill-bulb green-light" style="animation-delay: 2.0s;">
+                    <div class="bulb"></div>
+                    <span class="letter">TensorFlow</span>
+                </div>
+                <div class="skill-bulb yellow-light" style="animation-delay: 2.2s;">
+                    <div class="bulb"></div>
+                    <span class="letter">PyTorch</span>
+                </div>
+                <div class="skill-bulb blue-light" style="animation-delay: 2.4s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Scikit-learn</span>
+                </div>
+                <div class="skill-bulb red-light" style="animation-delay: 2.6s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Streamlit</span>
+                </div>
+                <div class="skill-bulb yellow-light" style="animation-delay: 2.8s;">
+                    <div class="bulb"></div>
+                    <span class="letter">NumPy</span>
+                </div>
+                <div class="skill-bulb green-light" style="animation-delay: 3.0s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Pandas</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="wire-section">
+            <span class="category-name">Development & Automation</span>
+            <div class="wire">
+                <div class="skill-bulb blue-light" style="animation-delay: 3.2s;">
+                    <div class="bulb"></div>
+                    <span class="letter">GitHub</span>
+                </div>
+                <div class="skill-bulb yellow-light" style="animation-delay: 3.4s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Automation Scripts</span>
+                </div>
+                <div class="skill-bulb red-light" style="animation-delay: 3.6s;">
+                    <div class="bulb"></div>
+                    <span class="letter">UI Development</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const navButtons = ['dive-btn', 'lab-btn'];
+
+        navButtons.forEach(id => {
+            const btn = document.getElementById(id);
+            if (btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const destination = this.href;
+
+                    // Trigger the glitch and fade effects
+                    document.body.classList.add('glitch-active');
+                    document.body.style.opacity = '0';
+                    
+                    // Delay navigation for animation
+                    setTimeout(() => {
+                        window.location.href = destination;
+                    }, 700);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
