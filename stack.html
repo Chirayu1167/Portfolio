@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Through the Wall of Lights | Skills Showcase</title>
+    <title>Through the Wall of Lights | Tech Stack</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600&family=Permanent+Marker&display=swap');
 
@@ -85,12 +85,12 @@
             padding: 0 30px;
             z-index: 100;
             display: flex;
-            justify-content: space-between; /* Pushes buttons to opposite sides */
-            pointer-events: none; /* Allows clicking items behind the nav bar */
+            justify-content: space-between;
+            pointer-events: none;
         }
 
         .back-btn {
-            pointer-events: auto; /* Makes actual buttons clickable */
+            pointer-events: auto;
             text-decoration: none;
             color: var(--stranger-red);
             font-size: 0.7rem;
@@ -132,7 +132,7 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 5px;
-            color: #444;
+            color: #666;
         }
 
         /* --- WALL LAYOUT --- */
@@ -214,11 +214,12 @@
 
         .letter {
             font-family: 'Permanent Marker', cursive;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: #aaa;
             text-transform: uppercase;
             transition: 0.4s;
             pointer-events: none;
+            white-space: nowrap;
         }
 
         /* --- COLOR SCHEMES --- */
@@ -246,12 +247,11 @@
         }
         @keyframes drift { from { background-position: 0 0; } to { background-position: 1000px 1000px; } }
         
-        /* Flicker Variations */
-        @keyframes flickerA { 0%, 100% { opacity: 1; filter: brightness(1); } 30% { opacity: 0.8; filter: brightness(0.9); } 31% { opacity: 0.2; filter: brightness(0.1); } 32% { opacity: 1; filter: brightness(1.2); } }
+        @keyframes flickerA { 0%, 100% { opacity: 1; } 31% { opacity: 0.2; } 32% { opacity: 1; } }
         @keyframes textFlickerA { 0%, 100% { text-shadow: 0 0 10px var(--bulb-red); color: #fff; } 31% { text-shadow: none; color: #444; } }
-        @keyframes flickerB { 0%, 100% { opacity: 1; } 70% { opacity: 1; } 71% { opacity: 0.4; } 73% { opacity: 1; } }
+        @keyframes flickerB { 0%, 100% { opacity: 1; } 71% { opacity: 0.4; } 73% { opacity: 1; } }
         @keyframes textFlickerB { 0%, 100% { text-shadow: 0 0 10px var(--bulb-blue); color: #fff; } 71% { text-shadow: none; color: #444; } }
-        @keyframes flickerC { 0%, 100% { opacity: 1; } 10%, 12% { opacity: 0.5; } 11% { opacity: 0.1; } }
+        @keyframes flickerC { 0%, 100% { opacity: 1; } 11% { opacity: 0.1; } }
         @keyframes textFlickerC { 0%, 100% { text-shadow: 0 0 10px var(--bulb-yellow); color: #fff; } 11% { text-shadow: none; color: #444; } }
         @keyframes flickerD { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
         @keyframes textFlickerD { 0%, 100% { text-shadow: 0 0 10px var(--bulb-green); color: #fff; } 50% { text-shadow: 0 0 5px var(--bulb-green); color: #ccc; } }
@@ -259,11 +259,9 @@
 
         @media (max-width: 768px) {
             .wire { gap: 30px 40px; }
-            .letter { font-size: 1.2rem; }
+            .letter { font-size: 1rem; }
             .bulb { width: 10px; height: 16px; }
             h1 { font-size: 2.5rem; letter-spacing: 6px; }
-            .back-nav { top: 20px; padding: 0 15px; }
-            .back-btn { padding: 8px 16px; font-size: 0.6rem; }
         }
     </style>
 </head>
@@ -282,103 +280,103 @@
 
     <header>
         <h1>Through the Wall of Lights</h1>
-        <p class="subtitle">Technology that powers the unknown</p>
+        <p class="subtitle">Decoding the Technical Multiverse</p>
     </header>
 
     <main class="wall-container">
         
         <section class="wire-section">
-            <span class="category-name">Programming</span>
+            <span class="category-name">Core Logic & Game Engines</span>
             <div class="wire">
-                <div class="skill-bulb yellow-light" style="animation-delay: 0.2s;">
+                <div class="skill-bulb yellow-light" style="animation-delay: 0.1s;">
                     <div class="bulb"></div>
                     <span class="letter">Python</span>
                 </div>
-                <div class="skill-bulb blue-light" style="animation-delay: 0.4s;">
+                <div class="skill-bulb blue-light" style="animation-delay: 0.2s;">
                     <div class="bulb"></div>
                     <span class="letter">C</span>
                 </div>
-                <div class="skill-bulb red-light" style="animation-delay: 0.6s;">
+                <div class="skill-bulb red-light" style="animation-delay: 0.3s;">
                     <div class="bulb"></div>
-                    <span class="letter">HTML</span>
+                    <span class="letter">Unity</span>
                 </div>
-                <div class="skill-bulb green-light" style="animation-delay: 0.8s;">
+                <div class="skill-bulb green-light" style="animation-delay: 0.4s;">
                     <div class="bulb"></div>
-                    <span class="letter">CSS</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="wire-section">
-            <span class="category-name">AI & Machine Learning</span>
-            <div class="wire">
-                <div class="skill-bulb blue-light" style="animation-delay: 1.0s;">
-                    <div class="bulb"></div>
-                    <span class="letter">Machine Learning</span>
-                </div>
-                <div class="skill-bulb red-light" style="animation-delay: 1.2s;">
-                    <div class="bulb"></div>
-                    <span class="letter">Deep Learning</span>
-                </div>
-                <div class="skill-bulb yellow-light" style="animation-delay: 1.4s;">
-                    <div class="bulb"></div>
-                    <span class="letter">NLP</span>
-                </div>
-                <div class="skill-bulb green-light" style="animation-delay: 1.6s;">
-                    <div class="bulb"></div>
-                    <span class="letter">Computer Vision</span>
-                </div>
-                <div class="skill-bulb red-light" style="animation-delay: 1.8s;">
-                    <div class="bulb"></div>
-                    <span class="letter">Generative AI</span>
+                    <span class="letter">Unreal Engine</span>
                 </div>
             </div>
         </section>
 
         <section class="wire-section">
-            <span class="category-name">Frameworks & Tools</span>
+            <span class="category-name">Intelligence & NLP</span>
             <div class="wire">
-                <div class="skill-bulb green-light" style="animation-delay: 2.0s;">
+                <div class="skill-bulb blue-light" style="animation-delay: 0.5s;">
                     <div class="bulb"></div>
                     <span class="letter">TensorFlow</span>
                 </div>
-                <div class="skill-bulb yellow-light" style="animation-delay: 2.2s;">
+                <div class="skill-bulb red-light" style="animation-delay: 0.6s;">
                     <div class="bulb"></div>
                     <span class="letter">PyTorch</span>
                 </div>
-                <div class="skill-bulb blue-light" style="animation-delay: 2.4s;">
+                <div class="skill-bulb yellow-light" style="animation-delay: 0.7s;">
+                    <div class="bulb"></div>
+                    <span class="letter">spaCy</span>
+                </div>
+                <div class="skill-bulb green-light" style="animation-delay: 0.8s;">
                     <div class="bulb"></div>
                     <span class="letter">Scikit-learn</span>
-                </div>
-                <div class="skill-bulb red-light" style="animation-delay: 2.6s;">
-                    <div class="bulb"></div>
-                    <span class="letter">Streamlit</span>
-                </div>
-                <div class="skill-bulb yellow-light" style="animation-delay: 2.8s;">
-                    <div class="bulb"></div>
-                    <span class="letter">NumPy</span>
-                </div>
-                <div class="skill-bulb green-light" style="animation-delay: 3.0s;">
-                    <div class="bulb"></div>
-                    <span class="letter">Pandas</span>
                 </div>
             </div>
         </section>
 
         <section class="wire-section">
-            <span class="category-name">Development & Automation</span>
+            <span class="category-name">Data Science & Analysis</span>
             <div class="wire">
-                <div class="skill-bulb blue-light" style="animation-delay: 3.2s;">
+                <div class="skill-bulb red-light" style="animation-delay: 0.9s;">
+                    <div class="bulb"></div>
+                    <span class="letter">NumPy</span>
+                </div>
+                <div class="skill-bulb yellow-light" style="animation-delay: 1.0s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Pandas</span>
+                </div>
+                <div class="skill-bulb blue-light" style="animation-delay: 1.1s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Matplotlib</span>
+                </div>
+                <div class="skill-bulb green-light" style="animation-delay: 1.2s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Power BI</span>
+                </div>
+                <div class="skill-bulb red-light" style="animation-delay: 1.3s;">
+                    <div class="bulb"></div>
+                    <span class="letter">MySQL</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="wire-section">
+            <span class="category-name">Web, Creative & Tools</span>
+            <div class="wire">
+                <div class="skill-bulb yellow-light" style="animation-delay: 1.4s;">
+                    <div class="bulb"></div>
+                    <span class="letter">HTML5 / CSS3</span>
+                </div>
+                <div class="skill-bulb green-light" style="animation-delay: 1.5s;">
+                    <div class="bulb"></div>
+                    <span class="letter">Streamlit</span>
+                </div>
+                <div class="skill-bulb blue-light" style="animation-delay: 1.6s;">
                     <div class="bulb"></div>
                     <span class="letter">GitHub</span>
                 </div>
-                <div class="skill-bulb yellow-light" style="animation-delay: 3.4s;">
+                <div class="skill-bulb red-light" style="animation-delay: 1.7s;">
                     <div class="bulb"></div>
-                    <span class="letter">Automation Scripts</span>
+                    <span class="letter">Adobe Photoshop</span>
                 </div>
-                <div class="skill-bulb red-light" style="animation-delay: 3.6s;">
+                <div class="skill-bulb blue-light" style="animation-delay: 1.8s;">
                     <div class="bulb"></div>
-                    <span class="letter">UI Development</span>
+                    <span class="letter">Anaconda</span>
                 </div>
             </div>
         </section>
@@ -387,19 +385,14 @@
 
     <script>
         const navButtons = ['dive-btn', 'lab-btn'];
-
         navButtons.forEach(id => {
             const btn = document.getElementById(id);
             if (btn) {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
                     const destination = this.href;
-
-                    // Trigger the glitch and fade effects
                     document.body.classList.add('glitch-active');
                     document.body.style.opacity = '0';
-                    
-                    // Delay navigation for animation
                     setTimeout(() => {
                         window.location.href = destination;
                     }, 700);
@@ -407,6 +400,5 @@
             }
         });
     </script>
-
 </body>
 </html>
