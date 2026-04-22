@@ -591,6 +591,220 @@ section { position:relative; overflow:hidden; }
 }
 
 /* ==============================
+   CERT GRID & CARDS
+============================== */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px;
+}
+
+.cert-card {
+  background: rgba(8, 2, 2, 0.92);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 26px 26px 22px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--red), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+.cert-card:hover::before { transform: scaleX(1); }
+
+.cert-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 18px; height: 18px;
+  border-right: 1px solid rgba(225,29,39,0.3);
+  border-bottom: 1px solid rgba(225,29,39,0.3);
+  transition: border-color 0.4s;
+}
+.cert-card:hover {
+  border-color: rgba(225,29,39,0.45);
+  box-shadow: 0 0 32px rgba(225,29,39,0.12), inset 0 0 24px rgba(225,29,39,0.03);
+  transform: translateY(-4px);
+}
+.cert-card:hover::after { border-color: var(--red); }
+
+.cert-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cert-issuer-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px 5px 8px;
+  border-radius: 3px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: 1px solid transparent;
+  transition: 0.35s;
+}
+.cert-issuer-anthropic {
+  color: #d4906a;
+  background: rgba(212,144,106,0.08);
+  border-color: rgba(212,144,106,0.2);
+}
+.cert-card:hover .cert-issuer-anthropic {
+  background: rgba(212,144,106,0.14);
+  border-color: rgba(212,144,106,0.45);
+  box-shadow: 0 0 12px rgba(212,144,106,0.15);
+}
+.cert-issuer-cisco {
+  color: var(--neon-blue);
+  background: rgba(0,212,255,0.06);
+  border-color: rgba(0,212,255,0.18);
+}
+.cert-card:hover .cert-issuer-cisco {
+  background: rgba(0,212,255,0.12);
+  border-color: rgba(0,212,255,0.5);
+  box-shadow: 0 0 12px rgba(0,212,255,0.15);
+}
+.cert-issuer-ibm {
+  color: var(--yellow);
+  background: rgba(241,196,15,0.06);
+  border-color: rgba(241,196,15,0.18);
+}
+.cert-card:hover .cert-issuer-ibm {
+  background: rgba(241,196,15,0.11);
+  border-color: rgba(241,196,15,0.45);
+  box-shadow: 0 0 12px rgba(241,196,15,0.12);
+}
+
+.cert-scan-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 6px var(--red);
+  animation: certDotPulse 2.5s infinite;
+  flex-shrink: 0;
+}
+.cert-scan-dot--blue {
+  background: var(--neon-blue);
+  box-shadow: 0 0 6px var(--neon-blue);
+  animation: certDotPulseBlue 2.5s infinite;
+}
+.cert-scan-dot--yellow {
+  background: var(--yellow);
+  box-shadow: 0 0 6px var(--yellow);
+  animation: certDotPulseYellow 2.5s infinite;
+}
+@keyframes certDotPulse {
+  0%,100% { opacity:1; box-shadow:0 0 6px var(--red); }
+  50% { opacity:0.25; box-shadow:none; }
+}
+@keyframes certDotPulseBlue {
+  0%,100% { opacity:1; box-shadow:0 0 6px var(--neon-blue); }
+  50% { opacity:0.25; box-shadow:none; }
+}
+@keyframes certDotPulseYellow {
+  0%,100% { opacity:1; box-shadow:0 0 6px var(--yellow); }
+  50% { opacity:0.25; box-shadow:none; }
+}
+
+.cert-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.55rem;
+  letter-spacing: 2px;
+  color: #e8e8e8;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+.cert-card:hover .cert-title {
+  color: #fff;
+  text-shadow: 0 0 14px rgba(225,29,39,0.35);
+}
+
+.cert-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+  flex: 1;
+}
+.cert-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  color: #666;
+  text-transform: uppercase;
+}
+.cert-meta-row svg { opacity: 0.5; flex-shrink: 0; }
+.cert-id { color: #555; letter-spacing: 1px; }
+
+.cert-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  border: 1px solid rgba(225,29,39,0.45);
+  background: rgba(225,29,39,0.05);
+  color: #bbb;
+  text-decoration: none;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: 0.35s;
+  align-self: flex-start;
+  margin-top: auto;
+}
+.cert-view-btn:hover {
+  background: var(--red);
+  color: #000;
+  box-shadow: 0 0 20px rgba(225,29,39,0.5);
+  border-color: var(--red);
+}
+.cert-view-btn svg { transition: transform 0.3s; }
+.cert-view-btn:hover svg { transform: translate(2px, -2px); }
+
+.cert-view-btn--blue {
+  border-color: rgba(0,212,255,0.35);
+  background: rgba(0,212,255,0.04);
+}
+.cert-view-btn--blue:hover {
+  background: var(--neon-blue);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0,212,255,0.45);
+  border-color: var(--neon-blue);
+}
+.cert-view-btn--yellow {
+  border-color: rgba(241,196,15,0.35);
+  background: rgba(241,196,15,0.04);
+}
+.cert-view-btn--yellow:hover {
+  background: var(--yellow);
+  color: #000;
+  box-shadow: 0 0 20px rgba(241,196,15,0.4);
+  border-color: var(--yellow);
+}
+
+/* ==============================
    SKILLS
 ============================== */
 #skills {
@@ -658,7 +872,6 @@ section { position:relative; overflow:hidden; }
   transition:0.4s;
   white-space:nowrap;
 }
-/* bulb colors */
 .b-red .bulb { background:var(--red); box-shadow:0 0 10px var(--red); animation:fkA 3.5s infinite; }
 .b-red .skill-label { animation:lbA 3.5s infinite; }
 .b-blue .bulb { background:var(--neon-blue); box-shadow:0 0 10px var(--neon-blue); animation:fkB 4.2s infinite reverse; }
@@ -667,7 +880,6 @@ section { position:relative; overflow:hidden; }
 .b-yellow .skill-label { animation:lbC 2.9s infinite; }
 .b-green .bulb { background:var(--neon-green); box-shadow:0 0 10px var(--neon-green); animation:fkD 5s infinite alternate; }
 .b-green .skill-label { animation:lbD 5s infinite alternate; }
-/* hover pauses flicker */
 .skill-bulb:hover .bulb { animation-play-state:paused; filter:brightness(2); }
 .skill-bulb:hover .skill-label { animation-play-state:paused; color:#fff; }
 
@@ -781,7 +993,6 @@ section { position:relative; overflow:hidden; }
   64% { opacity:0.4; }
   66% { opacity:1; }
 }
-/* bulb flicker keyframes */
 @keyframes fkA { 0%,100%{opacity:1} 31%{opacity:0.15} 32%{opacity:1} }
 @keyframes lbA { 0%,100%{color:#fff;text-shadow:0 0 10px var(--red)} 31%{color:#444;text-shadow:none} }
 @keyframes fkB { 0%,100%{opacity:1} 71%{opacity:0.3} 73%{opacity:1} }
@@ -809,14 +1020,13 @@ section { position:relative; overflow:hidden; }
   .about-stats { grid-template-columns:1fr; }
   .contact-cards { grid-template-columns:1fr; }
   .contact-card { width:100%; height:auto; padding:30px; }
+  .cert-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- ==============================
-     FLOATING NAV
-============================== -->
+<!-- FLOATING NAV -->
 <nav id="floating-nav">
   <a href="#hero" class="nav-logo">CM</a>
   <ul class="nav-links" id="nav-menu">
@@ -831,9 +1041,7 @@ section { position:relative; overflow:hidden; }
   </div>
 </nav>
 
-<!-- ==============================
-     HERO
-============================== -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-vignette"></div>
@@ -855,16 +1063,13 @@ section { position:relative; overflow:hidden; }
   </div>
 </section>
 
-<!-- ==============================
-     ABOUT
-============================== -->
+<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <p class="section-title reveal">HAWKINS LAB DOSSIER</p>
     <p class="section-sub reveal">Subject #1167 — Personal Intelligence File</p>
     <div class="about-grid">
       <div class="about-photo-wrap reveal-left">
-        <!-- Replace with: <img src="profile.jpg" alt="Chirayu Mahajan" class="about-photo"> -->
         <div class="about-photo-placeholder">
           <span class="ph-icon">👤</span>
           <span>profile.jpg</span>
@@ -897,7 +1102,7 @@ section { position:relative; overflow:hidden; }
             <span class="stat-label">Hackathons</span>
           </div>
           <div class="stat-box">
-            <span class="stat-num">4+</span>
+            <span class="stat-num">7+</span>
             <span class="stat-label">Certifications</span>
           </div>
           <div class="stat-box">
@@ -911,9 +1116,7 @@ section { position:relative; overflow:hidden; }
   </div>
 </section>
 
-<!-- ==============================
-     PROJECTS
-============================== -->
+<!-- PROJECTS -->
 <section id="projects">
   <div class="spore-bg"></div>
   <div class="section-inner" style="position:relative;z-index:1;">
@@ -921,10 +1124,8 @@ section { position:relative; overflow:hidden; }
     <p class="section-sub reveal">Real-world AI experiments and creative builds</p>
     <div class="projects-grid">
 
-      <!-- PayTrust - WINNER -->
       <div class="proj-card winner-card reveal" style="transition-delay:0.1s">
         <div class="proj-img-wrap">
-          <!-- <img src="paytrust.png" class="proj-img" alt="PayTrust"> -->
           <div class="proj-img-placeholder"><span class="cam-icon">📸</span><span>paytrust.png</span></div>
           <span class="winner-badge">🏆 Nirmaan 4.0 Winner</span>
         </div>
@@ -940,10 +1141,8 @@ section { position:relative; overflow:hidden; }
         </div>
       </div>
 
-      <!-- Phoenix AI -->
       <div class="proj-card reveal" style="transition-delay:0.15s">
         <div class="proj-img-wrap">
-          <!-- <img src="phoenix.png" class="proj-img" alt="Phoenix AI"> -->
           <div class="proj-img-placeholder"><span class="cam-icon">📸</span><span>phoenix.png</span></div>
         </div>
         <div class="proj-body">
@@ -958,10 +1157,8 @@ section { position:relative; overflow:hidden; }
         </div>
       </div>
 
-      <!-- CyberFury -->
       <div class="proj-card reveal" style="transition-delay:0.2s">
         <div class="proj-img-wrap">
-          <!-- <img src="cyberfury.png" class="proj-img" alt="CyberFury"> -->
           <div class="proj-img-placeholder"><span class="cam-icon">📸</span><span>cyberfury.png</span></div>
         </div>
         <div class="proj-body">
@@ -977,10 +1174,8 @@ section { position:relative; overflow:hidden; }
         </div>
       </div>
 
-      <!-- Neurix -->
       <div class="proj-card reveal" style="transition-delay:0.25s">
         <div class="proj-img-wrap">
-          <!-- <img src="neurix.png" class="proj-img" alt="Neurix"> -->
           <div class="proj-img-placeholder"><span class="cam-icon">📸</span><span>neurix.png</span></div>
         </div>
         <div class="proj-body">
@@ -996,10 +1191,8 @@ section { position:relative; overflow:hidden; }
         </div>
       </div>
 
-      <!-- Clinical Risk Audit -->
       <div class="proj-card reveal" style="transition-delay:0.3s">
         <div class="proj-img-wrap">
-          <!-- <img src="clinical.png" class="proj-img" alt="Clinical Risk"> -->
           <div class="proj-img-placeholder"><span class="cam-icon">📸</span><span>clinical.png</span></div>
         </div>
         <div class="proj-body">
@@ -1015,7 +1208,6 @@ section { position:relative; overflow:hidden; }
         </div>
       </div>
 
-      <!-- The Shadow Below -->
       <div class="proj-card reveal" style="transition-delay:0.35s">
         <div class="proj-body">
           <h3 class="proj-title">The Shadow Below</h3>
@@ -1029,7 +1221,6 @@ section { position:relative; overflow:hidden; }
         </div>
       </div>
 
-      <!-- KeyFort -->
       <div class="proj-card reveal" style="transition-delay:0.4s">
         <div class="proj-body">
           <h3 class="proj-title">KeyFort</h3>
@@ -1047,9 +1238,7 @@ section { position:relative; overflow:hidden; }
   </div>
 </section>
 
-<!-- ==============================
-     SKILLS
-============================== -->
+<!-- SKILLS -->
 <section id="skills">
   <div class="spore-bg"></div>
   <div class="section-inner" style="position:relative;z-index:1;">
@@ -1060,47 +1249,47 @@ section { position:relative; overflow:hidden; }
       <div class="skill-category reveal">
         <span class="skill-cat-label">Core Logic & Languages</span>
         <div class="skill-wire">
-          <div class="skill-bulb b-yellow" style="animation-delay:0.1s"><div class="bulb"></div><span class="skill-label">Python</span></div>
-          <div class="skill-bulb b-blue" style="animation-delay:0.2s"><div class="bulb"></div><span class="skill-label">C</span></div>
-          <div class="skill-bulb b-red" style="animation-delay:0.3s"><div class="bulb"></div><span class="skill-label">HTML5</span></div>
-          <div class="skill-bulb b-green" style="animation-delay:0.4s"><div class="bulb"></div><span class="skill-label">CSS3</span></div>
-          <div class="skill-bulb b-yellow" style="animation-delay:0.5s"><div class="bulb"></div><span class="skill-label">JavaScript</span></div>
+          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">Python</span></div>
+          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">C</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">HTML5</span></div>
+          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">CSS3</span></div>
+          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">JavaScript</span></div>
         </div>
       </div>
 
       <div class="skill-category reveal">
         <span class="skill-cat-label">AI, ML & Vision</span>
         <div class="skill-wire">
-          <div class="skill-bulb b-blue" style="animation-delay:0.1s"><div class="bulb"></div><span class="skill-label">TensorFlow</span></div>
-          <div class="skill-bulb b-red" style="animation-delay:0.2s"><div class="bulb"></div><span class="skill-label">PyTorch</span></div>
-          <div class="skill-bulb b-green" style="animation-delay:0.3s"><div class="bulb"></div><span class="skill-label">OpenCV</span></div>
-          <div class="skill-bulb b-yellow" style="animation-delay:0.4s"><div class="bulb"></div><span class="skill-label">Scikit-learn</span></div>
-          <div class="skill-bulb b-blue" style="animation-delay:0.5s"><div class="bulb"></div><span class="skill-label">spaCy</span></div>
-          <div class="skill-bulb b-red" style="animation-delay:0.6s"><div class="bulb"></div><span class="skill-label">NLTK</span></div>
+          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">TensorFlow</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">PyTorch</span></div>
+          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">OpenCV</span></div>
+          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">Scikit-learn</span></div>
+          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">spaCy</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">NLTK</span></div>
         </div>
       </div>
 
       <div class="skill-category reveal">
         <span class="skill-cat-label">Data Science & Analytics</span>
         <div class="skill-wire">
-          <div class="skill-bulb b-red" style="animation-delay:0.1s"><div class="bulb"></div><span class="skill-label">NumPy</span></div>
-          <div class="skill-bulb b-yellow" style="animation-delay:0.2s"><div class="bulb"></div><span class="skill-label">Pandas</span></div>
-          <div class="skill-bulb b-blue" style="animation-delay:0.3s"><div class="bulb"></div><span class="skill-label">Matplotlib</span></div>
-          <div class="skill-bulb b-green" style="animation-delay:0.4s"><div class="bulb"></div><span class="skill-label">Power BI</span></div>
-          <div class="skill-bulb b-red" style="animation-delay:0.5s"><div class="bulb"></div><span class="skill-label">MySQL</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">NumPy</span></div>
+          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">Pandas</span></div>
+          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">Matplotlib</span></div>
+          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">Power BI</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">MySQL</span></div>
         </div>
       </div>
 
       <div class="skill-category reveal">
         <span class="skill-cat-label">Tools, Platforms & Deployment</span>
         <div class="skill-wire">
-          <div class="skill-bulb b-green" style="animation-delay:0.1s"><div class="bulb"></div><span class="skill-label">Streamlit</span></div>
-          <div class="skill-bulb b-yellow" style="animation-delay:0.2s"><div class="bulb"></div><span class="skill-label">GitHub</span></div>
-          <div class="skill-bulb b-blue" style="animation-delay:0.3s"><div class="bulb"></div><span class="skill-label">AWS</span></div>
-          <div class="skill-bulb b-red" style="animation-delay:0.4s"><div class="bulb"></div><span class="skill-label">Firebase</span></div>
-          <div class="skill-bulb b-green" style="animation-delay:0.5s"><div class="bulb"></div><span class="skill-label">Vercel</span></div>
-          <div class="skill-bulb b-yellow" style="animation-delay:0.6s"><div class="bulb"></div><span class="skill-label">Anaconda</span></div>
-          <div class="skill-bulb b-blue" style="animation-delay:0.7s"><div class="bulb"></div><span class="skill-label">Photoshop</span></div>
+          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">Streamlit</span></div>
+          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">GitHub</span></div>
+          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">AWS</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">Firebase</span></div>
+          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">Vercel</span></div>
+          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">Anaconda</span></div>
+          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">Photoshop</span></div>
         </div>
       </div>
 
@@ -1108,9 +1297,7 @@ section { position:relative; overflow:hidden; }
   </div>
 </section>
 
-<!-- ==============================
-     ACHIEVEMENTS
-============================== -->
+<!-- ACHIEVEMENTS -->
 <section id="achievements">
   <div class="section-inner">
     <p class="section-title reveal">ACHIEVEMENTS & CERTIFICATIONS</p>
@@ -1120,28 +1307,47 @@ section { position:relative; overflow:hidden; }
     <div class="ach-grid" style="margin-bottom:50px;">
 
       <div class="ach-card winner-ach reveal" style="transition-delay:0.1s">
-        <div class="ach-icon-wrap gold">🏆</div>
+        <div class="ach-icon-wrap gold">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#f1c40f" stroke-width="1.8" stroke-linejoin="round" fill="rgba(241,196,15,0.15)"/>
+          </svg>
+        </div>
         <span class="ach-type">Hackathon — 1st Place</span>
         <h3 class="ach-title">Nirmaan 4.0 Winner</h3>
         <p class="ach-desc">Built and won with <b>PayTrust</b> — an AI-powered fintech platform for intelligent payment routing and fraud detection. Competed against 100+ teams.</p>
       </div>
 
       <div class="ach-card reveal" style="transition-delay:0.15s">
-        <div class="ach-icon-wrap">⚡</div>
+        <div class="ach-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" stroke="var(--red)" stroke-width="1.8" stroke-linejoin="round" fill="rgba(225,29,39,0.12)"/>
+          </svg>
+        </div>
         <span class="ach-type">Hackathon — Participant</span>
         <h3 class="ach-title">Velora 24-Hour Hackathon</h3>
         <p class="ach-desc">Intensive 24-hour product sprint focused on building scalable solutions under extreme time constraints with real-world problem statements.</p>
       </div>
 
       <div class="ach-card reveal" style="transition-delay:0.2s">
-        <div class="ach-icon-wrap">📊</div>
+        <div class="ach-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+            <rect x="2" y="3" width="20" height="14" rx="2" stroke="var(--red)" stroke-width="1.8" fill="rgba(225,29,39,0.08)"/>
+            <path d="M8 21H16M12 17V21" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M6 8H18M6 11H13" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </div>
         <span class="ach-type">Hackathon — Participant</span>
         <h3 class="ach-title">Datathon 2026</h3>
         <p class="ach-desc">Data science competition featuring real-world datasets, model building challenges, and analytical problem solving under time pressure.</p>
       </div>
 
       <div class="ach-card reveal" style="transition-delay:0.25s">
-        <div class="ach-icon-wrap">🚀</div>
+        <div class="ach-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+            <circle cx="12" cy="12" r="9" stroke="var(--red)" stroke-width="1.8" fill="rgba(225,29,39,0.08)"/>
+            <path d="M12 7V13L16 15" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <span class="ach-type">Hackathon — Participant</span>
         <h3 class="ach-title">TechSprint 2026</h3>
         <p class="ach-desc">Fast-paced sprint building end-to-end tech solutions. Focused on rapid prototyping, product thinking, and demo-day pitching to a panel of judges.</p>
@@ -1150,43 +1356,225 @@ section { position:relative; overflow:hidden; }
     </div>
 
     <p class="ach-group-label reveal">// Certifications</p>
-    <div class="ach-grid">
+    <div class="cert-grid">
 
-      <div class="ach-card reveal" style="transition-delay:0.1s">
-        <div class="ach-icon-wrap blue">🔵</div>
-        <span class="ach-type">Certification — Cisco</span>
-        <h3 class="ach-title">Cisco AI Certification</h3>
-        <p class="ach-desc">Certified in Modern AI Protocols. Proficiency in AI deployment, enterprise ML frameworks, and responsible AI implementation standards.</p>
+      <!-- Anthropic: AI Fluency for Nonprofits -->
+      <div class="cert-card reveal" style="transition-delay:0.1s">
+        <div class="cert-card-header">
+          <div class="cert-issuer-badge cert-issuer-anthropic">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+              <path d="M27.52 9L38 39H32.16L29.87 32.12H18.1L15.81 39H10L20.48 9H27.52ZM28.31 27.34L24 14.7L19.69 27.34H28.31Z" fill="currentColor"/>
+            </svg>
+            <span>Anthropic</span>
+          </div>
+          <div class="cert-scan-dot"></div>
+        </div>
+        <h3 class="cert-title">AI Fluency for Nonprofits</h3>
+        <div class="cert-meta">
+          <span class="cert-meta-row">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1" y="3" width="14" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 6H15M5 1V4M11 1V4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            March 2026
+          </span>
+          <span class="cert-meta-row cert-id">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="5.5" cy="7" r="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 6H13M9 8H12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            ID: w37uzc5rufy3
+          </span>
+        </div>
+        <a href="https://www.anthropic.com" target="_blank" class="cert-view-btn">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="none"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3M10 2h4v4M14 2L8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View Credential
+        </a>
       </div>
 
-      <div class="ach-card reveal" style="transition-delay:0.15s">
-        <div class="ach-icon-wrap blue">🧠</div>
-        <span class="ach-type">Certification — IBM SkillsBuild</span>
-        <h3 class="ach-title">Career Management Essentials</h3>
-        <p class="ach-desc">IBM SkillsBuild certification in professional career management, workplace communication, and personal branding for the modern tech industry.</p>
+      <!-- Anthropic: AI Fluency for Students -->
+      <div class="cert-card reveal" style="transition-delay:0.15s">
+        <div class="cert-card-header">
+          <div class="cert-issuer-badge cert-issuer-anthropic">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+              <path d="M27.52 9L38 39H32.16L29.87 32.12H18.1L15.81 39H10L20.48 9H27.52ZM28.31 27.34L24 14.7L19.69 27.34H28.31Z" fill="currentColor"/>
+            </svg>
+            <span>Anthropic</span>
+          </div>
+          <div class="cert-scan-dot"></div>
+        </div>
+        <h3 class="cert-title">AI Fluency for Students</h3>
+        <div class="cert-meta">
+          <span class="cert-meta-row">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1" y="3" width="14" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 6H15M5 1V4M11 1V4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            March 2026
+          </span>
+          <span class="cert-meta-row cert-id">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="5.5" cy="7" r="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 6H13M9 8H12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            ID: qfxivifkpyor
+          </span>
+        </div>
+        <a href="https://www.anthropic.com" target="_blank" class="cert-view-btn">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="none"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3M10 2h4v4M14 2L8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View Credential
+        </a>
       </div>
 
-      <div class="ach-card reveal" style="transition-delay:0.2s">
-        <div class="ach-icon-wrap blue">🐍</div>
-        <span class="ach-type">Certification — IBM SkillsBuild</span>
-        <h3 class="ach-title">Python Essentials 1 & 2</h3>
-        <p class="ach-desc">IBM SkillsBuild dual certification covering Python fundamentals through intermediate programming — data structures, OOP, file handling, and scripting best practices.</p>
+      <!-- Anthropic: AI Fluency Framework & Foundations -->
+      <div class="cert-card reveal" style="transition-delay:0.2s">
+        <div class="cert-card-header">
+          <div class="cert-issuer-badge cert-issuer-anthropic">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+              <path d="M27.52 9L38 39H32.16L29.87 32.12H18.1L15.81 39H10L20.48 9H27.52ZM28.31 27.34L24 14.7L19.69 27.34H28.31Z" fill="currentColor"/>
+            </svg>
+            <span>Anthropic</span>
+          </div>
+          <div class="cert-scan-dot"></div>
+        </div>
+        <h3 class="cert-title">AI Fluency Framework &amp; Foundations</h3>
+        <div class="cert-meta">
+          <span class="cert-meta-row">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1" y="3" width="14" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 6H15M5 1V4M11 1V4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            March 2026
+          </span>
+          <span class="cert-meta-row cert-id">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="5.5" cy="7" r="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 6H13M9 8H12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            ID: n2zvbeupsao9
+          </span>
+        </div>
+        <a href="https://www.anthropic.com" target="_blank" class="cert-view-btn">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="none"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3M10 2h4v4M14 2L8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View Credential
+        </a>
       </div>
 
-      <div class="ach-card reveal" style="transition-delay:0.25s">
-        <div class="ach-icon-wrap">🤖</div>
-        <span class="ach-type">Certification — Anthropic</span>
-        <h3 class="ach-title">Claude 101 AI Cert</h3>
-        <p class="ach-desc">Certified in Claude AI usage and prompt engineering fundamentals. Covers responsible AI deployment and advanced language model interaction patterns.</p>
+      <!-- Anthropic: Claude 101 -->
+      <div class="cert-card reveal" style="transition-delay:0.25s">
+        <div class="cert-card-header">
+          <div class="cert-issuer-badge cert-issuer-anthropic">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+              <path d="M27.52 9L38 39H32.16L29.87 32.12H18.1L15.81 39H10L20.48 9H27.52ZM28.31 27.34L24 14.7L19.69 27.34H28.31Z" fill="currentColor"/>
+            </svg>
+            <span>Anthropic</span>
+          </div>
+          <div class="cert-scan-dot"></div>
+        </div>
+        <h3 class="cert-title">Claude 101</h3>
+        <div class="cert-meta">
+          <span class="cert-meta-row">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1" y="3" width="14" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 6H15M5 1V4M11 1V4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            March 2026
+          </span>
+          <span class="cert-meta-row cert-id">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="5.5" cy="7" r="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 6H13M9 8H12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            ID: czkuhmj6hj4j
+          </span>
+        </div>
+        <a href="https://www.anthropic.com" target="_blank" class="cert-view-btn">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="none"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3M10 2h4v4M14 2L8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View Credential
+        </a>
+      </div>
+
+      <!-- Cisco: Introduction to Modern AI -->
+      <div class="cert-card reveal" style="transition-delay:0.3s">
+        <div class="cert-card-header">
+          <div class="cert-issuer-badge cert-issuer-cisco">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+              <rect x="21" y="4" width="6" height="10" rx="2" fill="currentColor"/>
+              <rect x="21" y="34" width="6" height="10" rx="2" fill="currentColor"/>
+              <rect x="4" y="19" width="10" height="6" rx="2" fill="currentColor" opacity="0.7"/>
+              <rect x="34" y="19" width="10" height="6" rx="2" fill="currentColor" opacity="0.7"/>
+              <rect x="9" y="9" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.5"/>
+              <rect x="32" y="9" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.5"/>
+              <rect x="9" y="32" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.5"/>
+              <rect x="32" y="32" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.5"/>
+              <circle cx="24" cy="24" r="5" stroke="currentColor" stroke-width="2" fill="rgba(0,212,255,0.15)"/>
+            </svg>
+            <span>Cisco</span>
+          </div>
+          <div class="cert-scan-dot cert-scan-dot--blue"></div>
+        </div>
+        <h3 class="cert-title">Introduction to Modern AI</h3>
+        <div class="cert-meta">
+          <span class="cert-meta-row">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1" y="3" width="14" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 6H15M5 1V4M11 1V4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            December 2025
+          </span>
+          <span class="cert-meta-row cert-id" style="opacity:0.5;font-style:italic;">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="5.5" cy="7" r="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 6H13M9 8H12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Cisco Networking Academy
+          </span>
+        </div>
+        <a href="https://www.netacad.com" target="_blank" class="cert-view-btn cert-view-btn--blue">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="none"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3M10 2h4v4M14 2L8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View Credential
+        </a>
+      </div>
+
+      <!-- IBM: Python Essentials 1 & 2 -->
+      <div class="cert-card reveal" style="transition-delay:0.35s">
+        <div class="cert-card-header">
+          <div class="cert-issuer-badge cert-issuer-ibm">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+              <rect x="4" y="11" width="40" height="5" rx="1" fill="currentColor"/>
+              <rect x="4" y="21" width="40" height="5" rx="1" fill="currentColor" opacity="0.75"/>
+              <rect x="4" y="31" width="40" height="5" rx="1" fill="currentColor" opacity="0.5"/>
+              <rect x="10" y="11" width="4" height="25" fill="#050101" opacity="0.9"/>
+              <rect x="34" y="11" width="4" height="25" fill="#050101" opacity="0.9"/>
+            </svg>
+            <span>IBM</span>
+          </div>
+          <div class="cert-scan-dot cert-scan-dot--yellow"></div>
+        </div>
+        <h3 class="cert-title">Python Essentials 1 &amp; 2</h3>
+        <div class="cert-meta">
+          <span class="cert-meta-row">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1" y="3" width="14" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 6H15M5 1V4M11 1V4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            IBM SkillsBuild
+          </span>
+          <span class="cert-meta-row cert-id">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><path d="M3 3h10v2H3zM3 7h10v2H3zM3 11h6v2H3z" fill="currentColor" opacity="0.7"/></svg>
+            Dual Certification
+          </span>
+        </div>
+        <a href="https://skillsbuild.org" target="_blank" class="cert-view-btn cert-view-btn--yellow">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="none"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3M10 2h4v4M14 2L8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View Credential
+        </a>
+      </div>
+
+      <!-- IBM: Career Management Essentials -->
+      <div class="cert-card reveal" style="transition-delay:0.4s">
+        <div class="cert-card-header">
+          <div class="cert-issuer-badge cert-issuer-ibm">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+              <rect x="4" y="11" width="40" height="5" rx="1" fill="currentColor"/>
+              <rect x="4" y="21" width="40" height="5" rx="1" fill="currentColor" opacity="0.75"/>
+              <rect x="4" y="31" width="40" height="5" rx="1" fill="currentColor" opacity="0.5"/>
+              <rect x="10" y="11" width="4" height="25" fill="#050101" opacity="0.9"/>
+              <rect x="34" y="11" width="4" height="25" fill="#050101" opacity="0.9"/>
+            </svg>
+            <span>IBM</span>
+          </div>
+          <div class="cert-scan-dot cert-scan-dot--yellow"></div>
+        </div>
+        <h3 class="cert-title">Career Management Essentials</h3>
+        <div class="cert-meta">
+          <span class="cert-meta-row">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><rect x="1" y="3" width="14" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1 6H15M5 1V4M11 1V4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            IBM SkillsBuild
+          </span>
+          <span class="cert-meta-row cert-id">
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none"><circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 14c0-3.31 2.69-6 6-6s6 2.69 6 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Professional Development
+          </span>
+        </div>
+        <a href="https://skillsbuild.org" target="_blank" class="cert-view-btn cert-view-btn--yellow">
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="none"><path d="M6 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-3M10 2h4v4M14 2L8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View Credential
+        </a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ==============================
-     CONTACT
-============================== -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="spore-bg" style="opacity:0.1;"></div>
   <div class="section-inner" style="position:relative;z-index:1;">
@@ -1214,28 +1602,20 @@ section { position:relative; overflow:hidden; }
   </div>
 </section>
 
-<!-- ==============================
-     JAVASCRIPT
-============================== -->
 <script>
-// --- Scroll Reveal ---
 const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.12 });
 revealEls.forEach(el => observer.observe(el));
 
-// --- Floating nav scroll behavior ---
 const nav = document.getElementById('floating-nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 80);
 });
 
-// --- Active nav link highlight ---
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 const scrollSpy = new IntersectionObserver((entries) => {
@@ -1249,7 +1629,6 @@ const scrollSpy = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 sections.forEach(s => scrollSpy.observe(s));
 
-// --- Staggered skill bulb power-on ---
 document.querySelectorAll('.skill-bulb').forEach((bulb, i) => {
   bulb.style.animationDelay = (i * 0.07 + 0.1) + 's';
   bulb.style.opacity = '0';
