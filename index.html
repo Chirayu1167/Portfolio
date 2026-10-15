@@ -1026,8 +1026,8 @@ section { position:relative; overflow:hidden; }
   .contact-card { width:100%; height:auto; padding:30px; }
   .cert-grid { grid-template-columns: 1fr; }
 }
-#achievements .cert-grid > .cert-card:nth-child(-n+3),
-#achievements .cert-grid > .cert-card:nth-child(6) {
+#achievements .ach-group-label,
+#achievements .cert-grid {
   display: none;
 }
 </style>
@@ -1036,15 +1036,17 @@ section { position:relative; overflow:hidden; }
 
 <!-- FLOATING NAV -->
 <nav id="floating-nav">
-  <a href="#hero" class="nav-logo">CM</a>
+  <a href="#hero" class="nav-logo">Chirayu</a>
   <ul class="nav-links" id="nav-menu">
     <li><a href="#about">About</a></li>
+    <li><a href="#milestones">Milestones</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#timeline">Timeline</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">GitHub</a></li>
   </ul>
   <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('open')">
     <span></span><span></span><span></span>
@@ -1057,14 +1059,14 @@ section { position:relative; overflow:hidden; }
   <div class="hero-vignette"></div>
   <div class="spore-bg"></div>
   <div class="hero-content">
-    <span class="hero-tag">Pune, India // AI Engineer // Systems Builder</span>
+    <span class="hero-tag">Observation Subject: #1167 // Level 4 Clearance // Hawkins Lab</span>
     <h1 class="hero-name">CHIRAYU<br>MAHAJAN</h1>
-    <p class="hero-title">Artificial Intelligence &nbsp;//&nbsp; Production Systems</p>
+    <p class="hero-title">Artificial Intelligence &nbsp;//&nbsp; Neural Architect</p>
     <p class="hero-intro">
-      Building AI systems that <b>remember context</b>, detect fraud, and interpret the real world.<br>
-      From multi-agent infrastructure to <b>real-time computer vision</b>.
+      Building AI infrastructure that remembers, reasons, and scales.<br>
+      I build reliable AI systems focused on persistent memory, intelligent fraud detection, multi-agent architectures, and computer vision. I enjoy engineering production-ready AI applications that solve real-world problems through thoughtful system design.
     </p>
-    <a href="#projects" class="hero-cta">Explore My Work</a>
+    <a href="#projects" class="hero-cta">Enter the Portal</a>
   </div>
   <div class="scroll-indicator">
     <span>Scroll</span>
@@ -1089,33 +1091,30 @@ section { position:relative; overflow:hidden; }
       <div class="about-text reveal-right">
         <p class="about-greeting">// AI Engineer Profile</p>
         <p class="about-bio">
-          I'm <b>Chirayu Mahajan</b>, an <b>AI engineer</b> building end-to-end systems across computer vision, LLM agents, real-time inference, and backend infrastructure.
+          I am an <b>AI Developer Intern at Tronocity Labs</b>, pursuing a BTech in AI at <b>MIT Academy of Engineering</b> and a BS in Data Science from <b>IIT Madras</b>. My focus lies in persistent memory systems for Multi-LLM applications, AI agents, and intelligent pipelines. I believe in solving real engineering problems by transforming research ideas into production products.
         </p>
-        <p class="about-bio">
-          I currently work on persistent memory and context infrastructure for multi-LLM agent systems at <b>Tronocity Labs</b>. My projects include real-time UPI fraud prevention, CCTV incident detection, and marine intelligence.
-        </p>
-        <p class="about-bio">
-          Alongside industry work, I am pursuing a B.Tech in AI &amp; Machine Learning at <b>MIT Academy of Engineering</b> and a B.S. in Data Science and Applications at <b>IIT Madras</b>.
-        </p>
-        <div class="about-stats">
-          <div class="stat-box">
-            <span class="stat-num">2</span>
-            <span class="stat-label">Concurrent Degrees</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num">5</span>
-            <span class="stat-label">Featured Projects</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num">58%</span>
-            <span class="stat-label">Token reduction in targeted scenarios</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num">1st</span>
-            <span class="stat-label">Nirmaan 2026 winner</span>
-          </div>
-        </div>
         <a href="resume.pdf" class="resume-btn" target="_blank">↓ Download Resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MILESTONES -->
+<section id="milestones">
+  <div class="section-inner">
+    <p class="section-title reveal">MILESTONES</p>
+    <div class="ach-grid">
+      <div class="ach-card reveal">
+        <span class="ach-type">Tronocity Labs</span>
+        <h3 class="ach-title">AI Developer Intern</h3>
+      </div>
+      <div class="ach-card reveal">
+        <span class="ach-type">MIT Academy of Engineering &amp; IIT Madras</span>
+        <h3 class="ach-title">2 Concurrent Degrees</h3>
+      </div>
+      <div class="ach-card reveal">
+        <span class="ach-type">Production-ready applications across AI, ML, and Computer Vision</span>
+        <h3 class="ach-title">7+ AI Projects</h3>
       </div>
     </div>
   </div>
@@ -1125,17 +1124,16 @@ section { position:relative; overflow:hidden; }
 <section id="experience">
   <div class="section-inner">
     <p class="section-title reveal">EXPERIENCE</p>
-    <p class="section-sub reveal">Building and shipping products with industry and academic teams</p>
     <div class="ach-grid">
       <div class="ach-card reveal">
-        <span class="ach-type">May 2026 – Present</span>
+        <span class="ach-type">Tronocity Labs · Gigzs/Akhrot · May 2026 – Present</span>
         <h3 class="ach-title">AI Developer Intern</h3>
-        <p class="ach-desc"><b>Tronocity Labs · Gigzs/Akhrot</b><br>Building persistent memory and context infrastructure for multi-LLM agent systems. Developed LLM pipelines and backend services for state across models, sessions, and handoffs; contributed to architecture and benchmarking that reduced token usage by up to 58% in targeted scenarios.</p>
+        <p class="ach-desc">Working on Akhrot, production-grade persistent memory infrastructure for multi-LLM applications, alongside agent architectures, LLM orchestration, backend services, and intelligent context management.</p>
       </div>
       <div class="ach-card reveal">
-        <span class="ach-type">May – July 2026</span>
+        <span class="ach-type">MITAOE Entrepreneurial Development Foundation · May – July 2026</span>
         <h3 class="ach-title">Product Development Intern</h3>
-        <p class="ach-desc"><b>MITAOE Entrepreneurial Development Foundation · TrafficBuddy</b><br>Drove feature planning, requirements analysis, UI/UX design, and application workflows, coordinating backend integration with the development team through multiple rounds of user feedback.</p>
+        <p class="ach-desc">Worked on Traffic Buddy, an AI-assisted traffic complaint management app, driving feature planning, requirements analysis, UI/UX design, and application workflows while coordinating backend integration through rounds of user feedback.</p>
       </div>
     </div>
   </div>
@@ -1145,17 +1143,18 @@ section { position:relative; overflow:hidden; }
 <section id="projects">
   <div class="spore-bg"></div>
   <div class="section-inner" style="position:relative;z-index:1;">
-    <p class="section-title reveal">SELECTED PROJECTS</p>
-    <p class="section-sub reveal">Applied AI, real-time systems, and products built for real-world use · <a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">More on GitHub</a></p>
+    <p class="section-title reveal">THE UPSIDE DOWN PROJECTS</p>
+    <p class="section-sub reveal">Real-world AI experiments and creative builds · <a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">More on GitHub</a></p>
     <div class="projects-grid">
 
       <div class="proj-card reveal" style="transition-delay:0.1s">
         <div class="proj-body">
-          <h3 class="proj-title">VISTA</h3>
-          <p class="proj-desc">Real-time CCTV accident and incident detection using YOLO11m, ByteTrack, and homography-based speed estimation. Detects events in roughly 0.5–1 second and routes alerts by severity. Cross-frame checks combine four incident signals to suppress false positives; tested on real clips and synthetic speed data against a ±15% accuracy gate.</p>
+          <h3 class="proj-title">Synapse</h3>
+          <p class="proj-desc">An AI-powered workspace that unifies project management, GitHub repository intelligence, AI context preservation, and multi-provider API management.</p>
           <div class="proj-tags">
-            <span class="proj-tag">Computer Vision</span><span class="proj-tag">YOLO11m</span><span class="proj-tag">ByteTrack</span><span class="proj-tag">Real-time</span>
+            <span class="proj-tag">React</span><span class="proj-tag">TypeScript</span><span class="proj-tag">FastAPI</span><span class="proj-tag">LLMs</span>
           </div>
+          <div class="proj-btns"><a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" class="proj-btn">GitHub</a></div>
         </div>
       </div>
 
@@ -1163,40 +1162,44 @@ section { position:relative; overflow:hidden; }
         <div class="proj-body">
           <span class="winner-badge">🏆 Nirmaan 2026 Winner · GDG</span>
           <h3 class="proj-title">Iron Wallet</h3>
-          <p class="proj-desc">Led the risk-scoring engine for real-time UPI fraud prevention, combining OTP verification with a behavioral risk model served over FastAPI and WebSockets.</p>
+          <p class="proj-desc">An AI-powered digital wallet featuring behavioral fraud detection, risk scoring, scam intelligence, and secure transaction monitoring.</p>
           <div class="proj-tags">
-            <span class="proj-tag">FastAPI</span><span class="proj-tag">WebSockets</span><span class="proj-tag">Fraud Detection</span><span class="proj-tag">Risk Scoring</span>
+            <span class="proj-tag">FastAPI</span><span class="proj-tag">React</span><span class="proj-tag">Machine Learning</span><span class="proj-tag">Python</span>
           </div>
+          <div class="proj-btns"><a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" class="proj-btn">GitHub</a></div>
         </div>
       </div>
 
       <div class="proj-card reveal" style="transition-delay:0.2s">
         <div class="proj-body">
-          <h3 class="proj-title">Synapse</h3>
-          <p class="proj-desc">AI-native project workspace with a kanban board, GitHub webhook auto-close, and codebase analysis. Its Context Bridge turns a Claude conversation into a continuity brief so work can resume in a fresh session without losing context.</p>
+          <h3 class="proj-title">PrepHire AI</h3>
+          <p class="proj-desc">An AI-powered placement preparation platform featuring mock interviews, coding challenges, and learning resources.</p>
           <div class="proj-tags">
-            <span class="proj-tag">Next.js 15</span><span class="proj-tag">Supabase</span><span class="proj-tag">Groq</span><span class="proj-tag">GitHub Webhooks</span>
+            <span class="proj-tag">React</span><span class="proj-tag">Python</span><span class="proj-tag">AI</span>
           </div>
+          <div class="proj-btns"><a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" class="proj-btn">GitHub</a></div>
         </div>
       </div>
 
       <div class="proj-card reveal" style="transition-delay:0.25s">
         <div class="proj-body">
-          <h3 class="proj-title">PrepHire.AI</h3>
-          <p class="proj-desc">Placement platform for resume-tailored, proctored AI voice interviews across technical, HR, aptitude, and group-discussion rounds. Includes a five-axis scoring rubric, action plans, a coding arena with AI review, and role-based portals for nine engineering branches.</p>
+          <h3 class="proj-title">CyberFury</h3>
+          <p class="proj-desc">A computer vision suite for distinguishing AI-generated images from authentic photography using forensic artifact analysis.</p>
           <div class="proj-tags">
-            <span class="proj-tag">AI Interviews</span><span class="proj-tag">Voice AI</span><span class="proj-tag">Coding Arena</span><span class="proj-tag">Full Stack</span>
+            <span class="proj-tag">Python</span><span class="proj-tag">OpenCV</span><span class="proj-tag">Machine Learning</span>
           </div>
+          <div class="proj-btns"><a href="https://github.com/Chirayu1167/Cyberfury" target="_blank" rel="noopener noreferrer" class="proj-btn">GitHub</a></div>
         </div>
       </div>
 
       <div class="proj-card reveal" style="transition-delay:0.3s">
         <div class="proj-body">
-          <h3 class="proj-title">ORCA</h3>
-          <p class="proj-desc">Co-built an agentic marine-intelligence platform that answers natural-language questions about fishing zones, sea safety, and hazards using live INCOIS satellite and ocean data. Specialist agents provide explainable, evidence-backed responses in 11 Indic languages.</p>
+          <h3 class="proj-title">Phoenix</h3>
+          <p class="proj-desc">A desktop AI voice assistant featuring wake-word detection, conversational interaction, and productivity-focused desktop automation.</p>
           <div class="proj-tags">
-            <span class="proj-tag">FastAPI</span><span class="proj-tag">LangGraph</span><span class="proj-tag">Multi-agent</span><span class="proj-tag">INCOIS Data</span>
+            <span class="proj-tag">Python</span><span class="proj-tag">Tkinter</span>
           </div>
+          <div class="proj-btns"><a href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer" class="proj-btn">GitHub</a></div>
         </div>
       </div>
 
@@ -1204,21 +1207,43 @@ section { position:relative; overflow:hidden; }
   </div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education">
+<!-- TIMELINE -->
+<section id="timeline">
   <div class="section-inner">
-    <p class="section-title reveal">EDUCATION</p>
-    <p class="section-sub reveal">Learning across artificial intelligence and data science</p>
+    <p class="section-title reveal">THE JOURNEY</p>
+    <p class="section-sub reveal">Timeline</p>
     <div class="ach-grid">
       <div class="ach-card reveal">
-        <span class="ach-type">September 2025 – Present</span>
-        <h3 class="ach-title">B.Tech, Artificial Intelligence &amp; Machine Learning</h3>
-        <p class="ach-desc"><b>MIT Academy of Engineering</b></p>
+        <span class="ach-type">2026</span>
+        <h3 class="ach-title">Developed PrepHire AI</h3>
       </div>
       <div class="ach-card reveal">
-        <span class="ach-type">September 2025 – Present</span>
-        <h3 class="ach-title">B.S., Data Science and Applications</h3>
-        <p class="ach-desc"><b>Indian Institute of Technology, Madras</b></p>
+        <span class="ach-type">2026</span>
+        <h3 class="ach-title">Product Development Intern <small>MITAOE EDF</small></h3>
+      </div>
+      <div class="ach-card reveal">
+        <span class="ach-type">2026</span>
+        <h3 class="ach-title">Developed Iron Wallet</h3>
+      </div>
+      <div class="ach-card reveal">
+        <span class="ach-type">2026</span>
+        <h3 class="ach-title">Built Synapse</h3>
+      </div>
+      <div class="ach-card reveal">
+        <span class="ach-type">2026</span>
+        <h3 class="ach-title">AI Developer Intern <small>Tronocity Labs</small></h3>
+      </div>
+      <div class="ach-card winner-ach reveal">
+        <span class="ach-type">2026</span>
+        <h3 class="ach-title">Winner - Nirmaan 4.0</h3>
+      </div>
+      <div class="ach-card reveal">
+        <span class="ach-type">2025</span>
+        <h3 class="ach-title">Started BS in Data Science and Applications <small>IIT Madras</small></h3>
+      </div>
+      <div class="ach-card reveal">
+        <span class="ach-type">2025</span>
+        <h3 class="ach-title">Started B.Tech in Artificial Intelligence <small>MIT Academy of Engineering</small></h3>
       </div>
     </div>
   </div>
@@ -1228,61 +1253,60 @@ section { position:relative; overflow:hidden; }
 <section id="skills">
   <div class="spore-bg"></div>
   <div class="section-inner" style="position:relative;z-index:1;">
-    <p class="section-title reveal">TECHNICAL SKILLS</p>
-    <p class="section-sub reveal">Tools and methods from the current résumé</p>
+    <p class="section-title reveal">TECHNICAL ARSENAL</p>
+    <p class="section-sub reveal">Skills &amp; Stack</p>
     <div class="skills-sections">
 
       <div class="skill-category reveal">
-        <span class="skill-cat-label">Programming</span>
+        <span class="skill-cat-label">Languages</span>
         <div class="skill-wire">
           <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">Python</span></div>
           <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">C</span></div>
-          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">JavaScript / TypeScript</span></div>
-          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">SQL</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">TypeScript</span></div>
+          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">JavaScript</span></div>
+          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">HTML</span></div>
+          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">CSS</span></div>
         </div>
       </div>
 
       <div class="skill-category reveal">
-        <span class="skill-cat-label">AI, Machine Learning &amp; Agents</span>
+        <span class="skill-cat-label">Frontend</span>
         <div class="skill-wire">
-          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">PyTorch</span></div>
-          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">Scikit-learn / XGBoost</span></div>
-          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">OpenCV</span></div>
-          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">Computer Vision / NLP</span></div>
-          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">LLMs / RAG</span></div>
-          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">LangGraph / LangChain</span></div>
-          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">Multi-Agent Systems</span></div>
-          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">Agent Memory / Context</span></div>
-          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">Embeddings / Prompting</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">React</span></div>
+          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">Tailwind CSS</span></div>
+          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">Vite</span></div>
         </div>
       </div>
 
       <div class="skill-category reveal">
-        <span class="skill-cat-label">Backend, APIs &amp; Data</span>
+        <span class="skill-cat-label">Backend</span>
         <div class="skill-wire">
-          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">FastAPI / Flask</span></div>
-          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">REST / WebSockets</span></div>
-          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">PostgreSQL / MySQL</span></div>
-          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">SQLite / Supabase</span></div>
-          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">Firebase / Redis</span></div>
-          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">Vector Databases</span></div>
-          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">Authentication / Webhooks</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">FastAPI</span></div>
+          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">Flask</span></div>
+          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">Firebase</span></div>
+          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">MySQL</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">SQLite</span></div>
         </div>
       </div>
 
       <div class="skill-category reveal">
-        <span class="skill-cat-label">Frontend, Cloud &amp; Engineering</span>
+        <span class="skill-cat-label">Cloud</span>
         <div class="skill-wire">
-          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">React / Next.js</span></div>
-          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">Tailwind CSS</span></div>
-          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">GitHub</span></div>
           <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">AWS</span></div>
-          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">Docker</span></div>
-          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">Vercel / Render</span></div>
-          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">CI/CD</span></div>
-          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">System / API Design</span></div>
-          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">Real-Time Systems</span></div>
-          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">Distributed Systems</span></div>
+          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">Vercel</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">Render</span></div>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <span class="skill-cat-label">AI &amp; ML</span>
+        <div class="skill-wire">
+          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">LLMs</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">Machine Learning</span></div>
+          <div class="skill-bulb b-green"><div class="bulb"></div><span class="skill-label">Computer Vision</span></div>
+          <div class="skill-bulb b-yellow"><div class="bulb"></div><span class="skill-label">OpenCV</span></div>
+          <div class="skill-bulb b-blue"><div class="bulb"></div><span class="skill-label">NLP</span></div>
+          <div class="skill-bulb b-red"><div class="bulb"></div><span class="skill-label">Scikit-learn</span></div>
         </div>
       </div>
 
@@ -1293,8 +1317,8 @@ section { position:relative; overflow:hidden; }
 <!-- ACHIEVEMENTS -->
 <section id="achievements">
   <div class="section-inner">
-    <p class="section-title reveal">ACHIEVEMENTS &amp; CERTIFICATIONS</p>
-    <p class="section-sub reveal">Selected recognition and professional learning</p>
+    <p class="section-title reveal">AWARDS &amp; ACHIEVEMENTS</p>
+    <p class="section-sub reveal">Hackathons, internships, and academic milestones</p>
 
     <p class="ach-group-label reveal">// Hackathons</p>
     <div class="ach-grid" style="margin-bottom:50px;">
@@ -1344,6 +1368,20 @@ section { position:relative; overflow:hidden; }
         <span class="ach-type">Hackathon — Participant</span>
         <h3 class="ach-title">TechSprint 2026</h3>
         <p class="ach-desc">Participant in the 2026 TechSprint, building and presenting a technology solution.</p>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-icon-wrap"><i class="bi bi-cpu"></i></div>
+        <span class="ach-type">Experience</span>
+        <h3 class="ach-title">AI Developer Intern</h3>
+        <p class="ach-desc">Tronocity Labs</p>
+      </div>
+
+      <div class="ach-card reveal">
+        <div class="ach-icon-wrap"><i class="bi bi-mortarboard"></i></div>
+        <span class="ach-type">Education</span>
+        <h3 class="ach-title">Dual Degree Student</h3>
+        <p class="ach-desc">MIT Academy of Engineering &amp; IIT Madras</p>
       </div>
 
     </div>
@@ -1591,32 +1629,32 @@ section { position:relative; overflow:hidden; }
 <section id="contact">
   <div class="spore-bg" style="opacity:0.25;"></div>
   <div class="section-inner" style="position:relative;z-index:1;">
-    <p class="section-title reveal">GET IN TOUCH</p>
-    <p class="section-sub reveal">Pune, Maharashtra, India</p>
-    <p class="contact-morse reveal">Available for thoughtful conversations about AI systems and engineering</p>
+    <p class="section-title reveal">FIND ME IN HAWKINS MALL</p>
+    <p class="section-sub reveal">Connect through the lights and signals</p>
+    <p class="contact-morse reveal">— · · — · &nbsp;·· — &nbsp;· — — ·· &nbsp; // Signal Active</p>
     <div class="contact-cards reveal">
-      <a href="mailto:chirayum2007@gmail.com" class="contact-card">
+      <a href="mailto:mahajanchirayu1167@gmail.com" class="contact-card">
         <span class="contact-card-icon">✉️</span>
         <p class="contact-card-title">Email</p>
-        <p class="contact-card-val">chirayum2007@gmail.com</p>
-      </a>
-      <a href="tel:+919340228345" class="contact-card">
-        <span class="contact-card-icon">☎️</span>
-        <p class="contact-card-title">Phone</p>
-        <p class="contact-card-val">+91 93402 28345</p>
+        <p class="contact-card-val">mahajanchirayu1167@gmail.com</p>
       </a>
       <a href="https://github.com/Chirayu1167" target="_blank" class="contact-card">
         <span class="contact-card-icon">⚙️</span>
         <p class="contact-card-title">GitHub</p>
         <p class="contact-card-val">Chirayu1167</p>
       </a>
-      <a href="https://www.linkedin.com/in/chirayu-mahajan-390766309/" target="_blank" class="contact-card">
+      <a href="https://linkedin.com/in/chirayu-mahajan-390766309" target="_blank" rel="noopener noreferrer" class="contact-card">
         <span class="contact-card-icon">🔗</span>
         <p class="contact-card-title">LinkedIn</p>
         <p class="contact-card-val">Chirayu Mahajan</p>
       </a>
+      <a href="https://chirayuportfolio-i6ajel264-chirayu1.vercel.app/#" target="_blank" rel="noopener noreferrer" class="contact-card">
+        <span class="contact-card-icon">🌐</span>
+        <p class="contact-card-title">Portfolio</p>
+        <p class="contact-card-val">View portfolio</p>
+      </a>
     </div>
-    <p class="footer-line">© 2026 Chirayu Mahajan · Built in Pune, India</p>
+    <p class="footer-line">© 2026 Chirayu Mahajan. All rights reserved.</p>
   </div>
 </section>
 
