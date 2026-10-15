@@ -349,7 +349,7 @@ section { position:relative; overflow:hidden; }
   margin-bottom:28px;
 }
 .about-bio b { color:#fff; }
-.about-stats {
+.milestone-stats {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:20px;
@@ -433,7 +433,6 @@ section { position:relative; overflow:hidden; }
   background:linear-gradient(to right, transparent, var(--yellow), transparent);
 }
 .proj-card.winner-card:hover { border-color:var(--yellow); box-shadow:0 0 40px rgba(241,196,15,0.25); }
-.proj-body .winner-badge { position:static; display:inline-block; margin-bottom:12px; }
 .proj-img-wrap {
   position:relative;
   aspect-ratio:16/9;
@@ -1021,7 +1020,7 @@ section { position:relative; overflow:hidden; }
   .nav-hamburger { display:flex; }
   .projects-grid { grid-template-columns:1fr; }
   .ach-grid { grid-template-columns:1fr; }
-  .about-stats { grid-template-columns:1fr; }
+  .milestone-stats { grid-template-columns:repeat(2,1fr); }
   .contact-cards { grid-template-columns:1fr; }
   .contact-card { width:100%; height:auto; padding:30px; }
   .cert-grid { grid-template-columns: 1fr; }
@@ -1063,8 +1062,7 @@ section { position:relative; overflow:hidden; }
     <h1 class="hero-name">CHIRAYU<br>MAHAJAN</h1>
     <p class="hero-title">Artificial Intelligence &nbsp;//&nbsp; Neural Architect</p>
     <p class="hero-intro">
-      Building AI infrastructure that remembers, reasons, and scales.<br>
-      I build reliable AI systems focused on persistent memory, intelligent fraud detection, multi-agent architectures, and computer vision. I enjoy engineering production-ready AI applications that solve real-world problems through thoughtful system design.
+      Building AI infrastructure that remembers, reasons, and scales.
     </p>
     <a href="#projects" class="hero-cta">Enter the Portal</a>
   </div>
@@ -1078,7 +1076,7 @@ section { position:relative; overflow:hidden; }
 <section id="about">
   <div class="section-inner">
     <p class="section-title reveal">PROFILE</p>
-    <p class="section-sub reveal">AI engineering from architecture through deployment</p>
+    <p class="section-sub reveal">How I approach the work</p>
     <div class="about-grid">
       <div class="about-photo-wrap reveal-left">
         <img src="profile.jpg" alt="Chirayu Mahajan" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;">
@@ -1089,9 +1087,12 @@ section { position:relative; overflow:hidden; }
         <div class="about-corner br"></div>
       </div>
       <div class="about-text reveal-right">
-        <p class="about-greeting">// AI Engineer Profile</p>
+        <p class="about-greeting">// Engineering Philosophy</p>
         <p class="about-bio">
-          I am an <b>AI Developer Intern at Tronocity Labs</b>, pursuing a BTech in AI at <b>MIT Academy of Engineering</b> and a BS in Data Science from <b>IIT Madras</b>. My focus lies in persistent memory systems for Multi-LLM applications, AI agents, and intelligent pipelines. I believe in solving real engineering problems by transforming research ideas into production products.
+          I like taking a problem from first principles: understand who needs it, shape the right system, and test it against real-world constraints. I’m most interested in the space where applied AI meets thoughtful product and systems engineering.
+        </p>
+        <p class="about-bio">
+          My goal is to build software that is not only clever, but useful, dependable, and clear about what it can do.
         </p>
         <a href="resume.pdf" class="resume-btn" target="_blank">↓ Download Resume</a>
       </div>
@@ -1103,18 +1104,22 @@ section { position:relative; overflow:hidden; }
 <section id="milestones">
   <div class="section-inner">
     <p class="section-title reveal">MILESTONES</p>
-    <div class="ach-grid">
-      <div class="ach-card reveal">
-        <span class="ach-type">Tronocity Labs</span>
-        <h3 class="ach-title">AI Developer Intern</h3>
+    <div class="milestone-stats reveal">
+      <div class="stat-box">
+        <span class="stat-num">2</span>
+        <span class="stat-label">Concurrent degrees</span>
       </div>
-      <div class="ach-card reveal">
-        <span class="ach-type">MIT Academy of Engineering &amp; IIT Madras</span>
-        <h3 class="ach-title">2 Concurrent Degrees</h3>
+      <div class="stat-box">
+        <span class="stat-num">7+</span>
+        <span class="stat-label">AI projects</span>
       </div>
-      <div class="ach-card reveal">
-        <span class="ach-type">Production-ready applications across AI, ML, and Computer Vision</span>
-        <h3 class="ach-title">7+ AI Projects</h3>
+      <div class="stat-box">
+        <span class="stat-num">1st</span>
+        <span class="stat-label">Nirmaan 4.0 · GDG MITAOE</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">2026</span>
+        <span class="stat-label">AI Developer Intern · Tronocity Labs</span>
       </div>
     </div>
   </div>
@@ -1128,12 +1133,12 @@ section { position:relative; overflow:hidden; }
       <div class="ach-card reveal">
         <span class="ach-type">Tronocity Labs · Gigzs/Akhrot · May 2026 – Present</span>
         <h3 class="ach-title">AI Developer Intern</h3>
-        <p class="ach-desc">Working on Akhrot, production-grade persistent memory infrastructure for multi-LLM applications, alongside agent architectures, LLM orchestration, backend services, and intelligent context management.</p>
+        <p class="ach-desc">Building Gigzs/Akhrot, a persistent memory and context layer for multi-LLM agents. Developed LLM pipelines and backend services that retain state across models, sessions, and handoffs; co-designed cross-model reasoning architecture and helped benchmark up to 58% lower token use in targeted scenarios.</p>
       </div>
       <div class="ach-card reveal">
         <span class="ach-type">MITAOE Entrepreneurial Development Foundation · May – July 2026</span>
         <h3 class="ach-title">Product Development Intern</h3>
-        <p class="ach-desc">Worked on Traffic Buddy, an AI-assisted traffic complaint management app, driving feature planning, requirements analysis, UI/UX design, and application workflows while coordinating backend integration through rounds of user feedback.</p>
+        <p class="ach-desc">Worked on TrafficBuddy, a traffic complaint management app. Led feature planning, requirements analysis, UI/UX, and application workflows, coordinating backend integration through multiple rounds of user feedback.</p>
       </div>
     </div>
   </div>
@@ -1150,7 +1155,7 @@ section { position:relative; overflow:hidden; }
       <div class="proj-card reveal" style="transition-delay:0.1s">
         <div class="proj-body">
           <h3 class="proj-title">Synapse</h3>
-          <p class="proj-desc">An AI-powered workspace that unifies project management, GitHub repository intelligence, AI context preservation, and multi-provider API management.</p>
+          <p class="proj-desc">A workspace for project tracking, GitHub repository intelligence, and preserving context between AI-assisted work sessions.</p>
           <div class="proj-tags">
             <span class="proj-tag">React</span><span class="proj-tag">TypeScript</span><span class="proj-tag">FastAPI</span><span class="proj-tag">LLMs</span>
           </div>
@@ -1158,11 +1163,10 @@ section { position:relative; overflow:hidden; }
         </div>
       </div>
 
-      <div class="proj-card winner-card reveal" style="transition-delay:0.15s">
+      <div class="proj-card reveal" style="transition-delay:0.15s">
         <div class="proj-body">
-          <span class="winner-badge">🏆 Nirmaan 2026 Winner · GDG</span>
           <h3 class="proj-title">Iron Wallet</h3>
-          <p class="proj-desc">An AI-powered digital wallet featuring behavioral fraud detection, risk scoring, scam intelligence, and secure transaction monitoring.</p>
+          <p class="proj-desc">A digital wallet that scores transaction risk from behavioral signals, adds OTP verification, and surfaces scam intelligence.</p>
           <div class="proj-tags">
             <span class="proj-tag">FastAPI</span><span class="proj-tag">React</span><span class="proj-tag">Machine Learning</span><span class="proj-tag">Python</span>
           </div>
@@ -1173,9 +1177,9 @@ section { position:relative; overflow:hidden; }
       <div class="proj-card reveal" style="transition-delay:0.2s">
         <div class="proj-body">
           <h3 class="proj-title">PrepHire AI</h3>
-          <p class="proj-desc">An AI-powered placement preparation platform featuring mock interviews, coding challenges, and learning resources.</p>
+          <p class="proj-desc">A placement-preparation platform with mock interviews, coding challenges, and structured learning resources.</p>
           <div class="proj-tags">
-            <span class="proj-tag">React</span><span class="proj-tag">Python</span><span class="proj-tag">AI</span>
+            <span class="proj-tag">React</span><span class="proj-tag">Python</span><span class="proj-tag">Mock Interviews</span>
           </div>
           <div class="proj-btns"><a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" class="proj-btn">GitHub</a></div>
         </div>
@@ -1184,7 +1188,7 @@ section { position:relative; overflow:hidden; }
       <div class="proj-card reveal" style="transition-delay:0.25s">
         <div class="proj-body">
           <h3 class="proj-title">CyberFury</h3>
-          <p class="proj-desc">A computer vision suite for distinguishing AI-generated images from authentic photography using forensic artifact analysis.</p>
+          <p class="proj-desc">A computer-vision tool that analyzes image artifacts to distinguish AI-generated images from photographs.</p>
           <div class="proj-tags">
             <span class="proj-tag">Python</span><span class="proj-tag">OpenCV</span><span class="proj-tag">Machine Learning</span>
           </div>
@@ -1195,9 +1199,9 @@ section { position:relative; overflow:hidden; }
       <div class="proj-card reveal" style="transition-delay:0.3s">
         <div class="proj-body">
           <h3 class="proj-title">Phoenix</h3>
-          <p class="proj-desc">A desktop AI voice assistant featuring wake-word detection, conversational interaction, and productivity-focused desktop automation.</p>
+          <p class="proj-desc">A desktop voice assistant with wake-word activation, conversational commands, and productivity automation.</p>
           <div class="proj-tags">
-            <span class="proj-tag">Python</span><span class="proj-tag">Tkinter</span>
+            <span class="proj-tag">Python</span><span class="proj-tag">Tkinter</span><span class="proj-tag">Voice AI</span>
           </div>
           <div class="proj-btns"><a href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer" class="proj-btn">GitHub</a></div>
         </div>
@@ -1211,39 +1215,23 @@ section { position:relative; overflow:hidden; }
 <section id="timeline">
   <div class="section-inner">
     <p class="section-title reveal">THE JOURNEY</p>
-    <p class="section-sub reveal">Timeline</p>
+    <p class="section-sub reveal">From learning by building to production AI</p>
     <div class="ach-grid">
       <div class="ach-card reveal">
-        <span class="ach-type">2026</span>
-        <h3 class="ach-title">Developed PrepHire AI</h3>
+        <span class="ach-type">2025</span>
+        <h3 class="ach-title">Started dual-degree studies in AI &amp; Data Science</h3>
       </div>
       <div class="ach-card reveal">
         <span class="ach-type">2026</span>
-        <h3 class="ach-title">Product Development Intern <small>MITAOE EDF</small></h3>
-      </div>
-      <div class="ach-card reveal">
-        <span class="ach-type">2026</span>
-        <h3 class="ach-title">Developed Iron Wallet</h3>
-      </div>
-      <div class="ach-card reveal">
-        <span class="ach-type">2026</span>
-        <h3 class="ach-title">Built Synapse</h3>
-      </div>
-      <div class="ach-card reveal">
-        <span class="ach-type">2026</span>
-        <h3 class="ach-title">AI Developer Intern <small>Tronocity Labs</small></h3>
+        <h3 class="ach-title">First product development internship</h3>
       </div>
       <div class="ach-card winner-ach reveal">
         <span class="ach-type">2026</span>
-        <h3 class="ach-title">Winner - Nirmaan 4.0</h3>
+        <h3 class="ach-title">Won Nirmaan 4.0</h3>
       </div>
       <div class="ach-card reveal">
-        <span class="ach-type">2025</span>
-        <h3 class="ach-title">Started BS in Data Science and Applications <small>IIT Madras</small></h3>
-      </div>
-      <div class="ach-card reveal">
-        <span class="ach-type">2025</span>
-        <h3 class="ach-title">Started B.Tech in Artificial Intelligence <small>MIT Academy of Engineering</small></h3>
+        <span class="ach-type">2026</span>
+        <h3 class="ach-title">Joined Tronocity Labs to build AI infrastructure</h3>
       </div>
     </div>
   </div>
@@ -1318,7 +1306,7 @@ section { position:relative; overflow:hidden; }
 <section id="achievements">
   <div class="section-inner">
     <p class="section-title reveal">AWARDS &amp; ACHIEVEMENTS</p>
-    <p class="section-sub reveal">Hackathons, internships, and academic milestones</p>
+    <p class="section-sub reveal">Competition recognition and selected hackathons</p>
 
     <p class="ach-group-label reveal">// Hackathons</p>
     <div class="ach-grid" style="margin-bottom:50px;">
@@ -1331,7 +1319,7 @@ section { position:relative; overflow:hidden; }
         </div>
         <span class="ach-type">Hackathon — 1st Place</span>
         <h3 class="ach-title">Nirmaan 4.0 Winner</h3>
-        <p class="ach-desc">Recognized for <b>Iron Wallet</b>, a real-time UPI fraud-prevention system combining OTP verification with behavioral risk scoring.</p>
+        <p class="ach-desc">Recognized for <b>Iron Wallet</b> at the GDG MITAOE hackathon.</p>
       </div>
 
       <div class="ach-card reveal" style="transition-delay:0.15s">
@@ -1340,7 +1328,7 @@ section { position:relative; overflow:hidden; }
             <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" stroke="var(--red)" stroke-width="1.8" stroke-linejoin="round" fill="rgba(225,29,39,0.12)"/>
           </svg>
         </div>
-        <span class="ach-type">Hackathon — Participant</span>
+        <span class="ach-type">Participant</span>
         <h3 class="ach-title">Velora 2026</h3>
         <p class="ach-desc">Hackathon participant, developing a solution with a team under a time-bound challenge.</p>
       </div>
@@ -1353,7 +1341,7 @@ section { position:relative; overflow:hidden; }
             <path d="M6 8H18M6 11H13" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
           </svg>
         </div>
-        <span class="ach-type">Hackathon — Participant</span>
+        <span class="ach-type">Team Hellfire · Participant</span>
         <h3 class="ach-title">Datathon 2026</h3>
         <p class="ach-desc">Participated in the 2026 data-science competition with Team Hellfire.</p>
       </div>
@@ -1365,23 +1353,9 @@ section { position:relative; overflow:hidden; }
             <path d="M12 7V13L16 15" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <span class="ach-type">Hackathon — Participant</span>
+        <span class="ach-type">Participant</span>
         <h3 class="ach-title">TechSprint 2026</h3>
         <p class="ach-desc">Participant in the 2026 TechSprint, building and presenting a technology solution.</p>
-      </div>
-
-      <div class="ach-card reveal">
-        <div class="ach-icon-wrap"><i class="bi bi-cpu"></i></div>
-        <span class="ach-type">Experience</span>
-        <h3 class="ach-title">AI Developer Intern</h3>
-        <p class="ach-desc">Tronocity Labs</p>
-      </div>
-
-      <div class="ach-card reveal">
-        <div class="ach-icon-wrap"><i class="bi bi-mortarboard"></i></div>
-        <span class="ach-type">Education</span>
-        <h3 class="ach-title">Dual Degree Student</h3>
-        <p class="ach-desc">MIT Academy of Engineering &amp; IIT Madras</p>
       </div>
 
     </div>
@@ -1647,11 +1621,6 @@ section { position:relative; overflow:hidden; }
         <span class="contact-card-icon">🔗</span>
         <p class="contact-card-title">LinkedIn</p>
         <p class="contact-card-val">Chirayu Mahajan</p>
-      </a>
-      <a href="https://chirayuportfolio-i6ajel264-chirayu1.vercel.app/#" target="_blank" rel="noopener noreferrer" class="contact-card">
-        <span class="contact-card-icon">🌐</span>
-        <p class="contact-card-title">Portfolio</p>
-        <p class="contact-card-val">View portfolio</p>
       </a>
     </div>
     <p class="footer-line">© 2026 Chirayu Mahajan. All rights reserved.</p>
