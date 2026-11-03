@@ -5,116 +5,106 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chirayu Mahajan | AI &amp; ML Engineer</title>
 <meta name="description" content="Chirayu Mahajan is an AI engineer building production systems across computer vision, LLM agents, real-time inference, and backend infrastructure.">
-<meta name="theme-color" content="#0b0b09">
-<link rel="preload" href="fonts/bricolage-grotesque-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#080808">
+<link rel="preload" href="fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/barlow-condensed-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/styles.css">
-<script>
-  /* Show the intro curtain only when motion is welcome. Failsafe removes it if scripts stall. */
-  (function () {
-    var d = document.documentElement;
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      d.classList.add('motion-pending');
-      setTimeout(function () { d.classList.remove('motion-pending'); }, 6000);
-    }
-  })();
-</script>
+<noscript><style>.signal, .readout { display: none !important; }</style></noscript>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="curtain" aria-hidden="true">
-  <div class="curtain__top"></div>
-  <div class="curtain__bottom"></div>
-  <div class="curtain__line"></div>
+<div class="atmos" aria-hidden="true">
+  <div class="atmos__grid"></div>
+  <div class="atmos__fog atmos__fog--a"></div>
+  <div class="atmos__fog atmos__fog--b"></div>
+  <div class="atmos__leak"></div>
+  <canvas class="atmos__dust" id="dust"></canvas>
 </div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" id="grain" aria-hidden="true"></div>
 
-<div class="progress" aria-hidden="true"></div>
-
-<div class="grid-lines" aria-hidden="true">
-  <div class="wrap" style="height:100%"><div class="cols"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-</div>
-
-<div class="cursor" aria-hidden="true">
-  <div class="cursor__dot"></div>
-  <div class="cursor__ring"><span class="cursor__label"></span></div>
-</div>
-
-<header class="site-header" id="site-header">
-  <a class="brand" href="#hero" aria-label="Chirayu Mahajan, back to top">Chirayu</a>
-  <p class="header-section" aria-hidden="true"><span id="header-section-label">Intro</span></p>
-  <button class="menu-toggle magnetic" type="button" aria-expanded="false" aria-controls="menu">
-    <span class="menu-toggle__text">Menu</span>
-    <span class="menu-toggle__bars" aria-hidden="true"></span>
-  </button>
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="brand" href="#hero" aria-label="Chirayu Mahajan, back to top"><span class="brand__dot" aria-hidden="true"></span><span data-glitch>Chirayu Mahajan</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#milestones">Milestones</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+      <a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+    <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Menu</button>
+  </div>
+  <div class="nav__panel" id="nav-panel">
+    <a href="#about">About</a>
+    <a href="#milestones">Milestones</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#skills">Skills</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+    <a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </div>
+  <div class="nav__progress" id="progress" aria-hidden="true"></div>
 </header>
 
-<nav class="menu" id="menu" aria-label="Primary">
-  <div class="menu__inner">
-    <ul class="menu__list">
-      <li class="menu__item"><a class="menu__link" href="#about">About</a></li>
-      <li class="menu__item"><a class="menu__link" href="#milestones">Milestones</a></li>
-      <li class="menu__item"><a class="menu__link" href="#experience">Experience</a></li>
-      <li class="menu__item"><a class="menu__link" href="#projects">Projects</a></li>
-      <li class="menu__item"><a class="menu__link" href="#timeline">Timeline</a></li>
-      <li class="menu__item"><a class="menu__link" href="#skills">Skills</a></li>
-      <li class="menu__item"><a class="menu__link" href="#achievements">Achievements</a></li>
-      <li class="menu__item"><a class="menu__link" href="#contact">Contact</a></li>
-      <li class="menu__item"><a class="menu__link" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">GitHub <small>opens in a new tab</small></a></li>
-    </ul>
-    <div class="menu__foot">
-      <a href="mailto:mahajanchirayu1167@gmail.com">mahajanchirayu1167@gmail.com</a>
-      <a href="https://linkedin.com/in/chirayu-mahajan-390766309" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    </div>
-  </div>
-</nav>
-
-<nav class="rail" id="rail" aria-label="Section indicator"></nav>
+<div class="readout label" aria-hidden="true"><span id="ro-sec">00 Intro</span> &nbsp; <span id="ro-pct">000%</span></div>
 
 <main id="main">
 
   <!-- HERO -->
   <section class="hero" id="hero" data-label="Intro">
-    <canvas class="hero__memory" aria-hidden="true"></canvas>
-    <div class="hero__inner">
-      <div class="hero__top">
-        <p class="hero__lede">Building AI infrastructure that remembers, reasons, and scales.</p>
-        <div class="hero__side">
-          <p class="hero__role">Artificial Intelligence // Neural Architect</p>
-          <div class="hero__actions">
-            <a class="btn btn--solid magnetic" href="#projects">View projects</a>
-            <a class="link magnetic" href="resume.pdf" target="_blank" rel="noopener">Download resume</a>
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__light"></div>
+      <div class="hero__lit"></div>
+    </div>
+    <div class="wrap">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="hero__tag label" data-seq style="--i:0"><span class="dot" aria-hidden="true"></span>Subject #1167 // Level 4 clearance</p>
+          <h1 class="hero__name reflect" data-glitch data-text="Chirayu Mahajan" data-seq style="--i:1">Chirayu Mahajan</h1>
+          <p class="hero__lede" data-seq style="--i:3">Building AI infrastructure that remembers, reasons, and scales.</p>
+          <p class="hero__role label" data-seq style="--i:4">Artificial Intelligence // Neural Architect</p>
+          <div class="hero__actions" data-seq style="--i:5">
+            <a class="btn" href="#projects">View projects</a>
+            <a class="tlink" href="resume.pdf" target="_blank" rel="noopener">Download resume</a>
           </div>
+          <p class="hero__status" data-seq style="--i:6"><span class="dot" aria-hidden="true"></span>AI Developer Intern at Tronocity Labs, since May 2026</p>
+        </div>
+        <div class="signal" id="signal" aria-hidden="true">
+          <div class="signal__row label"><span>Signal</span><span class="signal__state" id="sig-state">Stable</span></div>
+          <canvas class="signal__wave" id="sig-wave"></canvas>
+          <div class="signal__row label"><span id="sig-xy">X 0000 Y 0000</span><span>Interference <span id="sig-count">00</span></span></div>
         </div>
       </div>
-      <div></div>
-      <h1 class="hero__name display" aria-label="Chirayu Mahajan">
-        <span class="hero__line" aria-hidden="true"><span class="hero__word">Chirayu</span></span>
-        <span class="hero__line hero__line--2" aria-hidden="true"><span class="hero__word">Mahajan</span></span>
-      </h1>
     </div>
-    <div class="hero__scroll" aria-hidden="true"><span>Scroll</span><i></i></div>
   </section>
 
   <!-- PROFILE -->
   <section class="section" id="about" data-label="Profile">
     <div class="wrap">
-      <div class="section-head cols">
-        <h2 class="section-title display">Profile</h2>
-        <p class="section-sub">How I approach the work</p>
+      <div class="sec-head">
+        <p class="label" data-reveal>Profile</p>
+        <h2 class="sec-title reflect" data-text="Profile" data-reveal="flicker" data-glitch>Profile</h2>
+        <p class="sec-sub" data-reveal>How I approach the work</p>
       </div>
-      <div class="about__grid cols">
-        <figure class="about__photo" data-about-photo>
+      <div class="about">
+        <figure class="about__photo" data-reveal="wipe">
           <div class="about__frame">
             <img src="profile.jpg" width="750" height="750" alt="Portrait of Chirayu Mahajan, looking up and to the side" loading="lazy" decoding="async">
           </div>
-          <span class="about__corner about__corner--tl" aria-hidden="true"></span>
-          <span class="about__corner about__corner--br" aria-hidden="true"></span>
         </figure>
-        <div class="about__text">
-          <h3 class="about__label">Engineering Philosophy</h3>
-          <p class="about__statement" data-scrub>I like taking a problem from first principles: understand who needs it, shape the right system, and test it against real-world constraints. I’m most interested in the space where applied AI meets thoughtful product and systems engineering.</p>
-          <p class="about__statement" data-scrub>My goal is to build software that is not only clever, but useful, dependable, and clear about what it can do.</p>
-          <a class="btn magnetic" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+        <div class="about__body" data-stagger>
+          <h3 class="label label--red">Engineering Philosophy</h3>
+          <p>I like taking a problem from first principles: understand who needs it, shape the right system, and test it against real-world constraints. I’m most interested in the space where applied AI meets thoughtful product and systems engineering.</p>
+          <p>My goal is to build software that is not only clever, but useful, dependable, and clear about what it can do.</p>
+          <a class="btn btn--ghost" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
         </div>
       </div>
     </div>
@@ -123,16 +113,15 @@
   <!-- MILESTONES -->
   <section class="section" id="milestones" data-label="Milestones">
     <div class="wrap">
-      <div class="section-head cols">
-        <h2 class="section-title display">Milestones</h2>
+      <div class="sec-head">
+        <p class="label" data-reveal>Milestones</p>
+        <h2 class="sec-title reflect" data-text="Milestones" data-reveal="flicker" data-glitch>Milestones</h2>
       </div>
-      <div class="stats">
-        <div class="stats__row">
-          <div class="stat"><p class="stat__num display" data-mask>2</p><p class="stat__label">Concurrent degrees</p></div>
-          <div class="stat"><p class="stat__num display" data-mask>7+</p><p class="stat__label">AI projects</p></div>
-          <div class="stat stat--accent"><p class="stat__num display" data-mask>1st</p><p class="stat__label">Nirmaan 4.0 · GDG MITAOE</p></div>
-          <div class="stat"><p class="stat__num display" data-mask>2026</p><p class="stat__label">AI Developer Intern · Tronocity Labs</p></div>
-        </div>
+      <div class="stats" data-stagger>
+        <div class="stat"><p class="stat__num">2</p><p class="stat__label">Concurrent degrees</p></div>
+        <div class="stat"><p class="stat__num">7+</p><p class="stat__label">AI projects</p></div>
+        <div class="stat stat--hot"><p class="stat__num">1st</p><p class="stat__label">Nirmaan 4.0 · GDG MITAOE</p></div>
+        <div class="stat"><p class="stat__num">2026</p><p class="stat__label">AI Developer Intern · Tronocity Labs</p></div>
       </div>
     </div>
   </section>
@@ -140,24 +129,23 @@
   <!-- EXPERIENCE -->
   <section class="section" id="experience" data-label="Experience">
     <div class="wrap">
-      <div class="section-head cols">
-        <h2 class="section-title display">Experience</h2>
+      <div class="sec-head">
+        <p class="label" data-reveal>Experience</p>
+        <h2 class="sec-title reflect" data-text="Experience" data-reveal="flicker" data-glitch>Experience</h2>
       </div>
-      <div class="xp-list">
-        <article class="xp cols" data-xp>
-          <span class="rule" data-rule style="position:absolute;top:0;left:0"></span>
-          <p class="xp__meta"><strong>Tronocity Labs</strong>Gigzs/Akhrot<br>May 2026 – Present</p>
-          <div class="xp__main">
-            <h3 class="xp__title display">AI Developer Intern</h3>
-            <p class="xp__desc">Building Gigzs/Akhrot, a persistent memory and context layer for multi-LLM agents. Developed LLM pipelines and backend services that retain state across models, sessions, and handoffs; co-designed cross-model reasoning architecture and helped benchmark up to 58% lower token use in targeted scenarios.</p>
+      <div class="log" data-stagger>
+        <article class="log__item">
+          <p class="log__meta"><span class="label">May 2026 – Present</span><strong>Tronocity Labs</strong><span class="label">Gigzs/Akhrot</span></p>
+          <div class="log__body">
+            <h3>AI Developer Intern</h3>
+            <p>Building Gigzs/Akhrot, a persistent memory and context layer for multi-LLM agents. Developed LLM pipelines and backend services that retain state across models, sessions, and handoffs; co-designed cross-model reasoning architecture and helped benchmark up to 58% lower token use in targeted scenarios.</p>
           </div>
         </article>
-        <article class="xp cols" data-xp>
-          <span class="rule" data-rule style="position:absolute;top:0;left:0"></span>
-          <p class="xp__meta"><strong>MITAOE Entrepreneurial Development Foundation</strong>May – July 2026</p>
-          <div class="xp__main">
-            <h3 class="xp__title display">Product Development Intern</h3>
-            <p class="xp__desc">Worked on TrafficBuddy, a traffic complaint management app. Led feature planning, requirements analysis, UI/UX, and application workflows, coordinating backend integration through multiple rounds of user feedback.</p>
+        <article class="log__item">
+          <p class="log__meta"><span class="label">May – July 2026</span><strong>MITAOE Entrepreneurial Development Foundation</strong></p>
+          <div class="log__body">
+            <h3>Product Development Intern</h3>
+            <p>Worked on TrafficBuddy, a traffic complaint management app. Led feature planning, requirements analysis, UI/UX, and application workflows, coordinating backend integration through multiple rounds of user feedback.</p>
           </div>
         </article>
       </div>
@@ -167,118 +155,79 @@
   <!-- PROJECTS -->
   <section class="section" id="projects" data-label="Projects">
     <div class="wrap">
-      <div class="section-head cols">
-        <h2 class="section-title display">Projects</h2>
-        <p class="section-sub">Real-world AI experiments and creative builds. <a class="link" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">More on GitHub</a></p>
+      <div class="sec-head">
+        <p class="label" data-reveal>The Upside Down Projects</p>
+        <h2 class="sec-title reflect" data-text="Projects" data-reveal="flicker" data-glitch>Projects</h2>
+        <p class="sec-sub" data-reveal>Real-world AI experiments and creative builds. <a class="tlink" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">More on GitHub</a></p>
       </div>
-      <article class="project cols project--graph" data-project>
-        <a class="project__visual" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" aria-label="Synapse on GitHub" tabindex="-1" data-cursor="view" data-cursor-label="GitHub">
-          <span class="project__media"><svg class="viz viz-svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-  <g stroke="currentColor" stroke-opacity=".22"><line x1="300" y1="0" x2="300" y2="500" stroke-dasharray="3 8"/><line x1="540" y1="0" x2="540" y2="500" stroke-dasharray="3 8"/></g>
-  <g fill="none" stroke="currentColor" stroke-opacity=".38" stroke-width="1.3">
-    <path class="draw" pathLength="1" d="M110 120 L190 210 L120 300 L230 360 L190 210"/>
-    <path class="draw" pathLength="1" d="M360 90 L420 200 L350 300 L450 400 L420 200"/>
-    <path class="draw" pathLength="1" d="M620 140 L700 250 L610 340 L690 420 L700 250"/>
-  </g>
-  <path class="draw viz__accent" pathLength="1" d="M110 120 L190 210 L420 200 L700 250 L690 420" fill="none" stroke="var(--lime)" stroke-width="2.6" stroke-linejoin="round"/>
-  <g class="viz__nodes" fill="currentColor"><rect x="104" y="114" width="12" height="12" fill="var(--lime)"/><rect x="184" y="204" width="12" height="12" fill="var(--lime)"/><rect x="114" y="294" width="12" height="12"/><rect x="224" y="354" width="12" height="12"/><rect x="354" y="84" width="12" height="12"/><rect x="414" y="194" width="12" height="12" fill="var(--lime)"/><rect x="344" y="294" width="12" height="12"/><rect x="444" y="394" width="12" height="12"/><rect x="614" y="134" width="12" height="12"/><rect x="694" y="244" width="12" height="12" fill="var(--lime)"/><rect x="604" y="334" width="12" height="12"/><rect x="684" y="414" width="12" height="12" fill="var(--lime)"/></g>
-</svg></span>
-          <span class="project__scan" aria-hidden="true"></span>
-          <span class="project__corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        </a>
-        <div class="project__body">
-          
-          <h3 class="project__title display">Synapse</h3>
-          <p class="project__desc">A workspace for project tracking, GitHub repository intelligence, and preserving context between AI-assisted work sessions.</p>
-          <ul class="project__tags"><li>React</li><li>TypeScript</li><li>FastAPI</li><li>LLMs</li></ul>
-          <a class="link magnetic" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </article>
-
-      <article class="project cols project--bars" data-project>
-        <a class="project__visual" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" aria-label="Iron Wallet on GitHub" tabindex="-1" data-cursor="view" data-cursor-label="GitHub">
-          <span class="project__media"><svg class="viz viz-svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-  <line x1="30" y1="440" x2="770" y2="440" stroke="currentColor" stroke-opacity=".4"/>
-  <rect class="viz__bar" x="44" y="241" width="12" height="199" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="68" y="215" width="12" height="225" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="92" y="143" width="12" height="297" fill="var(--lime)"/><rect class="viz__bar" x="116" y="251" width="12" height="189" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="140" y="258" width="12" height="182" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="164" y="297" width="12" height="143" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="188" y="165" width="12" height="275" fill="var(--lime)"/><rect class="viz__bar" x="212" y="188" width="12" height="252" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="236" y="191" width="12" height="249" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="260" y="288" width="12" height="152" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="284" y="255" width="12" height="185" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="308" y="176" width="12" height="264" fill="var(--lime)"/><rect class="viz__bar" x="332" y="184" width="12" height="256" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="356" y="185" width="12" height="255" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="380" y="322" width="12" height="118" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="404" y="229" width="12" height="211" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="428" y="238" width="12" height="202" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="452" y="142" width="12" height="298" fill="var(--lime)"/><rect class="viz__bar" x="476" y="238" width="12" height="202" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="500" y="268" width="12" height="172" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="524" y="266" width="12" height="174" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="548" y="177" width="12" height="263" fill="var(--lime)"/><rect class="viz__bar" x="572" y="164" width="12" height="276" fill="var(--lime)"/><rect class="viz__bar" x="596" y="213" width="12" height="227" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="620" y="273" width="12" height="167" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="644" y="276" width="12" height="164" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="668" y="161" width="12" height="279" fill="var(--lime)"/><rect class="viz__bar" x="692" y="212" width="12" height="228" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="716" y="182" width="12" height="258" fill="currentColor" fill-opacity=".38"/><rect class="viz__bar" x="740" y="333" width="12" height="107" fill="currentColor" fill-opacity=".38"/>
-  <line class="viz__thr" x1="30" y1="178" x2="770" y2="178" stroke="var(--lime)" stroke-width="1.6" stroke-dasharray="6 7"/>
-  <rect x="764" y="172" width="12" height="12" fill="var(--lime)"/>
-</svg></span>
-          <span class="project__scan" aria-hidden="true"></span>
-          <span class="project__corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        </a>
-        <div class="project__body">
-          <p class="project__badge">Nirmaan 4.0 winner</p>
-          <h3 class="project__title display">Iron Wallet</h3>
-          <p class="project__desc">A digital wallet that scores transaction risk from behavioral signals, adds OTP verification, and surfaces scam intelligence.</p>
-          <ul class="project__tags"><li>FastAPI</li><li>React</li><li>Machine Learning</li><li>Python</li></ul>
-          <a class="link magnetic" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </article>
-
-      <article class="project cols project--rows" data-project>
-        <a class="project__visual" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" aria-label="PrepHire AI on GitHub" tabindex="-1" data-cursor="view" data-cursor-label="GitHub">
-          <span class="project__media"><svg class="viz viz-svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-  <g><rect class="viz__row" x="56" y="60" width="260" height="30" fill="currentColor" fill-opacity=".42"/><rect class="viz__row" x="444" y="104" width="300" height="30" fill="none" stroke="var(--lime)" stroke-width="1.6"/><rect class="viz__row" x="56" y="164" width="340" height="30" fill="currentColor" fill-opacity=".42"/><rect class="viz__row" x="514" y="208" width="230" height="30" fill="none" stroke="var(--lime)" stroke-width="1.6"/><rect class="viz__row" x="56" y="268" width="220" height="30" fill="currentColor" fill-opacity=".42"/><rect class="viz__row" x="384" y="312" width="360" height="30" fill="none" stroke="var(--lime)" stroke-width="1.6"/><rect class="viz__row" x="56" y="372" width="300" height="30" fill="currentColor" fill-opacity=".42"/><rect class="viz__row" x="494" y="416" width="250" height="30" fill="none" stroke="var(--lime)" stroke-width="1.6"/></g>
-  <circle cx="744" cy="30" r="6" fill="var(--lime)"/>
-</svg></span>
-          <span class="project__scan" aria-hidden="true"></span>
-          <span class="project__corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        </a>
-        <div class="project__body">
-          
-          <h3 class="project__title display">PrepHire AI</h3>
-          <p class="project__desc">A placement-preparation platform with mock interviews, coding challenges, and structured learning resources.</p>
-          <ul class="project__tags"><li>React</li><li>Python</li><li>Mock Interviews</li></ul>
-          <a class="link magnetic" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </article>
-
-      <article class="project cols project--scan" data-project>
-        <a class="project__visual" href="https://github.com/Chirayu1167/Cyberfury" target="_blank" rel="noopener noreferrer" aria-label="CyberFury on GitHub" tabindex="-1" data-cursor="view" data-cursor-label="GitHub">
-          <span class="project__media"><img src="cyberfury.png" width="1918" height="971" alt="CyberFury AI Forensic Lab interface with an evidence upload panel and an analysis report panel" loading="lazy" decoding="async"></span>
-          <span class="project__scan" aria-hidden="true"></span>
-          <span class="project__corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        </a>
-        <div class="project__body">
-          
-          <h3 class="project__title display">CyberFury</h3>
-          <p class="project__desc">A computer-vision tool that analyzes image artifacts to distinguish AI-generated images from photographs.</p>
-          <ul class="project__tags"><li>Python</li><li>OpenCV</li><li>Machine Learning</li></ul>
-          <a class="link magnetic" href="https://github.com/Chirayu1167/Cyberfury" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </article>
-
-      <article class="project cols project--ring" data-project>
-        <a class="project__visual" href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer" aria-label="Phoenix on GitHub" tabindex="-1" data-cursor="view" data-cursor-label="GitHub">
-          <span class="project__media"><img src="phoenix.png" width="1919" height="1079" alt="Phoenix voice assistant interface showing a glowing ring, a clock, and a listening status panel" loading="lazy" decoding="async"></span>
-          <span class="project__scan" aria-hidden="true"></span>
-          <span class="project__corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        </a>
-        <div class="project__body">
-          
-          <h3 class="project__title display">Phoenix</h3>
-          <p class="project__desc">A desktop voice assistant with wake-word activation, conversational commands, and productivity automation.</p>
-          <ul class="project__tags"><li>Python</li><li>Tkinter</li><li>Voice AI</li></ul>
-          <a class="link magnetic" href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </article>
+      <div class="exps">
+        <article class="exp" data-reveal>
+          <div class="exp__id"><span class="label">EXPERIMENT_001</span></div>
+          <div class="exp__body">
+            <h3 class="exp__title">Synapse</h3>
+            <p class="exp__desc">A workspace for project tracking, GitHub repository intelligence, and preserving context between AI-assisted work sessions.</p>
+            <ul class="exp__tags"><li>React</li><li>TypeScript</li><li>FastAPI</li><li>LLMs</li></ul>
+            <a class="tlink" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr-only"> (Synapse)</span></a>
+          </div>
+          <a class="preview" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="Synapse on GitHub" data-reveal="wipe"><canvas class="static" width="96" height="60" aria-hidden="true"></canvas><span class="label preview__tag">No signal</span><span class="preview__scan" aria-hidden="true"></span></a>
+        </article>
+        <article class="exp" data-reveal>
+          <div class="exp__id"><span class="label">EXPERIMENT_002</span><span class="label exp__flag">Signal detected: Nirmaan 4.0 winner</span></div>
+          <div class="exp__body">
+            <h3 class="exp__title">Iron Wallet</h3>
+            <p class="exp__desc">A digital wallet that scores transaction risk from behavioral signals, adds OTP verification, and surfaces scam intelligence.</p>
+            <ul class="exp__tags"><li>FastAPI</li><li>React</li><li>Machine Learning</li><li>Python</li></ul>
+            <a class="tlink" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr-only"> (Iron Wallet)</span></a>
+          </div>
+          <a class="preview" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="Iron Wallet on GitHub" data-reveal="wipe"><canvas class="static" width="96" height="60" aria-hidden="true"></canvas><span class="label preview__tag">No signal</span><span class="preview__scan" aria-hidden="true"></span></a>
+        </article>
+        <article class="exp" data-reveal>
+          <div class="exp__id"><span class="label">EXPERIMENT_003</span></div>
+          <div class="exp__body">
+            <h3 class="exp__title">PrepHire AI</h3>
+            <p class="exp__desc">A placement-preparation platform with mock interviews, coding challenges, and structured learning resources.</p>
+            <ul class="exp__tags"><li>React</li><li>Python</li><li>Mock Interviews</li></ul>
+            <a class="tlink" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr-only"> (PrepHire AI)</span></a>
+          </div>
+          <a class="preview" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="PrepHire AI on GitHub" data-reveal="wipe"><canvas class="static" width="96" height="60" aria-hidden="true"></canvas><span class="label preview__tag">No signal</span><span class="preview__scan" aria-hidden="true"></span></a>
+        </article>
+        <article class="exp" data-reveal>
+          <div class="exp__id"><span class="label">CASE_FILE_004</span></div>
+          <div class="exp__body">
+            <h3 class="exp__title">CyberFury</h3>
+            <p class="exp__desc">A computer-vision tool that analyzes image artifacts to distinguish AI-generated images from photographs.</p>
+            <ul class="exp__tags"><li>Python</li><li>OpenCV</li><li>Machine Learning</li></ul>
+            <a class="tlink" href="https://github.com/Chirayu1167/Cyberfury" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr-only"> (CyberFury)</span></a>
+          </div>
+          <a class="preview" href="https://github.com/Chirayu1167/Cyberfury" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="CyberFury on GitHub" data-reveal="wipe"><img src="cyberfury.png" width="1918" height="971" alt="CyberFury AI Forensic Lab interface with an evidence upload panel and an analysis report panel" loading="lazy" decoding="async"><span class="preview__scan" aria-hidden="true"></span></a>
+        </article>
+        <article class="exp" data-reveal>
+          <div class="exp__id"><span class="label">EXPERIMENT_005</span></div>
+          <div class="exp__body">
+            <h3 class="exp__title">Phoenix</h3>
+            <p class="exp__desc">A desktop voice assistant with wake-word activation, conversational commands, and productivity automation.</p>
+            <ul class="exp__tags"><li>Python</li><li>Tkinter</li><li>Voice AI</li></ul>
+            <a class="tlink" href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr-only"> (Phoenix)</span></a>
+          </div>
+          <a class="preview" href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="Phoenix on GitHub" data-reveal="wipe"><img src="phoenix.png" width="1919" height="1079" alt="Phoenix voice assistant interface showing a glowing ring, a clock, and a listening status panel" loading="lazy" decoding="async"><span class="preview__scan" aria-hidden="true"></span></a>
+        </article>
+      </div>
     </div>
   </section>
 
   <!-- TIMELINE -->
   <section class="section" id="timeline" data-label="Timeline">
     <div class="wrap">
-      <div class="section-head cols">
-        <h2 class="section-title display">The Journey</h2>
-        <p class="section-sub">From learning by building to production AI</p>
+      <div class="sec-head">
+        <p class="label" data-reveal>The Journey</p>
+        <h2 class="sec-title reflect" data-text="The Journey" data-reveal="flicker" data-glitch>The Journey</h2>
+        <p class="sec-sub" data-reveal>From learning by building to production AI</p>
       </div>
-      <ol class="tl" data-tl>
-        <span class="tl__track" aria-hidden="true"></span>
-        <span class="tl__line" aria-hidden="true"></span>
-        <li class="tl__item"><span class="tl__year display">2025</span><span class="tl__dot" aria-hidden="true"></span><p class="tl__text">Started dual-degree studies in AI &amp; Data Science</p></li>
-        <li class="tl__item"><span class="tl__year display">2026</span><span class="tl__dot" aria-hidden="true"></span><p class="tl__text">First product development internship</p></li>
-        <li class="tl__item tl__item--win"><span class="tl__year display">2026</span><span class="tl__dot" aria-hidden="true"></span><p class="tl__text">Won Nirmaan 4.0</p></li>
-        <li class="tl__item"><span class="tl__year display">2026</span><span class="tl__dot" aria-hidden="true"></span><p class="tl__text">Joined Tronocity Labs to build AI infrastructure</p></li>
+      <ol class="tl" data-stagger>
+        <li class="tl__item"><span class="tl__year">2025</span><p class="tl__text">Started dual-degree studies in AI &amp; Data Science</p></li>
+        <li class="tl__item"><span class="tl__year">2026</span><p class="tl__text">First product development internship</p></li>
+        <li class="tl__item tl__item--win"><span class="tl__year">2026</span><p class="tl__text">Won Nirmaan 4.0</p></li>
+        <li class="tl__item"><span class="tl__year">2026</span><p class="tl__text">Joined Tronocity Labs to build AI infrastructure</p></li>
       </ol>
     </div>
   </section>
@@ -286,70 +235,16 @@
   <!-- SKILLS -->
   <section class="section" id="skills" data-label="Skills">
     <div class="wrap">
-      <div class="section-head cols">
-        <h2 class="section-title display">Technical Arsenal</h2>
-        <p class="section-sub">Skills &amp; Stack</p>
+      <div class="sec-head">
+        <p class="label" data-reveal>Skills &amp; Stack</p>
+        <h2 class="sec-title reflect" data-text="Technical Arsenal" data-reveal="flicker" data-glitch>Technical Arsenal</h2>
       </div>
-    </div>
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track" data-marquee>
-        <div class="marquee__group"><span class="marquee__item display">Python</span><i class="marquee__sep"></i><span class="marquee__item display">TypeScript</span><i class="marquee__sep"></i><span class="marquee__item display">React</span><i class="marquee__sep"></i><span class="marquee__item display">FastAPI</span><i class="marquee__sep"></i><span class="marquee__item display">LLMs</span><i class="marquee__sep"></i><span class="marquee__item display">Computer Vision</span><i class="marquee__sep"></i><span class="marquee__item display">OpenCV</span><i class="marquee__sep"></i><span class="marquee__item display">NLP</span><i class="marquee__sep"></i><span class="marquee__item display">Machine Learning</span><i class="marquee__sep"></i><span class="marquee__item display">AWS</span><i class="marquee__sep"></i><span class="marquee__item display">Firebase</span><i class="marquee__sep"></i><span class="marquee__item display">Scikit-learn</span><i class="marquee__sep"></i></div>
-        <div class="marquee__group"><span class="marquee__item display">Python</span><i class="marquee__sep"></i><span class="marquee__item display">TypeScript</span><i class="marquee__sep"></i><span class="marquee__item display">React</span><i class="marquee__sep"></i><span class="marquee__item display">FastAPI</span><i class="marquee__sep"></i><span class="marquee__item display">LLMs</span><i class="marquee__sep"></i><span class="marquee__item display">Computer Vision</span><i class="marquee__sep"></i><span class="marquee__item display">OpenCV</span><i class="marquee__sep"></i><span class="marquee__item display">NLP</span><i class="marquee__sep"></i><span class="marquee__item display">Machine Learning</span><i class="marquee__sep"></i><span class="marquee__item display">AWS</span><i class="marquee__sep"></i><span class="marquee__item display">Firebase</span><i class="marquee__sep"></i><span class="marquee__item display">Scikit-learn</span><i class="marquee__sep"></i></div>
-      </div>
-    </div>
-    <div class="wrap">
-      <div class="skills__row cols">
-        <span class="rule" data-rule></span>
-        <h3 class="skills__cat">Languages</h3>
-        <ul class="skills__list">
-          <li class="skill">Python</li>
-          <li class="skill">C</li>
-          <li class="skill">TypeScript</li>
-          <li class="skill">JavaScript</li>
-          <li class="skill">HTML</li>
-          <li class="skill">CSS</li>
-        </ul>
-      </div>
-      <div class="skills__row cols">
-        <span class="rule" data-rule></span>
-        <h3 class="skills__cat">Frontend</h3>
-        <ul class="skills__list">
-          <li class="skill">React</li>
-          <li class="skill">Tailwind CSS</li>
-          <li class="skill">Vite</li>
-        </ul>
-      </div>
-      <div class="skills__row cols">
-        <span class="rule" data-rule></span>
-        <h3 class="skills__cat">Backend</h3>
-        <ul class="skills__list">
-          <li class="skill">FastAPI</li>
-          <li class="skill">Flask</li>
-          <li class="skill">Firebase</li>
-          <li class="skill">MySQL</li>
-          <li class="skill">SQLite</li>
-        </ul>
-      </div>
-      <div class="skills__row cols">
-        <span class="rule" data-rule></span>
-        <h3 class="skills__cat">Cloud</h3>
-        <ul class="skills__list">
-          <li class="skill">AWS</li>
-          <li class="skill">Vercel</li>
-          <li class="skill">Render</li>
-        </ul>
-      </div>
-      <div class="skills__row cols">
-        <span class="rule" data-rule></span>
-        <h3 class="skills__cat">AI &amp; ML</h3>
-        <ul class="skills__list">
-          <li class="skill">LLMs</li>
-          <li class="skill">Machine Learning</li>
-          <li class="skill">Computer Vision</li>
-          <li class="skill">OpenCV</li>
-          <li class="skill">NLP</li>
-          <li class="skill">Scikit-learn</li>
-        </ul>
+      <div class="skills" data-stagger>
+        <div class="skills__col"><h3 class="label label--red">Languages</h3><ul><li>Python</li><li>C</li><li>TypeScript</li><li>JavaScript</li><li>HTML</li><li>CSS</li></ul></div>
+        <div class="skills__col"><h3 class="label label--red">Frontend</h3><ul><li>React</li><li>Tailwind CSS</li><li>Vite</li></ul></div>
+        <div class="skills__col"><h3 class="label label--red">Backend</h3><ul><li>FastAPI</li><li>Flask</li><li>Firebase</li><li>MySQL</li><li>SQLite</li></ul></div>
+        <div class="skills__col"><h3 class="label label--red">Cloud</h3><ul><li>AWS</li><li>Vercel</li><li>Render</li></ul></div>
+        <div class="skills__col"><h3 class="label label--red">AI &amp; ML</h3><ul><li>LLMs</li><li>Machine Learning</li><li>Computer Vision</li><li>OpenCV</li><li>NLP</li><li>Scikit-learn</li></ul></div>
       </div>
     </div>
   </section>
@@ -357,125 +252,73 @@
   <!-- ACHIEVEMENTS -->
   <section class="section" id="achievements" data-label="Achievements">
     <div class="wrap">
-      <div class="section-head cols">
-        <h2 class="section-title display">Awards &amp; Achievements</h2>
-        <p class="section-sub">Competition recognition and selected hackathons</p>
+      <div class="sec-head">
+        <p class="label" data-reveal>Hackathons</p>
+        <h2 class="sec-title reflect" data-text="Awards &amp; Achievements" data-reveal="flicker" data-glitch>Awards &amp; Achievements</h2>
+        <p class="sec-sub" data-reveal>Competition recognition and selected hackathons</p>
       </div>
-      <h3 class="ach__sublabel">Hackathons</h3>
-      <div class="ach cols">
-        <article class="ach__feature">
-          <p class="ach__rank display" data-mask>1st</p>
-          <div>
-            <p class="ach__type">Hackathon — 1st Place</p>
-            <h4 class="ach__title display">Nirmaan 4.0 Winner</h4>
-            <p class="ach__desc">Recognized for <b>Iron Wallet</b> at the GDG MITAOE hackathon.</p>
-          </div>
-        </article>
-        <div class="ach__list">
-          <article class="ach__item">
-            <p class="ach__type">Participant</p>
-            <h4 class="ach__title display">Velora 2026</h4>
-            <p class="ach__desc">Hackathon participant, developing a solution with a team under a time-bound challenge.</p>
-          </article>
-          <article class="ach__item">
-            <p class="ach__type">Team Hellfire · Participant</p>
-            <h4 class="ach__title display">Datathon 2026</h4>
-            <p class="ach__desc">Participated in the 2026 data-science competition with Team Hellfire.</p>
-          </article>
-          <article class="ach__item">
-            <p class="ach__type">Participant</p>
-            <h4 class="ach__title display">TechSprint 2026</h4>
-            <p class="ach__desc">Participant in the 2026 TechSprint, building and presenting a technology solution.</p>
-          </article>
+      <article class="ach__feature" data-reveal>
+        <p class="label label--red">Hackathon — 1st Place</p>
+        <div>
+          <h3 class="ach__title">Nirmaan 4.0 Winner</h3>
+          <p>Recognized for <b>Iron Wallet</b> at the GDG MITAOE hackathon.</p>
         </div>
+      </article>
+      <div class="ach__rows" data-stagger>
+        <article class="ach__row"><p class="label">Participant</p><h4>Velora 2026</h4><p>Hackathon participant, developing a solution with a team under a time-bound challenge.</p></article>
+        <article class="ach__row"><p class="label">Team Hellfire · Participant</p><h4>Datathon 2026</h4><p>Participated in the 2026 data-science competition with Team Hellfire.</p></article>
+        <article class="ach__row"><p class="label">Participant</p><h4>TechSprint 2026</h4><p>Participant in the 2026 TechSprint, building and presenting a technology solution.</p></article>
       </div>
 
       <!-- Certifications: hidden in the original site and kept hidden here.
            Remove the `hidden` attribute below to show them. -->
       <div class="certs" hidden>
-        <h3 class="ach__sublabel">Certifications</h3>
+        <h3 class="label">Certifications</h3>
         <ul>
-      <li class="cert">
-        <p class="cert__issuer">Anthropic</p>
-        <h4 class="cert__title">AI Fluency for Nonprofits</h4>
-        <p class="cert__meta"><span>March 2026</span><span>ID: w37uzc5rufy3</span></p>
-        <a class="link" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a>
-      </li>
-      <li class="cert">
-        <p class="cert__issuer">Anthropic</p>
-        <h4 class="cert__title">AI Fluency for Students</h4>
-        <p class="cert__meta"><span>March 2026</span><span>ID: qfxivifkpyor</span></p>
-        <a class="link" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a>
-      </li>
-      <li class="cert">
-        <p class="cert__issuer">Anthropic</p>
-        <h4 class="cert__title">AI Fluency Framework &amp; Foundations</h4>
-        <p class="cert__meta"><span>March 2026</span><span>ID: n2zvbeupsao9</span></p>
-        <a class="link" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a>
-      </li>
-      <li class="cert">
-        <p class="cert__issuer">Anthropic</p>
-        <h4 class="cert__title">Claude 101</h4>
-        <p class="cert__meta"><span>March 2026</span><span>ID: czkuhmj6hj4j</span></p>
-        <a class="link" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a>
-      </li>
-      <li class="cert">
-        <p class="cert__issuer">Cisco</p>
-        <h4 class="cert__title">Introduction to Modern AI</h4>
-        <p class="cert__meta"><span>December 2025</span><span>Cisco Networking Academy</span></p>
-        <a class="link" href="https://www.netacad.com" target="_blank" rel="noopener noreferrer">View Credential</a>
-      </li>
-      <li class="cert">
-        <p class="cert__issuer">IBM</p>
-        <h4 class="cert__title">Python Essentials 1 &amp; 2</h4>
-        <p class="cert__meta"><span>IBM SkillsBuild</span><span>Dual Certification</span></p>
-        <a class="link" href="https://skillsbuild.org" target="_blank" rel="noopener noreferrer">View Credential</a>
-      </li>
-      <li class="cert">
-        <p class="cert__issuer">IBM</p>
-        <h4 class="cert__title">Career Management Essentials</h4>
-        <p class="cert__meta"><span>IBM SkillsBuild</span><span>Professional Development</span></p>
-        <a class="link" href="https://skillsbuild.org" target="_blank" rel="noopener noreferrer">View Credential</a>
-      </li>
-      <li class="cert">
-        <p class="cert__issuer">Cisco</p>
-        <h4 class="cert__title">Data Analytics</h4>
-        <p class="cert__meta"><span>Cisco Networking Academy</span></p>
-        <a class="link" href="https://www.netacad.com" target="_blank" rel="noopener noreferrer">View Provider</a>
-      </li>
-      <li class="cert">
-        <p class="cert__issuer">Cisco</p>
-        <h4 class="cert__title">Python Essentials 1 &amp; 2</h4>
-        <p class="cert__meta"><span>Cisco Networking Academy</span></p>
-        <a class="link" href="https://www.netacad.com" target="_blank" rel="noopener noreferrer">View Provider</a>
-      </li>
+          <li><p class="label">Anthropic</p><h4>AI Fluency for Nonprofits</h4><p>March 2026 · ID: w37uzc5rufy3</p><a class="tlink" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a></li>
+          <li><p class="label">Anthropic</p><h4>AI Fluency for Students</h4><p>March 2026 · ID: qfxivifkpyor</p><a class="tlink" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a></li>
+          <li><p class="label">Anthropic</p><h4>AI Fluency Framework &amp; Foundations</h4><p>March 2026 · ID: n2zvbeupsao9</p><a class="tlink" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a></li>
+          <li><p class="label">Anthropic</p><h4>Claude 101</h4><p>March 2026 · ID: czkuhmj6hj4j</p><a class="tlink" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a></li>
+          <li><p class="label">Cisco</p><h4>Introduction to Modern AI</h4><p>December 2025 · Cisco Networking Academy</p><a class="tlink" href="https://www.netacad.com" target="_blank" rel="noopener noreferrer">View Credential</a></li>
+          <li><p class="label">IBM</p><h4>Python Essentials 1 &amp; 2</h4><p>IBM SkillsBuild · Dual Certification</p><a class="tlink" href="https://skillsbuild.org" target="_blank" rel="noopener noreferrer">View Credential</a></li>
+          <li><p class="label">IBM</p><h4>Career Management Essentials</h4><p>IBM SkillsBuild · Professional Development</p><a class="tlink" href="https://skillsbuild.org" target="_blank" rel="noopener noreferrer">View Credential</a></li>
+          <li><p class="label">Cisco</p><h4>Data Analytics</h4><p>Cisco Networking Academy</p><a class="tlink" href="https://www.netacad.com" target="_blank" rel="noopener noreferrer">View Provider</a></li>
+          <li><p class="label">Cisco</p><h4>Python Essentials 1 &amp; 2</h4><p>Cisco Networking Academy</p><a class="tlink" href="https://www.netacad.com" target="_blank" rel="noopener noreferrer">View Provider</a></li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="contact" id="contact" data-label="Contact" data-theme="lime">
+  <section class="section" id="contact" data-label="Contact">
     <div class="wrap">
-      <div class="section-head cols">
-        <h2 class="section-title display">Contact</h2>
+      <div class="sec-head">
+        <p class="label" data-reveal>Find me in Hawkins Mall</p>
+        <h2 class="sec-title reflect" data-text="Contact" data-reveal="flicker" data-glitch>Contact</h2>
+        <p class="sec-sub" data-reveal>Connect through the lights and signals</p>
       </div>
-      <a class="contact__mail display magnetic" href="mailto:mahajanchirayu1167@gmail.com" data-cursor-link>mahajanchirayu1167@<wbr>gmail.com</a>
-      <div class="contact__links">
-        <a class="contact__link" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer"><strong class="display">GitHub</strong><span>Chirayu1167</span></a>
-        <a class="contact__link" href="https://linkedin.com/in/chirayu-mahajan-390766309" target="_blank" rel="noopener noreferrer"><strong class="display">LinkedIn</strong><span>Chirayu Mahajan</span></a>
+      <div class="contact" data-reveal>
+        <p class="label">Email</p>
+        <div>
+          <a class="contact__mail" href="mailto:mahajanchirayu1167@gmail.com">mahajanchirayu1167@gmail.com</a>
+          <div class="contact__rows">
+            <a class="contact__row" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span class="label">Chirayu1167</span></a>
+            <a class="contact__row" href="https://linkedin.com/in/chirayu-mahajan-390766309" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span class="label">Chirayu Mahajan</span></a>
+          </div>
+        </div>
       </div>
-      <footer class="site-footer-line">
-        <p>© 2026 Chirayu Mahajan. All rights reserved.</p>
-        <a href="#hero">Back to top</a>
-      </footer>
     </div>
   </section>
 
 </main>
 
-<script src="js/vendor/gsap.min.js"></script>
-<script src="js/vendor/ScrollTrigger.min.js"></script>
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 Chirayu Mahajan. All rights reserved.</p>
+    <a href="#hero">Back to top</a>
+  </div>
+</footer>
+
 <script src="js/main.js"></script>
 </body>
 </html>

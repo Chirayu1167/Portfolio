@@ -20,16 +20,23 @@ Chirayu Mahajan
 
 ---
 
-## Structure (redesign)
+## Structure
 
 ```
-index.html          markup + all content
-css/styles.css      design system and layout
-js/main.js          interactions and motion
-js/vendor/          GSAP + ScrollTrigger (vendored, no CDN)
-fonts/              Bricolage Grotesque (variable), JetBrains Mono
+index.html        markup and all content
+css/styles.css    design system, layout, atmosphere
+js/main.js        interactions (no animation library)
+fonts/            Barlow Condensed, IBM Plex Sans, IBM Plex Mono (self-hosted)
 ```
 
-Static site, no build step. Open `index.html` through any static server (or GitHub Pages).
-Motion is disabled under `prefers-reduced-motion`, and every section stays visible if JavaScript fails.
-The certifications block is kept in `index.html` but hidden, as before; remove its `hidden` attribute to show it.
+Static site, no build step: open `index.html` through any static server or GitHub Pages.
+
+**Motion model.** CSS handles the visuals; `main.js` only toggles classes and drives three small canvases
+(dust, signal, preview static). Content is hidden only while JS runs, is always revealed, and the hidden
+state is removed afterwards. With `prefers-reduced-motion`, or with JS disabled, everything is visible immediately.
+
+**Previews.** CyberFury and Phoenix use their real screenshots. The other three show a dim "No signal" static tile
+(nothing is invented). To add a screenshot, replace the `<canvas class="static">` and `.preview__tag` inside that
+project's `.preview` link with an `<img>`, as the CyberFury row does.
+
+**Certifications** stay in `index.html` but hidden, as in the original. Remove the `hidden` attribute to show them.
