@@ -8,9 +8,11 @@
   var doc = document.documentElement;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hasIO = 'IntersectionObserver' in window;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
   var pad = function (n, l) { n = String(n); while (n.length < l) n = '0' + n; return n; };
+  var hero = $('#hero');
 
   /* ------------------------------------------------------------------
      NAV (mobile panel)
@@ -32,6 +34,38 @@
   window.addEventListener('resize', function () { if (window.innerWidth > 1000) setPanel(false); });
 
   /* ------------------------------------------------------------------
+     TWO WORLDS: Hawkins (normal) and the Upside Down.
+     Sections declare data-world; crossing between them plays one brief cut.
+  ------------------------------------------------------------------ */
+  var atmosEl = $('.atmos'), worldEl = $('#world'), worldText = $('#world-text'), crossEl = $('#cross');
+  var world = 'up', worldInit = false, lastCross = 0, sporeTarget = 1, sporeLevel = 1;
+  var LABELS = { up: 'The Upside Down', normal: 'Hawkins, Indiana' };
+
+  function setWorld(w, sec) {
+    if (worldInit && w === world) return;
+    var first = !worldInit; worldInit = true; world = w;
+    atmosEl.setAttribute('data-world', w); doc.setAttribute('data-world', w);
+    if (worldText) worldText.textContent = LABELS[w];
+    sporeTarget = w === 'up' ? 1 : 0.12;
+    if (reduce) { sporeLevel = sporeTarget; return; }
+    if (first) return;
+    var now = performance.now();
+    if (now - lastCross < 1400) return;
+    lastCross = now; crossing(sec);
+  }
+  function crossing(sec) {
+    crossEl.classList.remove('is-crossing'); void crossEl.offsetWidth; crossEl.classList.add('is-crossing');
+    setTimeout(function () { crossEl.classList.remove('is-crossing'); }, 900);
+    if (worldEl) { worldEl.classList.remove('is-flick'); void worldEl.offsetWidth; worldEl.classList.add('is-flick'); setTimeout(function () { worldEl.classList.remove('is-flick'); }, 800); }
+    setTimeout(function () {
+      var h = sec && $('.sec-title', sec);
+      if (h && !h.hasAttribute('data-reveal')) glitchEl(h);
+    }, 380);
+    signalInterference();
+  }
+  document.addEventListener('atmos:cross', function () { crossing(null); });
+
+  /* ------------------------------------------------------------------
      SECTION SPY, PROGRESS BAR, READOUT
   ------------------------------------------------------------------ */
   var sections = $$('section[data-label]');
@@ -46,7 +80,10 @@
       if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
     });
     var idx = sections.findIndex(function (s) { return s.id === id; });
-    if (idx >= 0) roSec.textContent = pad(idx, 2) + ' ' + sections[idx].dataset.label;
+    if (idx >= 0) {
+      roSec.textContent = pad(idx, 2) + ' ' + sections[idx].dataset.label;
+      setWorld(sections[idx].dataset.world || 'normal', sections[idx]);
+    }
   }
   if (hasIO) {
     var spy = new IntersectionObserver(function (entries) {
@@ -61,6 +98,7 @@
     var max = doc.scrollHeight - window.innerHeight;
     var p = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
     progress.style.setProperty('--p', p.toFixed(4));
+    atmosEl.classList.toggle('is-covered', window.scrollY < hero.offsetHeight * 0.5);
     var pct = Math.round(p * 100);
     if (pct !== lastPct) { lastPct = pct; roPct.textContent = pad(pct, 3) + '%'; }
   }
@@ -104,7 +142,11 @@
       if (r.bottom > 0 && r.top < window.innerHeight * 0.98) reveal(el);
     });
   }
-  function scheduleSweep() { clearTimeout(sweepTimer); sweepTimer = setTimeout(sweep, 300); }
+  var sweepBusy = false;
+  function scheduleSweep() {
+    clearTimeout(sweepTimer); sweepTimer = setTimeout(sweep, 250);
+    if (!sweepBusy) { sweepBusy = true; setTimeout(function () { sweepBusy = false; sweep(); }, 350); }
+  }
 
   if (!reduce && hasIO) {
     $$('[data-stagger]').forEach(function (parent) {
@@ -114,12 +156,26 @@
       });
     });
     doc.classList.add('js-reveal');
+    // A fully clipped element (clip-path wipe) never reports as intersecting, so
+    // wipe elements are revealed when their parent scrolls into view instead.
+    var kids = new Map(), targets = new Set();
+    $$('[data-reveal]').forEach(function (el) {
+      if (el.getAttribute('data-reveal') === 'wipe' && el.parentElement) {
+        var par = el.parentElement;
+        if (!kids.has(par)) kids.set(par, []);
+        kids.get(par).push(el); targets.add(par);
+      } else targets.add(el);
+    });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { reveal(en.target); io.unobserve(en.target); }
+        if (!en.isIntersecting) return;
+        var t = en.target;
+        if (t.hasAttribute('data-reveal')) reveal(t);
+        (kids.get(t) || []).forEach(function (k) { setTimeout(function () { reveal(k); }, 120); });
+        io.unobserve(t);
       });
     }, { rootMargin: '0px 0px -6% 0px', threshold: 0.01 });
-    $$('[data-reveal]').forEach(function (el) { io.observe(el); });
+    targets.forEach(function (el) { io.observe(el); });
     window.addEventListener('load', sweep);
     window.addEventListener('resize', scheduleSweep);
     setTimeout(sweep, 600);
@@ -133,38 +189,47 @@
   });
 
   /* ------------------------------------------------------------------
-     AMBIENT DUST (very slow; paused when hidden)
+     AMBIENT DUST + SPORES (very slow; spores belong to the Upside Down)
   ------------------------------------------------------------------ */
   var dustCanvas = $('#dust'), dctx = dustCanvas.getContext('2d');
-  var dust = [], dw = 0, dh = 0, dustRaf = 0, dustLast = 0;
+  var dust = [], spores = [], dw = 0, dh = 0, dustRaf = 0, dustLast = 0;
   function sizeDust() {
     var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     dw = window.innerWidth; dh = window.innerHeight;
     dustCanvas.width = Math.round(dw * dpr); dustCanvas.height = Math.round(dh * dpr);
     dctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var n = dw < 700 ? 22 : 42;
-    dust = [];
-    for (var i = 0; i < n; i++) {
-      dust.push({ x: Math.random() * dw, y: Math.random() * dh, s: 0.6 + Math.random() * 1.1,
-        a: 0.08 + Math.random() * 0.22, vy: 0.006 + Math.random() * 0.016, ph: Math.random() * 6.28,
-        red: Math.random() < 0.12 });
-    }
+    var n = dw < 700 ? 20 : 36, m = dw < 700 ? 12 : 26, i;
+    dust = []; spores = [];
+    for (i = 0; i < n; i++) dust.push({ x: Math.random() * dw, y: Math.random() * dh, s: 0.6 + Math.random() * 1.0,
+      a: 0.07 + Math.random() * 0.2, vy: 0.006 + Math.random() * 0.016, ph: Math.random() * 6.28, red: Math.random() < 0.1 });
+    for (i = 0; i < m; i++) spores.push({ x: Math.random() * dw, y: Math.random() * dh, s: 1.2 + Math.random() * 2.1,
+      a: 0.12 + Math.random() * 0.22, vy: 0.005 + Math.random() * 0.012, ph: Math.random() * 6.28, red: Math.random() < 0.5 });
   }
   function drawDust(t, dt) {
     dctx.clearRect(0, 0, dw, dh);
-    for (var i = 0; i < dust.length; i++) {
-      var p = dust[i];
+    var i, p;
+    for (i = 0; i < dust.length; i++) {
+      p = dust[i];
       if (dt) { p.y -= p.vy * dt; p.x += Math.sin(t * 0.0003 + p.ph) * 0.008 * dt; if (p.y < -4) { p.y = dh + 4; p.x = Math.random() * dw; } }
       dctx.fillStyle = p.red ? 'rgba(198,40,40,' + (p.a * 0.9).toFixed(3) + ')' : 'rgba(232,228,220,' + p.a.toFixed(3) + ')';
       dctx.fillRect(p.x, p.y, p.s, p.s);
     }
+    if (dt) sporeLevel += (sporeTarget - sporeLevel) * Math.min(1, dt / 900);
+    if (sporeLevel > 0.02) {
+      for (i = 0; i < spores.length; i++) {
+        p = spores[i];
+        if (dt) { p.y -= p.vy * dt; p.x += Math.sin(t * 0.00025 + p.ph) * 0.012 * dt; if (p.y < -8) { p.y = dh + 8; p.x = Math.random() * dw; } }
+        var al = p.a * sporeLevel, rgb = p.red ? '198,40,40' : '232,228,220';
+        dctx.fillStyle = 'rgba(' + rgb + ',' + (al * 0.16).toFixed(3) + ')';
+        dctx.beginPath(); dctx.arc(p.x, p.y, p.s * 3.2, 0, 6.283); dctx.fill();
+        dctx.fillStyle = 'rgba(' + rgb + ',' + al.toFixed(3) + ')';
+        dctx.beginPath(); dctx.arc(p.x, p.y, p.s * 0.8, 0, 6.283); dctx.fill();
+      }
+    }
   }
   function dustLoop(t) {
     dustRaf = 0;
-    if (t - dustLast >= 33) {            // 30 fps is plenty for slow dust
-      var dt = Math.min(t - dustLast, 64); dustLast = t;
-      drawDust(t, dt);
-    }
+    if (t - dustLast >= 33) { var dt = Math.min(t - dustLast, 64); dustLast = t; drawDust(t, dt); }
     if (!document.hidden) dustRaf = requestAnimationFrame(dustLoop);
   }
   sizeDust(); drawDust(0, 0);
@@ -237,8 +302,7 @@
   /* ------------------------------------------------------------------
      HERO: cursor-lit grid + coordinates (mouse only)
   ------------------------------------------------------------------ */
-  var hero = $('#hero');
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  if (finePointer) {
     var hx = 0, hy = 0, heroTick = false, lastXY = '';
     hero.addEventListener('pointermove', function (e) {
       var r = hero.getBoundingClientRect();
@@ -260,7 +324,34 @@
   }
 
   /* ------------------------------------------------------------------
-     OCCASIONAL INTERFERENCE (glitch on one visible heading, or a light flicker)
+     HERO SCENE PARALLAX (pointer on desktop, scroll everywhere)
+     Loop runs only while the hero is on screen and values are still easing.
+  ------------------------------------------------------------------ */
+  var scene = $('#scene'), heroInView = true;
+  if (hasIO) new IntersectionObserver(function (en) { heroInView = en[0].isIntersecting; scene.classList.toggle('is-paused', !heroInView); if (heroInView) kick(); }).observe(hero);
+  var tpx = 0, tpy = 0, cpx = 0, cpy = 0, tsy = 0, csy = 0, pRaf = 0;
+  function pLoop() {
+    pRaf = 0;
+    cpx += (tpx - cpx) * 0.07; cpy += (tpy - cpy) * 0.07; csy += (tsy - csy) * 0.18;
+    scene.style.setProperty('--px', cpx.toFixed(3)); scene.style.setProperty('--py', cpy.toFixed(3)); scene.style.setProperty('--sy', csy.toFixed(1));
+    if (heroInView && (Math.abs(tpx - cpx) > 0.002 || Math.abs(tpy - cpy) > 0.002 || Math.abs(tsy - csy) > 0.2)) pRaf = requestAnimationFrame(pLoop);
+  }
+  function kick() { if (!pRaf && !reduce) pRaf = requestAnimationFrame(pLoop); }
+  if (!reduce) {
+    window.addEventListener('scroll', function () { tsy = Math.min(window.scrollY, hero.offsetHeight); kick(); }, { passive: true });
+    tsy = Math.min(window.scrollY, hero.offsetHeight); csy = tsy; kick();
+    if (finePointer) {
+      hero.addEventListener('pointermove', function (e) {
+        var r = hero.getBoundingClientRect();
+        tpx = ((e.clientX - r.left) / r.width - 0.5) * 2; tpy = ((e.clientY - r.top) / r.height - 0.5) * 2; kick();
+      }, { passive: true });
+      hero.addEventListener('pointerleave', function () { tpx = 0; tpy = 0; kick(); });
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     OCCASIONAL EVENTS: heading glitch, light flicker, VHS tracking, lightning.
+     One scheduler, widely spaced; lightning only happens in the Upside Down.
   ------------------------------------------------------------------ */
   var atmos = $('.atmos');
   var glitchables = $$('[data-glitch]'), onScreen = new Set();
@@ -270,6 +361,15 @@
     });
     glitchables.forEach(function (el) { gio.observe(el); });
   }
+  function restart(el, cls, ms) {
+    el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls);
+    setTimeout(function () { el.classList.remove(cls); }, ms);
+  }
+  function glitchEl(el) {
+    if (!el || el.classList.contains('is-glitching')) return;
+    el.classList.add('is-glitching');
+    setTimeout(function () { el.classList.remove('is-glitching'); }, 280);
+  }
   function glitch() {
     var cands = Array.from(onScreen).filter(function (el) {
       return !el.hasAttribute('data-reveal') && !el.hasAttribute('data-seq') && !el.classList.contains('is-glitching');
@@ -277,20 +377,38 @@
     var headings = cands.filter(function (el) { return el.tagName !== 'SPAN'; });
     var pool = headings.length && Math.random() < 0.85 ? headings : cands;
     if (!pool.length) return;
-    var el = pool[Math.floor(Math.random() * pool.length)];
-    el.classList.add('is-glitching');
-    setTimeout(function () { el.classList.remove('is-glitching'); }, 280);
+    glitchEl(pool[Math.floor(Math.random() * pool.length)]);
     signalInterference();
+    if (heroInView && Math.random() < 0.5) restart(scene, 'is-tracking', 950);
   }
   function flicker() {
-    atmos.classList.remove('is-flicker'); void atmos.offsetWidth; atmos.classList.add('is-flicker');
-    setTimeout(function () { atmos.classList.remove('is-flicker'); }, 420);
+    restart(atmos, 'is-flicker', 420);
+    if (heroInView) restart(scene, 'is-flicker', 450);
+  }
+  var bolts = $$('.bolt'), lastBolt = 0;
+  function flashPage() { restart(crossEl, 'is-flash', 1050); }
+  function strike() {
+    lastBolt = performance.now();
+    flashPage();
+    if (!heroInView || !bolts.length) return;
+    var b = bolts[Math.floor(Math.random() * bolts.length)];
+    b.style.setProperty('--bx', (22 + Math.random() * 56).toFixed(0) + '%');
+    b.style.setProperty('--bf', Math.random() < 0.5 ? '1' : '-1');
+    restart(b, 'is-striking', 1050); restart(scene, 'is-bolt', 1050);
+    signalInterference();
+  }
+  document.addEventListener('atmos:strike', strike);
+  document.addEventListener('atmos:glitch', glitch);
+  function pick() {
+    var now = performance.now(), r = Math.random();
+    if (world === 'up' && now - lastBolt > 15000 && r < 0.42) strike();
+    else if (r < 0.78) glitch(); else flicker();
   }
   function schedule(first) {
     setTimeout(function () {
-      if (!document.hidden) { if (Math.random() < 0.7) glitch(); else flicker(); }
+      if (!document.hidden) pick();
       schedule(false);
-    }, first ? 5200 : 8000 + Math.random() * 9000);
+    }, first ? 6500 : 7000 + Math.random() * 8000);
   }
   if (!reduce) schedule(true);
 
@@ -318,4 +436,54 @@
     row.addEventListener('pointerenter', on); row.addEventListener('pointerleave', off);
     row.addEventListener('focusin', on); row.addEventListener('focusout', off);
   });
+
+  /* ------------------------------------------------------------------
+     PROJECT ROWS: the revealed scene follows the pointer slightly
+  ------------------------------------------------------------------ */
+  if (finePointer && !reduce) {
+    $$('.exp').forEach(function (row) {
+      var tick = false, nx = 0, ny = 0;
+      row.addEventListener('pointermove', function (e) {
+        var r = row.getBoundingClientRect();
+        nx = ((e.clientX - r.left) / r.width - 0.5) * 2; ny = ((e.clientY - r.top) / r.height - 0.5) * 2;
+        if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; row.style.setProperty('--mx', nx.toFixed(3)); row.style.setProperty('--my', ny.toFixed(3)); }); }
+      }, { passive: true });
+      row.addEventListener('pointerleave', function () { row.style.setProperty('--mx', 0); row.style.setProperty('--my', 0); });
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     ALPHABET WALL: when it scrolls into view the lights spell a message
+  ------------------------------------------------------------------ */
+  var wall = $('#wall');
+  if (wall && !reduce && hasIO) {
+    var cells = {}, allCells = $$('.cell', wall), wallVisible = false, spelled = false;
+    allCells.forEach(function (c) { (cells[c.dataset.l] = cells[c.dataset.l] || []).push(c); });
+    var lit = function (c, ms) { restart(c, 'is-lit', ms); };
+    var spell = function (msg) {
+      var t = 0;
+      msg.split('').forEach(function (ch) {
+        if (ch === ' ') { t += 750; return; }
+        var c = cells[ch] && cells[ch][0];
+        if (c) (function (c, at) { setTimeout(function () { lit(c, 560); }, at); })(c, t);
+        t += 680;
+      });
+      return t;
+    };
+    new IntersectionObserver(function (en) {
+      en.forEach(function (e) {
+        wallVisible = e.isIntersecting;
+        if (e.isIntersecting && !spelled) {
+          spelled = true;
+          var total = spell('SAY HELLO');
+          setTimeout(function () {
+            setInterval(function () {
+              if (document.hidden || !wallVisible) return;
+              lit(allCells[Math.floor(Math.random() * allCells.length)], 420);
+            }, 3200);
+          }, total + 1200);
+        }
+      });
+    }, { threshold: 0.6 }).observe(wall);
+  }
 })();

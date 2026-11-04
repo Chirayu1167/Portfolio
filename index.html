@@ -8,25 +8,34 @@
 <meta name="theme-color" content="#080808">
 <link rel="preload" href="fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/barlow-condensed-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/hero-back.webp" as="image" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="css/styles.css">
 <noscript><style>.signal, .readout { display: none !important; }</style></noscript>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="atmos" aria-hidden="true">
+<div class="atmos" data-world="up" aria-hidden="true">
   <div class="atmos__grid"></div>
-  <div class="atmos__fog atmos__fog--a"></div>
-  <div class="atmos__fog atmos__fog--b"></div>
-  <div class="atmos__leak"></div>
-  <canvas class="atmos__dust" id="dust"></canvas>
+  <div class="atmos__cool"></div>
+  <div class="atmos__up">
+    <div class="atmos__fog atmos__fog--a"></div>
+    <div class="atmos__fog atmos__fog--b"></div>
+    <div class="atmos__leak"></div>
+  </div>
 </div>
+<canvas class="dust" id="dust" aria-hidden="true"></canvas>
 <div class="vignette" aria-hidden="true"></div>
 <div class="grain" id="grain" aria-hidden="true"></div>
 
+<div class="cross" id="cross" aria-hidden="true"><i class="cross__flash"></i><i class="cross__tear"></i><i class="cross__tear"></i><i class="cross__veil"></i></div>
+
 <header class="nav" id="nav">
   <div class="nav__in">
-    <a class="brand" href="#hero" aria-label="Chirayu Mahajan, back to top"><span class="brand__dot" aria-hidden="true"></span><span data-glitch>Chirayu Mahajan</span></a>
+    <div class="nav__left">
+      <a class="brand" href="#hero" aria-label="Chirayu Mahajan, back to top"><span class="brand__dot" aria-hidden="true"></span><span data-glitch>Chirayu Mahajan</span></a>
+      <span class="world label" id="world" aria-hidden="true"><i></i><span id="world-text">The Upside Down</span></span>
+    </div>
     <nav class="nav__links" aria-label="Primary">
       <a href="#about">About</a>
       <a href="#milestones">Milestones</a>
@@ -59,9 +68,18 @@
 <main id="main">
 
   <!-- HERO -->
-  <section class="hero" id="hero" data-label="Intro">
+  <section class="hero" id="hero" data-label="Intro" data-world="up">
+    <div class="scene" id="scene" aria-hidden="true">
+      <div class="scene__back"><img src="img/hero-back.webp" alt="" aria-hidden="true" decoding="async" fetchpriority="high" onerror="this.style.display='none'"></div>
+      <div class="scene__glow"></div>
+      <div class="scene__fog"><div class="scene__track"><img src="img/fog-a.webp" alt="" aria-hidden="true" decoding="async" onerror="this.style.display='none'"><img src="img/fog-a.webp" alt="" aria-hidden="true" decoding="async" onerror="this.style.display='none'"></div></div>
+      <div class="scene__bolts"><img src="img/bolt-1.webp" alt="" aria-hidden="true" decoding="async" class="bolt bolt--intro" onerror="this.style.display='none'"><img src="img/bolt-2.webp" alt="" aria-hidden="true" decoding="async" class="bolt" onerror="this.style.display='none'"><img src="img/bolt-3.webp" alt="" aria-hidden="true" decoding="async" class="bolt" onerror="this.style.display='none'"></div>
+      <div class="scene__near"><img src="img/hero-trees-near.webp" alt="" aria-hidden="true" decoding="async" onerror="this.style.display='none'"></div>
+      <div class="scene__flash"></div>
+      <div class="scene__trackline"></div>
+      <div class="tvburst"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
     <div class="hero__bg" aria-hidden="true">
-      <div class="hero__light"></div>
       <div class="hero__lit"></div>
     </div>
     <div class="wrap">
@@ -87,7 +105,7 @@
   </section>
 
   <!-- PROFILE -->
-  <section class="section" id="about" data-label="Profile">
+  <section class="section" id="about" data-label="Profile" data-world="normal">
     <div class="wrap">
       <div class="sec-head">
         <p class="label" data-reveal>Profile</p>
@@ -98,6 +116,7 @@
         <figure class="about__photo" data-reveal="wipe">
           <div class="about__frame">
             <img src="profile.jpg" width="750" height="750" alt="Portrait of Chirayu Mahajan, looking up and to the side" loading="lazy" decoding="async">
+            <img class="ghost" src="profile.jpg" alt="" aria-hidden="true" width="750" height="750" loading="lazy" decoding="async">
           </div>
         </figure>
         <div class="about__body" data-stagger>
@@ -111,7 +130,7 @@
   </section>
 
   <!-- MILESTONES -->
-  <section class="section" id="milestones" data-label="Milestones">
+  <section class="section" id="milestones" data-label="Milestones" data-world="normal">
     <div class="wrap">
       <div class="sec-head">
         <p class="label" data-reveal>Milestones</p>
@@ -127,7 +146,7 @@
   </section>
 
   <!-- EXPERIENCE -->
-  <section class="section" id="experience" data-label="Experience">
+  <section class="section" id="experience" data-label="Experience" data-world="normal">
     <div class="wrap">
       <div class="sec-head">
         <p class="label" data-reveal>Experience</p>
@@ -153,8 +172,9 @@
   </section>
 
   <!-- PROJECTS -->
-  <section class="section" id="projects" data-label="Projects">
+  <section class="section" id="projects" data-label="Projects" data-world="up">
     <div class="wrap">
+      <div class="vines" aria-hidden="true"><img src="img/vines-edge.webp" alt="" aria-hidden="true" decoding="async" onerror="this.style.display='none'"></div>
       <div class="sec-head">
         <p class="label" data-reveal>The Upside Down Projects</p>
         <h2 class="sec-title reflect" data-text="Projects" data-reveal="flicker" data-glitch>Projects</h2>
@@ -162,7 +182,8 @@
       </div>
       <div class="exps">
         <article class="exp" data-reveal>
-          <div class="exp__id"><span class="label">EXPERIMENT_001</span></div>
+          <div class="exp__scene" aria-hidden="true"><img src="img/scene-synapse.webp" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>
+          <div class="exp__id"><span class="label">EXPERIMENT_001</span><dl class="exp__facts"><div><dt class="label">Stack</dt><dd>4 technologies</dd></div><div><dt class="label">Source</dt><dd>github.com/Chirayu1167</dd></div></dl></div>
           <div class="exp__body">
             <h3 class="exp__title">Synapse</h3>
             <p class="exp__desc">A workspace for project tracking, GitHub repository intelligence, and preserving context between AI-assisted work sessions.</p>
@@ -172,7 +193,8 @@
           <a class="preview" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="Synapse on GitHub" data-reveal="wipe"><canvas class="static" width="96" height="60" aria-hidden="true"></canvas><span class="label preview__tag">No signal</span><span class="preview__scan" aria-hidden="true"></span></a>
         </article>
         <article class="exp" data-reveal>
-          <div class="exp__id"><span class="label">EXPERIMENT_002</span><span class="label exp__flag">Signal detected: Nirmaan 4.0 winner</span></div>
+          <div class="exp__scene" aria-hidden="true"><img src="img/scene-ironwallet.webp" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>
+          <div class="exp__id"><span class="label">EXPERIMENT_002</span><span class="label exp__flag">Signal detected: Nirmaan 4.0 winner</span><dl class="exp__facts"><div><dt class="label">Stack</dt><dd>4 technologies</dd></div><div><dt class="label">Source</dt><dd>github.com/Chirayu1167</dd></div><div><dt class="label">Recognition</dt><dd>Nirmaan 4.0 winner</dd></div></dl></div>
           <div class="exp__body">
             <h3 class="exp__title">Iron Wallet</h3>
             <p class="exp__desc">A digital wallet that scores transaction risk from behavioral signals, adds OTP verification, and surfaces scam intelligence.</p>
@@ -182,7 +204,8 @@
           <a class="preview" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="Iron Wallet on GitHub" data-reveal="wipe"><canvas class="static" width="96" height="60" aria-hidden="true"></canvas><span class="label preview__tag">No signal</span><span class="preview__scan" aria-hidden="true"></span></a>
         </article>
         <article class="exp" data-reveal>
-          <div class="exp__id"><span class="label">EXPERIMENT_003</span></div>
+          <div class="exp__scene" aria-hidden="true"><img src="img/scene-prephire.webp" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>
+          <div class="exp__id"><span class="label">EXPERIMENT_003</span><dl class="exp__facts"><div><dt class="label">Stack</dt><dd>3 technologies</dd></div><div><dt class="label">Source</dt><dd>github.com/Chirayu1167</dd></div></dl></div>
           <div class="exp__body">
             <h3 class="exp__title">PrepHire AI</h3>
             <p class="exp__desc">A placement-preparation platform with mock interviews, coding challenges, and structured learning resources.</p>
@@ -192,7 +215,8 @@
           <a class="preview" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="PrepHire AI on GitHub" data-reveal="wipe"><canvas class="static" width="96" height="60" aria-hidden="true"></canvas><span class="label preview__tag">No signal</span><span class="preview__scan" aria-hidden="true"></span></a>
         </article>
         <article class="exp" data-reveal>
-          <div class="exp__id"><span class="label">CASE_FILE_004</span></div>
+          <div class="exp__scene" aria-hidden="true"><img src="img/scene-cyberfury.webp" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>
+          <div class="exp__id"><span class="label">CASE_FILE_004</span><dl class="exp__facts"><div><dt class="label">Stack</dt><dd>3 technologies</dd></div><div><dt class="label">Source</dt><dd>github.com/Chirayu1167/Cyberfury</dd></div></dl></div>
           <div class="exp__body">
             <h3 class="exp__title">CyberFury</h3>
             <p class="exp__desc">A computer-vision tool that analyzes image artifacts to distinguish AI-generated images from photographs.</p>
@@ -202,7 +226,8 @@
           <a class="preview" href="https://github.com/Chirayu1167/Cyberfury" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="CyberFury on GitHub" data-reveal="wipe"><img src="cyberfury.png" width="1918" height="971" alt="CyberFury AI Forensic Lab interface with an evidence upload panel and an analysis report panel" loading="lazy" decoding="async"><span class="preview__scan" aria-hidden="true"></span></a>
         </article>
         <article class="exp" data-reveal>
-          <div class="exp__id"><span class="label">EXPERIMENT_005</span></div>
+          <div class="exp__scene" aria-hidden="true"><img src="img/scene-phoenix.webp" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>
+          <div class="exp__id"><span class="label">EXPERIMENT_005</span><dl class="exp__facts"><div><dt class="label">Stack</dt><dd>3 technologies</dd></div><div><dt class="label">Source</dt><dd>github.com/Chirayu1167/Pheonix-AI-Assistant</dd></div></dl></div>
           <div class="exp__body">
             <h3 class="exp__title">Phoenix</h3>
             <p class="exp__desc">A desktop voice assistant with wake-word activation, conversational commands, and productivity automation.</p>
@@ -216,7 +241,7 @@
   </section>
 
   <!-- TIMELINE -->
-  <section class="section" id="timeline" data-label="Timeline">
+  <section class="section" id="timeline" data-label="Timeline" data-world="normal">
     <div class="wrap">
       <div class="sec-head">
         <p class="label" data-reveal>The Journey</p>
@@ -233,7 +258,7 @@
   </section>
 
   <!-- SKILLS -->
-  <section class="section" id="skills" data-label="Skills">
+  <section class="section" id="skills" data-label="Skills" data-world="normal">
     <div class="wrap">
       <div class="sec-head">
         <p class="label" data-reveal>Skills &amp; Stack</p>
@@ -250,7 +275,7 @@
   </section>
 
   <!-- ACHIEVEMENTS -->
-  <section class="section" id="achievements" data-label="Achievements">
+  <section class="section" id="achievements" data-label="Achievements" data-world="normal">
     <div class="wrap">
       <div class="sec-head">
         <p class="label" data-reveal>Hackathons</p>
@@ -290,7 +315,7 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="section" id="contact" data-label="Contact">
+  <section class="section" id="contact" data-label="Contact" data-world="up">
     <div class="wrap">
       <div class="sec-head">
         <p class="label" data-reveal>Find me in Hawkins Mall</p>
@@ -305,6 +330,11 @@
             <a class="contact__row" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span class="label">Chirayu1167</span></a>
             <a class="contact__row" href="https://linkedin.com/in/chirayu-mahajan-390766309" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span class="label">Chirayu Mahajan</span></a>
           </div>
+      <div class="wall" id="wall" aria-hidden="true">
+        <div class="wall__row"><span class="cell" data-l="A" style="--c:#c62828;--sag:3.4px"><i class="bulb"></i><b>A</b></span><span class="cell" data-l="B" style="--c:#d9984a;--sag:9.8px"><i class="bulb"></i><b>B</b></span><span class="cell" data-l="C" style="--c:#e8e4dc;--sag:15.0px"><i class="bulb"></i><b>C</b></span><span class="cell" data-l="D" style="--c:#5b9a9c;--sag:18.3px"><i class="bulb"></i><b>D</b></span><span class="cell" data-l="E" style="--c:#8f1a22;--sag:19.5px"><i class="bulb"></i><b>E</b></span><span class="cell" data-l="F" style="--c:#c62828;--sag:18.3px"><i class="bulb"></i><b>F</b></span><span class="cell" data-l="G" style="--c:#d9984a;--sag:15.0px"><i class="bulb"></i><b>G</b></span><span class="cell" data-l="H" style="--c:#e8e4dc;--sag:9.8px"><i class="bulb"></i><b>H</b></span><span class="cell" data-l="I" style="--c:#5b9a9c;--sag:3.4px"><i class="bulb"></i><b>I</b></span></div>
+        <div class="wall__row"><span class="cell" data-l="J" style="--c:#8f1a22;--sag:3.4px"><i class="bulb"></i><b>J</b></span><span class="cell" data-l="K" style="--c:#c62828;--sag:9.8px"><i class="bulb"></i><b>K</b></span><span class="cell" data-l="L" style="--c:#d9984a;--sag:15.0px"><i class="bulb"></i><b>L</b></span><span class="cell" data-l="M" style="--c:#e8e4dc;--sag:18.3px"><i class="bulb"></i><b>M</b></span><span class="cell" data-l="N" style="--c:#5b9a9c;--sag:19.5px"><i class="bulb"></i><b>N</b></span><span class="cell" data-l="O" style="--c:#8f1a22;--sag:18.3px"><i class="bulb"></i><b>O</b></span><span class="cell" data-l="P" style="--c:#c62828;--sag:15.0px"><i class="bulb"></i><b>P</b></span><span class="cell" data-l="Q" style="--c:#d9984a;--sag:9.8px"><i class="bulb"></i><b>Q</b></span><span class="cell" data-l="R" style="--c:#e8e4dc;--sag:3.4px"><i class="bulb"></i><b>R</b></span></div>
+        <div class="wall__row"><span class="cell" data-l="S" style="--c:#5b9a9c;--sag:3.8px"><i class="bulb"></i><b>S</b></span><span class="cell" data-l="T" style="--c:#8f1a22;--sag:10.8px"><i class="bulb"></i><b>T</b></span><span class="cell" data-l="U" style="--c:#c62828;--sag:16.2px"><i class="bulb"></i><b>U</b></span><span class="cell" data-l="V" style="--c:#d9984a;--sag:19.2px"><i class="bulb"></i><b>V</b></span><span class="cell" data-l="W" style="--c:#e8e4dc;--sag:19.2px"><i class="bulb"></i><b>W</b></span><span class="cell" data-l="X" style="--c:#5b9a9c;--sag:16.2px"><i class="bulb"></i><b>X</b></span><span class="cell" data-l="Y" style="--c:#8f1a22;--sag:10.8px"><i class="bulb"></i><b>Y</b></span><span class="cell" data-l="Z" style="--c:#c62828;--sag:3.8px"><i class="bulb"></i><b>Z</b></span></div>
+      </div>
         </div>
       </div>
     </div>
