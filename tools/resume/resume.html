@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Chirayu Mahajan – Resume</title>
+<style>
+@font-face { font-family: "Bricolage Grotesque"; src: url("../../fonts/bricolage-grotesque-latin-wdth-normal.woff2") format("woff2"); font-weight: 200 800; font-stretch: 75% 100%; }
+@font-face { font-family: "IBM Plex Sans"; src: url("../../fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Sans"; src: url("../../fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --ink:#0f1729; --blue:#2a45f0; --muted:#4b5568; --side:#0f1729; --sidetxt:#dfe4f2; --sidemut:#9aa6c8; }
+html, body { width: 210mm; height: 297mm; }
+body { font-family: "IBM Plex Sans", Arial, sans-serif; font-size: 9.4pt; line-height: 1.45; color: var(--ink); display: grid; grid-template-columns: 70mm 1fr; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+aside { background: var(--side); color: var(--sidetxt); padding: 16mm 8mm 12mm 9mm; display: flex; flex-direction: column; gap: 7mm; }
+aside h2 { font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 11.5pt; color: #fff; margin-bottom: 2.4mm; padding-bottom: 1.6mm; border-bottom: 1.5px solid var(--blue); letter-spacing: .01em; }
+aside li { margin-bottom: 1.6mm; font-size: 8.8pt; overflow-wrap: anywhere; }
+aside .k { display: block; color: var(--sidemut); font-size: 7.8pt; }
+aside .edu b { display: block; font-weight: 500; color: #fff; }
+aside .edu span { color: var(--sidemut); font-size: 8.2pt; }
+aside .sk li { margin-bottom: 2.2mm; }
+aside .sk b { display: block; font-weight: 500; color: #fff; font-size: 8.4pt; }
+
+main { padding: 16mm 11mm 12mm 11mm; display: flex; flex-direction: column; gap: 6mm; }
+.name { font-family: "Bricolage Grotesque"; font-weight: 800; font-stretch: 85%; font-size: 30pt; line-height: 1; letter-spacing: -0.02em; }
+.role { color: var(--blue); font-weight: 500; font-size: 11pt; margin-top: 2mm; }
+.sum { color: var(--muted); margin-top: 3.5mm; }
+main h2 { font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 12pt; margin-bottom: 2.6mm; display: flex; align-items: center; gap: 3mm; }
+main h2::after { content: ""; flex: 1; height: 1px; background: #cfd6e3; }
+.job { margin-bottom: 3.4mm; }
+.job:last-child { margin-bottom: 0; }
+.row { display: flex; justify-content: space-between; gap: 6mm; align-items: baseline; }
+.row b { font-weight: 500; font-size: 10pt; }
+.row .d { color: var(--muted); font-size: 8.4pt; white-space: nowrap; }
+.org { color: var(--blue); font-size: 8.8pt; font-weight: 500; }
+.job ul { margin-top: 1.4mm; }
+.job li { position: relative; padding-left: 4mm; color: #2b3447; margin-bottom: .8mm; }
+.job li::before { content: ""; position: absolute; left: 0; top: .52em; width: 1.6mm; height: 1.6mm; background: var(--blue); border-radius: 50%; }
+.proj { margin-bottom: 3mm; }
+.proj p { color: #2b3447; }
+.tag { display: inline-block; margin-left: 2mm; padding: .2mm 2mm; background: var(--ink); color: #fff; border-radius: 4mm; font-size: 7.4pt; font-weight: 500; vertical-align: 1px; }
+</style></head>
+<body>
+<aside>
+  <section>
+    <h2>Contact</h2>
+    <ul>
+      <li><span class="k">Phone</span>+91 93402 28345</li>
+      <li><span class="k">Email</span>chirayum2007@gmail.com</li>
+      <li><span class="k">Location</span>Pune, Maharashtra</li>
+      <li><span class="k">LinkedIn</span>linkedin.com/in/chirayu-mahajan-390766309</li>
+      <li><span class="k">GitHub</span>github.com/Chirayu1167</li>
+    </ul>
+  </section>
+  <section class="edu">
+    <h2>Education</h2>
+    <ul>
+      <li><b>B.Tech, AI &amp; ML</b><span>MIT Academy of Engineering<br>2025 – Present</span></li>
+      <li><b>B.S., Data Science</b><span>IIT Madras<br>2025 – Present</span></li>
+    </ul>
+  </section>
+  <section class="sk">
+    <h2>Skills</h2>
+    <ul>
+      <li><b>Languages</b>Python, C, JavaScript, TypeScript, SQL</li>
+      <li><b>AI &amp; ML</b>PyTorch, scikit-learn, OpenCV, NLP, LLMs, RAG</li>
+      <li><b>Agents</b>LangGraph, LangChain, tool calling, agent memory</li>
+      <li><b>Backend</b>FastAPI, Flask, WebSockets, REST</li>
+      <li><b>Data</b>PostgreSQL, Supabase, Firebase, Redis</li>
+      <li><b>Cloud &amp; Web</b>AWS, Docker, Vercel, React, Next.js</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Certifications</h2>
+    <ul>
+      <li>Cisco: Modern AI, Data Analytics, Python Essentials</li>
+      <li>IBM SkillsBuild: Career Management</li>
+      <li>Anthropic: Claude 101</li>
+    </ul>
+  </section>
+</aside>
+
+<main>
+  <header>
+    <h1 class="name">Chirayu<br>Mahajan</h1>
+    <p class="role">AI &amp; ML Engineer</p>
+    <p class="sum">I build AI systems across computer vision, LLM agents and backend infrastructure, from design to deployment.</p>
+  </header>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="job">
+      <div class="row"><b>AI Developer Intern</b><span class="d">May 2026 – Present</span></div>
+      <p class="org">Tronocity Labs</p>
+      <ul>
+        <li>Building Gigzs–Akhrot, a memory layer for multi-LLM agents.</li>
+        <li>Built LLM pipelines and APIs that keep state across models and sessions.</li>
+        <li>Helped benchmark up to 58% lower token use.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div class="row"><b>Product Development Intern</b><span class="d">May – Jul 2026</span></div>
+      <p class="org">MITAOE Entrepreneurial Development Foundation</p>
+      <ul><li>Led planning, UI/UX and workflows for TrafficBuddy, a traffic complaint app.</li></ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="proj"><div class="row"><b>VISTA</b></div><p>Real-time CCTV accident detection with YOLO11 and ByteTrack. Flags incidents in about 1 second and routes alerts by severity.</p></div>
+    <div class="proj"><div class="row"><b>SACHET<span class="tag">Nirmaan 4.0 winner</span></b></div><p>UPI fraud prevention engine with behavioral risk scoring and OTP, served over FastAPI and WebSockets.</p></div>
+    <div class="proj"><div class="row"><b>Synapse</b></div><p>AI-native project workspace (Next.js, Supabase, Groq) with a Context Bridge to resume AI sessions.</p></div>
+    <div class="proj"><div class="row"><b>PrepHire.AI</b></div><p>Mock interview platform with proctored AI voice interviews, scoring and a coding arena.</p></div>
+    <div class="proj"><div class="row"><b>ORCA</b></div><p>Multi-agent marine intelligence (FastAPI, LangGraph) on live INCOIS data, in 11 Indic languages.</p></div>
+  </section>
+
+  <section>
+    <h2>Achievements</h2>
+    <div class="job"><ul>
+      <li>Winner, Nirmaan 4.0 (GDG MITAOE), for SACHET.</li>
+      <li>Smart India Hackathon 2026 (ISRO), for ORCA.</li>
+      <li>Participant: TechSprint 2026, Datathon 2026, Velora 2026.</li>
+    </ul></div>
+  </section>
+</main>
+</body></html>

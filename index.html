@@ -2,351 +2,208 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Chirayu Mahajan | AI &amp; ML Engineer</title>
-<meta name="description" content="Chirayu Mahajan is an AI engineer building production systems across computer vision, LLM agents, real-time inference, and backend infrastructure.">
-<meta name="theme-color" content="#080808">
+<meta name="description" content="Chirayu Mahajan is an AI &amp; ML engineer building computer vision, LLM agent and backend systems.">
+<meta name="theme-color" content="#eef1f6">
+<link rel="preload" href="fonts/bricolage-grotesque-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/barlow-condensed-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="img/hero-back.webp" as="image" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="css/styles.css">
-<noscript><style>.signal, .readout { display: none !important; }</style></noscript>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-
-<div class="atmos" data-world="up" aria-hidden="true">
-  <div class="atmos__grid"></div>
-  <div class="atmos__cool"></div>
-  <div class="atmos__up">
-    <div class="atmos__fog atmos__fog--a"></div>
-    <div class="atmos__fog atmos__fog--b"></div>
-    <div class="atmos__leak"></div>
-  </div>
-</div>
-<canvas class="dust" id="dust" aria-hidden="true"></canvas>
-<div class="vignette" aria-hidden="true"></div>
-<div class="grain" id="grain" aria-hidden="true"></div>
-
-<div class="cross" id="cross" aria-hidden="true"><i class="cross__flash"></i><i class="cross__tear"></i><i class="cross__tear"></i><i class="cross__veil"></i></div>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="nav">
   <div class="nav__in">
-    <div class="nav__left">
-      <a class="brand" href="#hero" aria-label="Chirayu Mahajan, back to top"><span class="brand__dot" aria-hidden="true"></span><span data-glitch>Chirayu Mahajan</span></a>
-      <span class="world label" id="world" aria-hidden="true"><i></i><span id="world-text">The Upside Down</span></span>
-    </div>
-    <nav class="nav__links" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#milestones">Milestones</a>
-      <a href="#experience">Experience</a>
+    <a class="brand" href="#top" aria-label="Chirayu Mahajan, back to top">Chirayu Mahajan</a>
+    <nav class="nav__links" id="nav-links" aria-label="Primary">
+      <a href="#about">About Me</a>
       <a href="#projects">Projects</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
       <a href="#achievements">Achievements</a>
       <a href="#contact">Contact</a>
-      <a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
-    <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Menu</button>
+    <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
   </div>
-  <div class="nav__panel" id="nav-panel">
-    <a href="#about">About</a>
-    <a href="#milestones">Milestones</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#timeline">Timeline</a>
-    <a href="#skills">Skills</a>
-    <a href="#achievements">Achievements</a>
-    <a href="#contact">Contact</a>
-    <a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </div>
-  <div class="nav__progress" id="progress" aria-hidden="true"></div>
 </header>
-
-<div class="readout label" aria-hidden="true"><span id="ro-sec">00 Intro</span> &nbsp; <span id="ro-pct">000%</span></div>
 
 <main id="main">
 
   <!-- HERO -->
-  <section class="hero" id="hero" data-label="Intro" data-world="up">
-    <div class="scene" id="scene" aria-hidden="true">
-      <div class="scene__back"><img src="img/hero-back.webp" alt="" aria-hidden="true" decoding="async" fetchpriority="high" onerror="this.style.display='none'"></div>
-      <div class="scene__glow"></div>
-      <div class="scene__fog"><div class="scene__track"><img src="img/fog-a.webp" alt="" aria-hidden="true" decoding="async" onerror="this.style.display='none'"><img src="img/fog-a.webp" alt="" aria-hidden="true" decoding="async" onerror="this.style.display='none'"></div></div>
-      <div class="scene__bolts"><img src="img/bolt-1.webp" alt="" aria-hidden="true" decoding="async" class="bolt bolt--intro" onerror="this.style.display='none'"><img src="img/bolt-2.webp" alt="" aria-hidden="true" decoding="async" class="bolt" onerror="this.style.display='none'"><img src="img/bolt-3.webp" alt="" aria-hidden="true" decoding="async" class="bolt" onerror="this.style.display='none'"></div>
-      <div class="scene__near"><img src="img/hero-trees-near.webp" alt="" aria-hidden="true" decoding="async" onerror="this.style.display='none'"></div>
-      <div class="scene__flash"></div>
-      <div class="scene__trackline"></div>
-      <div class="tvburst"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    </div>
-    <div class="hero__bg" aria-hidden="true">
-      <div class="hero__lit"></div>
-    </div>
-    <div class="wrap">
-      <div class="hero__inner">
-        <div class="hero__copy">
-          <p class="hero__tag label" data-seq style="--i:0"><span class="dot" aria-hidden="true"></span>Subject #1167 // Level 4 clearance</p>
-          <h1 class="hero__name reflect" data-glitch data-text="Chirayu Mahajan" data-seq style="--i:1">Chirayu Mahajan</h1>
-          <p class="hero__lede" data-seq style="--i:3">Building AI infrastructure that remembers, reasons, and scales.</p>
-          <p class="hero__role label" data-seq style="--i:4">Artificial Intelligence // Neural Architect</p>
-          <div class="hero__actions" data-seq style="--i:5">
-            <a class="btn" href="#projects">View projects</a>
-            <a class="tlink" href="resume.pdf" target="_blank" rel="noopener">Download resume</a>
-          </div>
-          <p class="hero__status" data-seq style="--i:6"><span class="dot" aria-hidden="true"></span>AI Developer Intern at Tronocity Labs, since May 2026</p>
-        </div>
-        <div class="signal" id="signal" aria-hidden="true">
-          <div class="signal__row label"><span>Signal</span><span class="signal__state" id="sig-state">Stable</span></div>
-          <canvas class="signal__wave" id="sig-wave"></canvas>
-          <div class="signal__row label"><span id="sig-xy">X 0000 Y 0000</span><span>Interference <span id="sig-count">00</span></span></div>
+  <section class="hero" id="top">
+    <div class="wrap hero__in">
+      <div class="hero__copy">
+        <p class="chip"><span class="chip__dot" aria-hidden="true"></span>AI Developer Intern, Tronocity Labs</p>
+        <h1 class="hero__name">Chirayu Mahajan</h1>
+        <p class="hero__lede">I build AI systems that see, reason and remember.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#projects">View projects</a>
+          <a class="btn btn--ghost" href="#contact">Contact</a>
         </div>
       </div>
+
+      <figure class="detect" id="detect">
+        <img src="profile.jpg" width="750" height="750" alt="Portrait of Chirayu Mahajan looking up and to the side" fetchpriority="high">
+        <span class="detect__box" aria-hidden="true"></span>
+        <span class="detect__tag" aria-hidden="true">ai-engineer <b id="conf">0.98</b></span>
+      </figure>
     </div>
   </section>
 
-  <!-- PROFILE -->
-  <section class="section" id="about" data-label="Profile" data-world="normal">
+  <!-- ABOUT -->
+  <section class="section" id="about">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="label" data-reveal>Profile</p>
-        <h2 class="sec-title reflect" data-text="Profile" data-reveal="flicker" data-glitch>Profile</h2>
-        <p class="sec-sub" data-reveal>How I approach the work</p>
-      </div>
+      <h2 class="h2">About Me</h2>
       <div class="about">
-        <figure class="about__photo" data-reveal="wipe">
-          <div class="about__frame">
-            <img src="profile.jpg" width="750" height="750" alt="Portrait of Chirayu Mahajan, looking up and to the side" loading="lazy" decoding="async">
-            <img class="ghost" src="profile.jpg" alt="" aria-hidden="true" width="750" height="750" loading="lazy" decoding="async">
-          </div>
-        </figure>
-        <div class="about__body" data-stagger>
-          <h3 class="label label--red">Engineering Philosophy</h3>
-          <p>I like taking a problem from first principles: understand who needs it, shape the right system, and test it against real-world constraints. I’m most interested in the space where applied AI meets thoughtful product and systems engineering.</p>
-          <p>My goal is to build software that is not only clever, but useful, dependable, and clear about what it can do.</p>
-          <a class="btn btn--ghost" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
-        </div>
-      </div>
-    </div>
-  </section>
+        <p class="about__text">I take a problem from first principles, build the system, and test it against real constraints. Most interested in where applied AI meets solid engineering.</p>
 
-  <!-- MILESTONES -->
-  <section class="section" id="milestones" data-label="Milestones" data-world="normal">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label" data-reveal>Milestones</p>
-        <h2 class="sec-title reflect" data-text="Milestones" data-reveal="flicker" data-glitch>Milestones</h2>
-      </div>
-      <div class="stats" data-stagger>
-        <div class="stat"><p class="stat__num">2</p><p class="stat__label">Concurrent degrees</p></div>
-        <div class="stat"><p class="stat__num">7+</p><p class="stat__label">AI projects</p></div>
-        <div class="stat stat--hot"><p class="stat__num">1st</p><p class="stat__label">Nirmaan 4.0 · GDG MITAOE</p></div>
-        <div class="stat"><p class="stat__num">2026</p><p class="stat__label">AI Developer Intern · Tronocity Labs</p></div>
-      </div>
-    </div>
-  </section>
+        <dl class="edu">
+          <div><dt>B.Tech, AI &amp; ML</dt><dd>MIT Academy of Engineering</dd></div>
+          <div><dt>B.S., Data Science</dt><dd>IIT Madras</dd></div>
+        </dl>
 
-  <!-- EXPERIENCE -->
-  <section class="section" id="experience" data-label="Experience" data-world="normal">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label" data-reveal>Experience</p>
-        <h2 class="sec-title reflect" data-text="Experience" data-reveal="flicker" data-glitch>Experience</h2>
-      </div>
-      <div class="log" data-stagger>
-        <article class="log__item">
-          <p class="log__meta"><span class="label">May 2026 – Present</span><strong>Tronocity Labs</strong><span class="label">Gigzs/Akhrot</span></p>
-          <div class="log__body">
-            <h3>AI Developer Intern</h3>
-            <p>Building Gigzs/Akhrot, a persistent memory and context layer for multi-LLM agents. Developed LLM pipelines and backend services that retain state across models, sessions, and handoffs; co-designed cross-model reasoning architecture and helped benchmark up to 58% lower token use in targeted scenarios.</p>
-          </div>
-        </article>
-        <article class="log__item">
-          <p class="log__meta"><span class="label">May – July 2026</span><strong>MITAOE Entrepreneurial Development Foundation</strong></p>
-          <div class="log__body">
-            <h3>Product Development Intern</h3>
-            <p>Worked on TrafficBuddy, a traffic complaint management app. Led feature planning, requirements analysis, UI/UX, and application workflows, coordinating backend integration through multiple rounds of user feedback.</p>
-          </div>
-        </article>
+        <ul class="chips" aria-label="Skills">
+          <li>Python</li><li>LLMs &amp; Agents</li><li>Computer Vision</li><li>FastAPI</li><li>React</li><li>AWS</li>
+        </ul>
+
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener" download="Chirayu-Mahajan-Resume.pdf">Download resume</a>
       </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
-  <section class="section" id="projects" data-label="Projects" data-world="up">
+  <section class="section section--tint" id="projects">
     <div class="wrap">
-      <div class="vines" aria-hidden="true"><img src="img/vines-edge.webp" alt="" aria-hidden="true" decoding="async" onerror="this.style.display='none'"></div>
-      <div class="sec-head">
-        <p class="label" data-reveal>The Upside Down Projects</p>
-        <h2 class="sec-title reflect" data-text="Projects" data-reveal="flicker" data-glitch>Projects</h2>
-        <p class="sec-sub" data-reveal>Real-world AI experiments and creative builds. <a class="tlink" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">More on GitHub</a></p>
-      </div>
-      <div class="exps">
-        <article class="exp" data-reveal>
-          <div class="exp__scene" aria-hidden="true"><img src="img/scene-synapse.webp" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>
-          <div class="exp__id"><span class="label">EXPERIMENT_001</span><dl class="exp__facts"><div><dt class="label">Stack</dt><dd>4 technologies</dd></div><div><dt class="label">Live</dt><dd>synapse1167.vercel.app</dd></div></dl></div>
-          <div class="exp__body">
-            <h3 class="exp__title">Synapse</h3>
-            <p class="exp__desc">A workspace for project tracking, GitHub repository intelligence, and preserving context between AI-assisted work sessions.</p>
-            <ul class="exp__tags"><li>React</li><li>TypeScript</li><li>FastAPI</li><li>LLMs</li></ul>
-            <a class="tlink" href="https://synapse1167.vercel.app/" target="_blank" rel="noopener noreferrer">Open live site<span class="sr-only"> (Synapse)</span></a>
+      <h2 class="h2">Projects</h2>
+      <p class="sub">Real-world AI builds. <a class="tlink" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">More on GitHub</a></p>
+      <div class="grid">
+
+        <article class="card">
+          <a class="card__img" href="https://synapse1167.vercel.app/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="img/preview-synapse.webp" alt="" loading="lazy" decoding="async"></a>
+          <div class="card__body">
+            <h3>Synapse</h3>
+            <p>A workspace for project tracking, GitHub repository intelligence, and preserving context between AI-assisted work sessions.</p>
+            <ul class="tags"><li>React</li><li>TypeScript</li><li>FastAPI</li><li>LLMs</li></ul>
+            <a class="tlink" href="https://synapse1167.vercel.app/" target="_blank" rel="noopener noreferrer">Open live site<span class="sr"> (Synapse)</span></a>
           </div>
-          <a class="preview" href="https://synapse1167.vercel.app/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="Synapse" data-reveal="wipe"><canvas class="static" width="96" height="60" aria-hidden="true"></canvas><img src="img/preview-synapse.webp" alt="Synapse preview" loading="lazy" decoding="async" onload="var t=this.parentNode.querySelector('.preview__tag');if(t)t.style.display='none'" onerror="this.remove()"><span class="label preview__tag">No signal</span><span class="preview__scan" aria-hidden="true"></span></a>
         </article>
-        <article class="exp" data-reveal>
-          <div class="exp__scene" aria-hidden="true"><img src="img/scene-sachet.webp" alt="" loading="lazy" decoding="async" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/scene-ironwallet.webp'}else{this.style.display='none'}"></div>
-          <div class="exp__id"><span class="label">EXPERIMENT_002</span><span class="label exp__flag">Signal detected: Nirmaan 4.0 winner</span><dl class="exp__facts"><div><dt class="label">Stack</dt><dd>4 technologies</dd></div><div><dt class="label">Source</dt><dd>github.com/Chirayu1167/SACHET</dd></div><div><dt class="label">Recognition</dt><dd>Nirmaan 4.0 winner</dd></div></dl></div>
-          <div class="exp__body">
-            <h3 class="exp__title">SACHET</h3>
-            <p class="exp__desc">A digital wallet that scores transaction risk from behavioral signals, adds OTP verification, and surfaces scam intelligence.</p>
-            <ul class="exp__tags"><li>FastAPI</li><li>React</li><li>Machine Learning</li><li>Python</li></ul>
-            <a class="tlink" href="https://github.com/Chirayu1167/SACHET" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr-only"> (SACHET)</span></a>
+
+        <article class="card">
+          <a class="card__img" href="https://github.com/Chirayu1167/SACHET" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="img/preview-sachet.webp" alt="" loading="lazy" decoding="async"></a>
+          <div class="card__body">
+            <h3>SACHET <span class="win">Nirmaan 4.0 winner</span></h3>
+            <p>A digital wallet that scores transaction risk from behavioral signals, adds OTP verification, and surfaces scam intelligence.</p>
+            <ul class="tags"><li>FastAPI</li><li>React</li><li>Machine Learning</li><li>Python</li></ul>
+            <a class="tlink" href="https://github.com/Chirayu1167/SACHET" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (SACHET)</span></a>
           </div>
-          <a class="preview" href="https://github.com/Chirayu1167/SACHET" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="SACHET" data-reveal="wipe"><canvas class="static" width="96" height="60" aria-hidden="true"></canvas><img src="img/preview-sachet.webp" alt="SACHET preview" loading="lazy" decoding="async" onload="var t=this.parentNode.querySelector('.preview__tag');if(t)t.style.display='none'" onerror="this.remove()"><span class="label preview__tag">No signal</span><span class="preview__scan" aria-hidden="true"></span></a>
         </article>
-        <article class="exp" data-reveal>
-          <div class="exp__scene" aria-hidden="true"><img src="img/scene-prephire.webp" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>
-          <div class="exp__id"><span class="label">EXPERIMENT_003</span><dl class="exp__facts"><div><dt class="label">Stack</dt><dd>3 technologies</dd></div><div><dt class="label">Live</dt><dd>prephire-ai.web.app</dd></div></dl></div>
-          <div class="exp__body">
-            <h3 class="exp__title">PrepHire AI</h3>
-            <p class="exp__desc">A placement-preparation platform with mock interviews, coding challenges, and structured learning resources.</p>
-            <ul class="exp__tags"><li>React</li><li>Python</li><li>Mock Interviews</li></ul>
-            <a class="tlink" href="https://prephire-ai.web.app/" target="_blank" rel="noopener noreferrer">Open live site<span class="sr-only"> (PrepHire AI)</span></a>
+
+        <article class="card">
+          <a class="card__img" href="https://prephire-ai.web.app/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="img/preview-prephire.webp" alt="" loading="lazy" decoding="async"></a>
+          <div class="card__body">
+            <h3>PrepHire AI</h3>
+            <p>A placement-preparation platform with mock interviews, coding challenges, and structured learning resources.</p>
+            <ul class="tags"><li>React</li><li>Python</li><li>Mock Interviews</li></ul>
+            <a class="tlink" href="https://prephire-ai.web.app/" target="_blank" rel="noopener noreferrer">Open live site<span class="sr"> (PrepHire AI)</span></a>
           </div>
-          <a class="preview" href="https://prephire-ai.web.app/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="PrepHire AI" data-reveal="wipe"><canvas class="static" width="96" height="60" aria-hidden="true"></canvas><img src="img/preview-prephire.webp" alt="PrepHire AI preview" loading="lazy" decoding="async" onload="var t=this.parentNode.querySelector('.preview__tag');if(t)t.style.display='none'" onerror="this.remove()"><span class="label preview__tag">No signal</span><span class="preview__scan" aria-hidden="true"></span></a>
         </article>
-        <article class="exp" data-reveal>
-          <div class="exp__scene" aria-hidden="true"><img src="img/scene-orca.webp" alt="" loading="lazy" decoding="async" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/scene-prephire.webp'}else{this.style.display='none'}"></div>
-          <div class="exp__id"><span class="label">EXPERIMENT_004</span><dl class="exp__facts"><div><dt class="label">Stack</dt><dd>4 technologies</dd></div><div><dt class="label">Source</dt><dd>github.com/Chirayu1167/ORCA</dd></div></dl></div>
-          <div class="exp__body">
-            <h3 class="exp__title">ORCA</h3>
-            <p class="exp__desc">An ocean-data assistant for fishing-zone, sea-surface-temperature and weather queries, built on INCOIS data with an agent-based backend, an ocean map interface, and AI-written answers.</p>
-            <ul class="exp__tags"><li>Python</li><li>TypeScript</li><li>Firebase</li><li>LLMs</li></ul>
-            <a class="tlink" href="https://github.com/Chirayu1167/ORCA" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr-only"> (ORCA)</span></a>
+
+        <article class="card">
+          <a class="card__img" href="https://github.com/Chirayu1167/ORCA" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="img/preview-orca.webp" alt="" loading="lazy" decoding="async"></a>
+          <div class="card__body">
+            <h3>ORCA</h3>
+            <p>An ocean-data assistant for fishing-zone, sea-surface-temperature and weather queries, built on INCOIS data with an agent-based backend, an ocean map interface, and AI-written answers.</p>
+            <ul class="tags"><li>Python</li><li>TypeScript</li><li>Firebase</li><li>LLMs</li></ul>
+            <a class="tlink" href="https://github.com/Chirayu1167/ORCA" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (ORCA)</span></a>
           </div>
-          <a class="preview" href="https://github.com/Chirayu1167/ORCA" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="ORCA" data-reveal="wipe"><canvas class="static" width="96" height="60" aria-hidden="true"></canvas><img src="img/preview-orca.webp" alt="ORCA preview" loading="lazy" decoding="async" onload="var t=this.parentNode.querySelector('.preview__tag');if(t)t.style.display='none'" onerror="this.remove()"><span class="label preview__tag">No signal</span><span class="preview__scan" aria-hidden="true"></span></a>
         </article>
-        <article class="exp" data-reveal>
-          <div class="exp__scene" aria-hidden="true"><img src="img/scene-vista.webp" alt="" loading="lazy" decoding="async" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/scene-cyberfury.webp'}else{this.style.display='none'}"></div>
-          <div class="exp__id"><span class="label">CASE_FILE_005</span><dl class="exp__facts"><div><dt class="label">Stack</dt><dd>4 technologies</dd></div><div><dt class="label">Source</dt><dd>github.com/Chirayu1167/V.I.S.T.A.</dd></div></dl></div>
-          <div class="exp__body">
-            <h3 class="exp__title">VISTA</h3>
-            <p class="exp__desc">Vision-based Incident Surveillance for Traffic &amp; Assistance. A real-time CCTV AI system that detects road accidents and routes alerts to traffic police, hospital/EMS or police control based on severity.</p>
-            <ul class="exp__tags"><li>Python</li><li>YOLO11</li><li>ByteTrack</li><li>PyQt5</li></ul>
-            <a class="tlink" href="https://github.com/Chirayu1167/V.I.S.T.A." target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr-only"> (VISTA)</span></a>
+
+        <article class="card">
+          <a class="card__img card__img--vista" href="https://github.com/Chirayu1167/V.I.S.T.A." target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <line x1="0" y1="128" x2="320" y2="128" class="v-road"/><line x1="0" y1="150" x2="320" y2="150" class="v-road"/>
+              <rect x="44" y="92" width="86" height="40" rx="2" class="v-box"/><text x="44" y="86" class="v-txt">car 0.97</text>
+              <rect x="150" y="98" width="74" height="34" rx="2" class="v-box v-box--alert"/><text x="150" y="92" class="v-txt v-txt--alert">collision 0.94</text>
+              <rect x="244" y="104" width="52" height="28" rx="2" class="v-box"/><text x="244" y="98" class="v-txt">car 0.91</text>
+            </svg>
+          </a>
+          <div class="card__body">
+            <h3>VISTA</h3>
+            <p>Vision-based Incident Surveillance for Traffic &amp; Assistance. A real-time CCTV AI system that detects road accidents and routes alerts to traffic police, hospital/EMS or police control based on severity.</p>
+            <ul class="tags"><li>Python</li><li>YOLO11</li><li>ByteTrack</li><li>PyQt5</li></ul>
+            <a class="tlink" href="https://github.com/Chirayu1167/V.I.S.T.A." target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (VISTA)</span></a>
           </div>
-          <a class="preview" href="https://github.com/Chirayu1167/V.I.S.T.A." target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="VISTA" data-reveal="wipe"><canvas class="static" width="96" height="60" aria-hidden="true"></canvas><img src="img/preview-vista.webp" alt="VISTA preview" loading="lazy" decoding="async" onload="var t=this.parentNode.querySelector('.preview__tag');if(t)t.style.display='none'" onerror="this.remove()"><span class="label preview__tag">No signal</span><span class="preview__scan" aria-hidden="true"></span></a>
         </article>
-        <article class="exp" data-reveal>
-          <div class="exp__scene" aria-hidden="true"><img src="img/scene-phoenix.webp" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>
-          <div class="exp__id"><span class="label">EXPERIMENT_006</span><dl class="exp__facts"><div><dt class="label">Stack</dt><dd>3 technologies</dd></div><div><dt class="label">Source</dt><dd>github.com/Chirayu1167/Pheonix-AI-Assistant</dd></div></dl></div>
-          <div class="exp__body">
-            <h3 class="exp__title">Phoenix</h3>
-            <p class="exp__desc">A desktop voice assistant with wake-word activation, conversational commands, and productivity automation.</p>
-            <ul class="exp__tags"><li>Python</li><li>Tkinter</li><li>Voice AI</li></ul>
-            <a class="tlink" href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr-only"> (Phoenix)</span></a>
+
+        <article class="card">
+          <a class="card__img" href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="phoenix.png" alt="" loading="lazy" decoding="async"></a>
+          <div class="card__body">
+            <h3>Phoenix</h3>
+            <p>A desktop voice assistant with wake-word activation, conversational commands, and productivity automation.</p>
+            <ul class="tags"><li>Python</li><li>Tkinter</li><li>Voice AI</li></ul>
+            <a class="tlink" href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (Phoenix)</span></a>
           </div>
-          <a class="preview" href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="Phoenix" data-reveal="wipe"><img src="phoenix.png" width="1919" height="1079" alt="Phoenix voice assistant interface showing a glowing ring, a clock, and a listening status panel" loading="lazy" decoding="async"><span class="preview__scan" aria-hidden="true"></span></a>
         </article>
+
       </div>
     </div>
   </section>
 
-  <!-- TIMELINE -->
-  <section class="section" id="timeline" data-label="Timeline" data-world="normal">
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="label" data-reveal>The Journey</p>
-        <h2 class="sec-title reflect" data-text="The Journey" data-reveal="flicker" data-glitch>The Journey</h2>
-        <p class="sec-sub" data-reveal>From learning by building to production AI</p>
-      </div>
-      <ol class="tl" data-stagger>
-        <li class="tl__item"><span class="tl__year">2025</span><p class="tl__text">Started dual-degree studies in AI &amp; Data Science</p></li>
-        <li class="tl__item"><span class="tl__year">2026</span><p class="tl__text">First product development internship</p></li>
-        <li class="tl__item tl__item--win"><span class="tl__year">2026</span><p class="tl__text">Won Nirmaan 4.0</p></li>
-        <li class="tl__item"><span class="tl__year">2026</span><p class="tl__text">Joined Tronocity Labs to build AI infrastructure</p></li>
+      <h2 class="h2">Experience</h2>
+      <ol class="xp">
+        <li class="xp__item">
+          <p class="xp__when">May 2026 – Present</p>
+          <h3>AI Developer Intern</h3>
+          <p class="xp__org">Tronocity Labs</p>
+          <p>Building Gigzs/Akhrot, a memory layer for multi-LLM agents. Helped benchmark up to 58% lower token use.</p>
+        </li>
+        <li class="xp__item">
+          <p class="xp__when">May – Jul 2026</p>
+          <h3>Product Development Intern</h3>
+          <p class="xp__org">MITAOE Entrepreneurial Development Foundation</p>
+          <p>Led planning, UI/UX and workflows for TrafficBuddy, a traffic complaint app.</p>
+        </li>
       </ol>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section class="section" id="skills" data-label="Skills" data-world="normal">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label" data-reveal>Skills &amp; Stack</p>
-        <h2 class="sec-title reflect" data-text="Technical Arsenal" data-reveal="flicker" data-glitch>Technical Arsenal</h2>
-      </div>
-      <div class="skills" data-stagger>
-        <div class="skills__col"><h3 class="label label--red">Languages</h3><ul><li>Python</li><li>C</li><li>TypeScript</li><li>JavaScript</li><li>HTML</li><li>CSS</li></ul></div>
-        <div class="skills__col"><h3 class="label label--red">Frontend</h3><ul><li>React</li><li>Tailwind CSS</li><li>Vite</li></ul></div>
-        <div class="skills__col"><h3 class="label label--red">Backend</h3><ul><li>FastAPI</li><li>Flask</li><li>Firebase</li><li>MySQL</li><li>SQLite</li></ul></div>
-        <div class="skills__col"><h3 class="label label--red">Cloud</h3><ul><li>AWS</li><li>Vercel</li><li>Render</li></ul></div>
-        <div class="skills__col"><h3 class="label label--red">AI &amp; ML</h3><ul><li>LLMs</li><li>Machine Learning</li><li>Computer Vision</li><li>OpenCV</li><li>NLP</li><li>Scikit-learn</li></ul></div>
-      </div>
-    </div>
-  </section>
-
   <!-- ACHIEVEMENTS -->
-  <section class="section" id="achievements" data-label="Achievements" data-world="normal">
+  <section class="section section--tint" id="achievements">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="label" data-reveal>Hackathons</p>
-        <h2 class="sec-title reflect" data-text="Awards &amp; Achievements" data-reveal="flicker" data-glitch>Awards &amp; Achievements</h2>
-        <p class="sec-sub" data-reveal>Competition recognition and selected hackathons</p>
-      </div>
-      <article class="ach__feature" data-reveal>
-        <p class="label label--red">Hackathon — 1st Place</p>
-        <div>
-          <h3 class="ach__title">Nirmaan 4.0 Winner</h3>
-          <p>Recognized for <b>SACHET</b> (originally Iron Wallet) at the GDG MITAOE hackathon.</p>
-        </div>
+      <h2 class="h2">Achievements</h2>
+      <article class="win-card">
+        <p class="win-card__badge">1st place</p>
+        <h3>Nirmaan 4.0 winner</h3>
+        <p>GDG MITAOE hackathon, for SACHET.</p>
       </article>
-      <div class="ach__rows" data-stagger>
-        <article class="ach__row"><p class="label">Participant</p><h4>Velora 2026</h4><p>Hackathon participant, developing a solution with a team under a time-bound challenge.</p></article>
-        <article class="ach__row"><p class="label">Team Hellfire · Participant</p><h4>Datathon 2026</h4><p>Participated in the 2026 data-science competition with Team Hellfire.</p></article>
-        <article class="ach__row"><p class="label">Participant</p><h4>TechSprint 2026</h4><p>Participant in the 2026 TechSprint, building and presenting a technology solution.</p></article>
-      </div>
+      <ul class="part">
+        <li><span>Velora 2026</span><span>Participant</span></li>
+        <li><span>Datathon 2026</span><span>Team Hellfire</span></li>
+        <li><span>TechSprint 2026</span><span>Participant</span></li>
+      </ul>
 
-      <!-- Certifications: hidden in the original site and kept hidden here.
-           Remove the `hidden` attribute below to show them. -->
-      <div class="certs" hidden>
-        <h3 class="label">Certifications</h3>
-        <ul>
-          <li><p class="label">Anthropic</p><h4>AI Fluency for Nonprofits</h4><p>March 2026 · ID: w37uzc5rufy3</p><a class="tlink" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a></li>
-          <li><p class="label">Anthropic</p><h4>AI Fluency for Students</h4><p>March 2026 · ID: qfxivifkpyor</p><a class="tlink" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a></li>
-          <li><p class="label">Anthropic</p><h4>AI Fluency Framework &amp; Foundations</h4><p>March 2026 · ID: n2zvbeupsao9</p><a class="tlink" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a></li>
-          <li><p class="label">Anthropic</p><h4>Claude 101</h4><p>March 2026 · ID: czkuhmj6hj4j</p><a class="tlink" href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">View Credential</a></li>
-          <li><p class="label">Cisco</p><h4>Introduction to Modern AI</h4><p>December 2025 · Cisco Networking Academy</p><a class="tlink" href="https://www.netacad.com" target="_blank" rel="noopener noreferrer">View Credential</a></li>
-          <li><p class="label">IBM</p><h4>Python Essentials 1 &amp; 2</h4><p>IBM SkillsBuild · Dual Certification</p><a class="tlink" href="https://skillsbuild.org" target="_blank" rel="noopener noreferrer">View Credential</a></li>
-          <li><p class="label">IBM</p><h4>Career Management Essentials</h4><p>IBM SkillsBuild · Professional Development</p><a class="tlink" href="https://skillsbuild.org" target="_blank" rel="noopener noreferrer">View Credential</a></li>
-          <li><p class="label">Cisco</p><h4>Data Analytics</h4><p>Cisco Networking Academy</p><a class="tlink" href="https://www.netacad.com" target="_blank" rel="noopener noreferrer">View Provider</a></li>
-          <li><p class="label">Cisco</p><h4>Python Essentials 1 &amp; 2</h4><p>Cisco Networking Academy</p><a class="tlink" href="https://www.netacad.com" target="_blank" rel="noopener noreferrer">View Provider</a></li>
-        </ul>
-      </div>
+      <!-- Certifications: hidden in the original site, kept hidden. Remove `hidden` to show. -->
+      <ul class="part" hidden>
+        <li><span>AI Fluency Framework &amp; Foundations</span><span>Anthropic</span></li>
+        <li><span>Claude 101</span><span>Anthropic</span></li>
+        <li><span>Introduction to Modern AI</span><span>Cisco</span></li>
+        <li><span>Python Essentials 1 &amp; 2</span><span>IBM / Cisco</span></li>
+      </ul>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="section" id="contact" data-label="Contact" data-world="up">
+  <section class="section" id="contact">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="label" data-reveal>Find me in Hawkins Mall</p>
-        <h2 class="sec-title reflect" data-text="Contact" data-reveal="flicker" data-glitch>Contact</h2>
-        <p class="sec-sub" data-reveal>Connect through the lights and signals</p>
-      </div>
-      <div class="contact" data-reveal>
-        <p class="label">Email</p>
-        <div>
-          <a class="contact__mail" href="mailto:mahajanchirayu1167@gmail.com">mahajanchirayu1167@gmail.com</a>
-          <div class="contact__rows">
-            <a class="contact__row" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span class="label">Chirayu1167</span></a>
-            <a class="contact__row" href="https://linkedin.com/in/chirayu-mahajan-390766309" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span class="label">Chirayu Mahajan</span></a>
-          </div>
-      <div class="wall" id="wall" aria-hidden="true">
-        <div class="wall__row"><span class="cell" data-l="A" style="--c:#c62828;--sag:3.4px"><i class="bulb"></i><b>A</b></span><span class="cell" data-l="B" style="--c:#d9984a;--sag:9.8px"><i class="bulb"></i><b>B</b></span><span class="cell" data-l="C" style="--c:#e8e4dc;--sag:15.0px"><i class="bulb"></i><b>C</b></span><span class="cell" data-l="D" style="--c:#5b9a9c;--sag:18.3px"><i class="bulb"></i><b>D</b></span><span class="cell" data-l="E" style="--c:#8f1a22;--sag:19.5px"><i class="bulb"></i><b>E</b></span><span class="cell" data-l="F" style="--c:#c62828;--sag:18.3px"><i class="bulb"></i><b>F</b></span><span class="cell" data-l="G" style="--c:#d9984a;--sag:15.0px"><i class="bulb"></i><b>G</b></span><span class="cell" data-l="H" style="--c:#e8e4dc;--sag:9.8px"><i class="bulb"></i><b>H</b></span><span class="cell" data-l="I" style="--c:#5b9a9c;--sag:3.4px"><i class="bulb"></i><b>I</b></span></div>
-        <div class="wall__row"><span class="cell" data-l="J" style="--c:#8f1a22;--sag:3.4px"><i class="bulb"></i><b>J</b></span><span class="cell" data-l="K" style="--c:#c62828;--sag:9.8px"><i class="bulb"></i><b>K</b></span><span class="cell" data-l="L" style="--c:#d9984a;--sag:15.0px"><i class="bulb"></i><b>L</b></span><span class="cell" data-l="M" style="--c:#e8e4dc;--sag:18.3px"><i class="bulb"></i><b>M</b></span><span class="cell" data-l="N" style="--c:#5b9a9c;--sag:19.5px"><i class="bulb"></i><b>N</b></span><span class="cell" data-l="O" style="--c:#8f1a22;--sag:18.3px"><i class="bulb"></i><b>O</b></span><span class="cell" data-l="P" style="--c:#c62828;--sag:15.0px"><i class="bulb"></i><b>P</b></span><span class="cell" data-l="Q" style="--c:#d9984a;--sag:9.8px"><i class="bulb"></i><b>Q</b></span><span class="cell" data-l="R" style="--c:#e8e4dc;--sag:3.4px"><i class="bulb"></i><b>R</b></span></div>
-        <div class="wall__row"><span class="cell" data-l="S" style="--c:#5b9a9c;--sag:3.8px"><i class="bulb"></i><b>S</b></span><span class="cell" data-l="T" style="--c:#8f1a22;--sag:10.8px"><i class="bulb"></i><b>T</b></span><span class="cell" data-l="U" style="--c:#c62828;--sag:16.2px"><i class="bulb"></i><b>U</b></span><span class="cell" data-l="V" style="--c:#d9984a;--sag:19.2px"><i class="bulb"></i><b>V</b></span><span class="cell" data-l="W" style="--c:#e8e4dc;--sag:19.2px"><i class="bulb"></i><b>W</b></span><span class="cell" data-l="X" style="--c:#5b9a9c;--sag:16.2px"><i class="bulb"></i><b>X</b></span><span class="cell" data-l="Y" style="--c:#8f1a22;--sag:10.8px"><i class="bulb"></i><b>Y</b></span><span class="cell" data-l="Z" style="--c:#c62828;--sag:3.8px"><i class="bulb"></i><b>Z</b></span></div>
-      </div>
-        </div>
+      <h2 class="h2">Contact</h2>
+      <p class="sub">Open to internships and AI projects.</p>
+      <div class="links">
+        <a href="mailto:mahajanchirayu1167@gmail.com"><span>Email</span><b>mahajanchirayu1167@gmail.com</b></a>
+        <a href="https://linkedin.com/in/chirayu-mahajan-390766309" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><b>Chirayu Mahajan</b></a>
+        <a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer"><span>GitHub</span><b>Chirayu1167</b></a>
       </div>
     </div>
   </section>
@@ -354,10 +211,7 @@
 </main>
 
 <footer class="footer">
-  <div class="wrap">
-    <p>© 2026 Chirayu Mahajan. All rights reserved.</p>
-    <a href="#hero">Back to top</a>
-  </div>
+  <div class="wrap"><p>© 2026 Chirayu Mahajan</p><a href="#top">Back to top</a></div>
 </footer>
 
 <script src="js/main.js"></script>
