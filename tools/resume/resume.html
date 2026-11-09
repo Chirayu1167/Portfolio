@@ -6,14 +6,14 @@
 @font-face { font-family: "IBM Plex Sans"; src: url("../../fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
 @page { size: A4; margin: 0; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --ink:#0f1729; --blue:#2a45f0; --muted:#4b5568; --side:#0f1729; --sidetxt:#dfe4f2; --sidemut:#9aa6c8; }
+:root { --ink:#16181a; --blue:#b8340a; --ember:#e8501f; --lime:#b6e07a; --muted:#57554d; --side:#11201b; --sidetxt:#e3ece7; --sidemut:#a9bdb3; }
 html, body { width: 210mm; height: 297mm; }
 body { font-family: "IBM Plex Sans", Arial, sans-serif; font-size: 9.4pt; line-height: 1.45; color: var(--ink); display: grid; grid-template-columns: 70mm 1fr; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 
 aside { background: var(--side); color: var(--sidetxt); padding: 16mm 8mm 12mm 9mm; display: flex; flex-direction: column; gap: 7mm; }
-aside h2 { font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 11.5pt; color: #fff; margin-bottom: 2.4mm; padding-bottom: 1.6mm; border-bottom: 1.5px solid var(--blue); letter-spacing: .01em; }
+aside h2 { font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 11.5pt; color: #fff; margin-bottom: 2.4mm; padding-bottom: 1.6mm; border-bottom: 2px solid var(--ember); letter-spacing: .01em; }
 aside li { margin-bottom: 1.6mm; font-size: 8.8pt; overflow-wrap: anywhere; }
 aside .k { display: block; color: var(--sidemut); font-size: 7.8pt; }
 aside .edu b { display: block; font-weight: 500; color: #fff; }
@@ -26,7 +26,7 @@ main { padding: 16mm 11mm 12mm 11mm; display: flex; flex-direction: column; gap:
 .role { color: var(--blue); font-weight: 500; font-size: 11pt; margin-top: 2mm; }
 .sum { color: var(--muted); margin-top: 3.5mm; }
 main h2 { font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 12pt; margin-bottom: 2.6mm; display: flex; align-items: center; gap: 3mm; }
-main h2::after { content: ""; flex: 1; height: 1px; background: #cfd6e3; }
+main h2::after { content: ""; flex: 1; height: 1px; background: #d8cfbc; }
 .job { margin-bottom: 3.4mm; }
 .job:last-child { margin-bottom: 0; }
 .row { display: flex; justify-content: space-between; gap: 6mm; align-items: baseline; }
@@ -34,11 +34,11 @@ main h2::after { content: ""; flex: 1; height: 1px; background: #cfd6e3; }
 .row .d { color: var(--muted); font-size: 8.4pt; white-space: nowrap; }
 .org { color: var(--blue); font-size: 8.8pt; font-weight: 500; }
 .job ul { margin-top: 1.4mm; }
-.job li { position: relative; padding-left: 4mm; color: #2b3447; margin-bottom: .8mm; }
-.job li::before { content: ""; position: absolute; left: 0; top: .52em; width: 1.6mm; height: 1.6mm; background: var(--blue); border-radius: 50%; }
+.job li { position: relative; padding-left: 4mm; color: #2b2d2f; margin-bottom: .8mm; }
+.job li::before { content: ""; position: absolute; left: 0; top: .52em; width: 1.6mm; height: 1.6mm; background: var(--ember); border-radius: 50%; }
 .proj { margin-bottom: 3mm; }
-.proj p { color: #2b3447; }
-.tag { display: inline-block; margin-left: 2mm; padding: .2mm 2mm; background: var(--ink); color: #fff; border-radius: 4mm; font-size: 7.4pt; font-weight: 500; vertical-align: 1px; }
+.proj p { color: #2b2d2f; }
+.tag { display: inline-block; margin-left: 2mm; padding: .2mm 2mm; background: var(--lime); color: var(--ink); border: .3mm solid var(--ink); border-radius: 1.2mm; font-size: 7.4pt; font-weight: 500; vertical-align: 1px; }
 </style></head>
 <body>
 <aside>

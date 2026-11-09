@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Chirayu Mahajan | AI &amp; ML Engineer</title>
 <meta name="description" content="Chirayu Mahajan is an AI &amp; ML engineer building computer vision, LLM agent and backend systems.">
-<meta name="theme-color" content="#eef1f6">
+<meta name="theme-color" content="#f3eee4">
 <link rel="preload" href="fonts/bricolage-grotesque-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/styles.css">
@@ -42,11 +42,17 @@
         </div>
       </div>
 
-      <figure class="detect" id="detect">
-        <img src="profile.jpg" width="750" height="750" alt="Portrait of Chirayu Mahajan looking up and to the side" fetchpriority="high">
-        <span class="detect__box" aria-hidden="true"></span>
-        <span class="detect__tag" aria-hidden="true">ai-engineer <b id="conf">0.98</b></span>
-      </figure>
+      <div class="visual">
+        <figure class="detect" id="detect">
+          <img src="profile.jpg" width="750" height="750" alt="Portrait of Chirayu Mahajan looking up and to the side" fetchpriority="high">
+          <span class="detect__box" aria-hidden="true"></span>
+          <span class="detect__tag" aria-hidden="true">ai-engineer <b id="conf">0.98</b></span>
+          <span class="detect__box detect__box--2" aria-hidden="true"></span>
+          <span class="detect__tag detect__tag--2" aria-hidden="true">blazer 0.91</span>
+          <span class="scan" aria-hidden="true"></span>
+        </figure>
+        <div class="infer" aria-hidden="true"><span>&gt; detect(cctv_feed)</span><b>accident 0.94 · 0.6s</b></div>
+      </div>
     </div>
   </section>
 
@@ -55,18 +61,22 @@
     <div class="wrap">
       <h2 class="h2">About Me</h2>
       <div class="about">
-        <p class="about__text">I take a problem from first principles, build the system, and test it against real constraints. Most interested in where applied AI meets solid engineering.</p>
-
-        <dl class="edu">
-          <div><dt>B.Tech, AI &amp; ML</dt><dd>MIT Academy of Engineering</dd></div>
-          <div><dt>B.S., Data Science</dt><dd>IIT Madras</dd></div>
-        </dl>
-
-        <ul class="chips" aria-label="Skills">
-          <li>Python</li><li>LLMs &amp; Agents</li><li>Computer Vision</li><li>FastAPI</li><li>React</li><li>AWS</li>
-        </ul>
-
-        <a class="btn" href="resume.pdf" target="_blank" rel="noopener" download="Chirayu-Mahajan-Resume.pdf">Download resume</a>
+        <div class="about__main">
+          <p class="about__text">I take a problem from first principles, build the system, and test it against real constraints. Most interested in where applied AI meets solid engineering.</p>
+          <dl class="edu">
+            <div><dt>B.Tech, AI &amp; ML</dt><dd>MIT Academy of Engineering</dd></div>
+            <div><dt>B.S., Data Science</dt><dd>IIT Madras</dd></div>
+          </dl>
+          <a class="btn" href="resume.pdf" target="_blank" rel="noopener" download="Chirayu-Mahajan-Resume.pdf">Download resume</a>
+        </div>
+        <div class="model">
+          <h3>Toolkit</h3>
+          <dl>
+            <div><dt>Languages</dt><dd><span>Python</span><span>C</span><span>TypeScript</span></dd></div>
+            <div><dt>AI &amp; ML</dt><dd><span>LLMs &amp; Agents</span><span>Computer Vision</span><span>NLP</span></dd></div>
+            <div><dt>Build</dt><dd><span>FastAPI</span><span>React</span><span>AWS</span></dd></div>
+          </dl>
+        </div>
       </div>
     </div>
   </section>
@@ -174,6 +184,7 @@
   <section class="section section--tint" id="achievements">
     <div class="wrap">
       <h2 class="h2">Achievements</h2>
+      <div class="ach">
       <article class="win-card">
         <p class="win-card__badge">1st place</p>
         <h3>Nirmaan 4.0 winner</h3>
@@ -184,6 +195,7 @@
         <li><span>Datathon 2026</span><span>Team Hellfire</span></li>
         <li><span>TechSprint 2026</span><span>Participant</span></li>
       </ul>
+      </div>
 
       <!-- Certifications: hidden in the original site, kept hidden. Remove `hidden` to show. -->
       <ul class="part" hidden>
@@ -196,7 +208,7 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="section" id="contact">
+  <section class="section section--dark" id="contact">
     <div class="wrap">
       <h2 class="h2">Contact</h2>
       <p class="sub">Open to internships and AI projects.</p>
