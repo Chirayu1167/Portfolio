@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('fx');})(document.documentElement)</script>
 <title>Chirayu Mahajan | AI &amp; ML Engineer</title>
 <meta name="description" content="Chirayu Mahajan is an AI &amp; ML engineer building computer vision, LLM agent and backend systems.">
 <meta name="theme-color" content="#f3eee4">
@@ -12,6 +13,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<canvas id="system" aria-hidden="true"></canvas>
 
 <header class="nav" id="nav">
   <div class="nav__in">
@@ -26,179 +28,253 @@
     <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
   </div>
 </header>
+<p class="hud" id="hud" aria-hidden="true"><b id="hud-n">01</b><span id="hud-t">input · initialize</span></p>
 
 <main id="main">
 
-  <!-- HERO -->
+  <!-- HERO: neural network initialises, name decodes as the activation front passes -->
   <section class="hero" id="top">
-    <div class="wrap hero__in">
-      <div class="hero__copy">
+    <div class="hero__stick" id="hero-stick">
+      <div class="wrap hero__in" id="hero-in">
         <p class="chip"><span class="chip__dot" aria-hidden="true"></span>AI Developer Intern, Tronocity Labs</p>
-        <h1 class="hero__name">Chirayu Mahajan</h1>
-        <p class="hero__lede">I build AI systems that see, reason and remember.</p>
-        <div class="hero__actions">
+        <h1 class="hero__name" id="name" aria-label="Chirayu Mahajan"><span class="ln">Chirayu</span><span class="ln">Mahajan</span></h1>
+        <p class="hero__lede" id="lede"><span class="sr">I build AI systems that see, reason and remember.</span><span id="stream" aria-hidden="true">I build AI systems that see, reason and remember.</span><i class="caret" aria-hidden="true"></i></p>
+        <div class="hero__actions" id="hero-cta">
           <a class="btn" href="#projects">View projects</a>
           <a class="btn btn--ghost" href="#contact">Contact</a>
         </div>
       </div>
-
-      <div class="visual">
-        <figure class="detect" id="detect">
-          <img src="profile.jpg" width="750" height="750" alt="Portrait of Chirayu Mahajan looking up and to the side" fetchpriority="high">
-          <span class="detect__box" aria-hidden="true"></span>
-          <span class="detect__tag" aria-hidden="true">ai-engineer <b id="conf">0.98</b></span>
-          <span class="detect__box detect__box--2" aria-hidden="true"></span>
-          <span class="detect__tag detect__tag--2" aria-hidden="true">blazer 0.91</span>
-          <span class="scan" aria-hidden="true"></span>
-        </figure>
-        <div class="infer" aria-hidden="true"><span>&gt; detect(cctv_feed)</span><b>accident 0.94 · 0.6s</b></div>
-      </div>
+      <p class="hero__hint" aria-hidden="true">scroll to run the forward pass</p>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="wrap">
-      <h2 class="h2">About Me</h2>
-      <div class="about">
-        <div class="about__main">
-          <p class="about__text">I take a problem from first principles, build the system, and test it against real constraints. Most interested in where applied AI meets solid engineering.</p>
-          <dl class="edu">
-            <div><dt>B.Tech, AI &amp; ML</dt><dd>MIT Academy of Engineering</dd></div>
-            <div><dt>B.S., Data Science</dt><dd>IIT Madras</dd></div>
-          </dl>
-          <a class="btn" href="resume.pdf" target="_blank" rel="noopener" download="Chirayu-Mahajan-Resume.pdf">Download resume</a>
-        </div>
-        <div class="model">
+  <!-- ABOUT: raw data enters the pipeline and settles into clusters -->
+  <section class="section about" id="about">
+    <div class="wrap about__grid">
+      <div class="about__col">
+        <h2 class="h2" data-scan>About Me</h2>
+        <p class="about__text" data-scan>I take a problem from first principles, build the system, and test it against real constraints. Most interested in where applied AI meets solid engineering.</p>
+        <dl class="edu" data-scan>
+          <div><dt>B.Tech, AI &amp; ML</dt><dd>MIT Academy of Engineering</dd></div>
+          <div><dt>B.S., Data Science</dt><dd>IIT Madras</dd></div>
+        </dl>
+        <div class="toolkit" data-scan>
           <h3>Toolkit</h3>
           <dl>
-            <div><dt>Languages</dt><dd><span>Python</span><span>C</span><span>TypeScript</span></dd></div>
-            <div><dt>AI &amp; ML</dt><dd><span>LLMs &amp; Agents</span><span>Computer Vision</span><span>NLP</span></dd></div>
-            <div><dt>Build</dt><dd><span>FastAPI</span><span>React</span><span>AWS</span></dd></div>
+            <div style="--c:var(--ember)"><dt>Languages</dt><dd><span>Python</span><span>C</span><span>TypeScript</span></dd></div>
+            <div style="--c:#2e6b54"><dt>AI &amp; ML</dt><dd><span>LLMs &amp; Agents</span><span>Computer Vision</span><span>NLP</span></dd></div>
+            <div style="--c:var(--ink)"><dt>Build</dt><dd><span>FastAPI</span><span>React</span><span>AWS</span></dd></div>
           </dl>
+        </div>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener" download="Chirayu-Mahajan-Resume.pdf">Download resume</a>
+      </div>
+      <figure class="portrait" data-lock>
+        <img src="profile.jpg" width="750" height="750" alt="Portrait of Chirayu Mahajan looking up and to the side" loading="lazy" decoding="async">
+        <span class="bb bb--a" aria-hidden="true"><i class="bb__t">ai-engineer 0.98</i></span>
+        <span class="bb bb--b" aria-hidden="true"><i class="bb__t">blazer 0.91</i></span>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PROJECTS: pinned inference viewfinder; each project is an experiment -->
+  <section class="projects" id="projects">
+    <div class="projects__track" id="proj-track">
+      <div class="stage" id="proj-stage">
+        <div class="wrap stage__in">
+          <div class="stage__head">
+            <h2 class="h2" data-scan>Projects</h2>
+            <p class="sub">Real-world AI builds. <a class="tlink" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">More on GitHub</a></p>
+          </div>
+          <div class="stage__body" id="proj-list">
+
+            <article class="proj" data-i="0">
+              <figure class="proj__shot">
+                <img src="img/preview-synapse.webp" width="1917" height="973" alt="" loading="lazy" decoding="async">
+                <div class="det" aria-hidden="true">
+                  <span class="bb" style="--x:16%;--y:33%;--w:17%;--h:52%;--ox:-40px;--oy:26px;--sc:.5" data-l="agent" data-c="0.97"><i class="bb__t">agent 0.97</i></span>
+                  <span class="bb" style="--x:47%;--y:37%;--w:39%;--h:23%;--ox:30px;--oy:-24px;--sc:.35" data-l="headline" data-c="0.99"><i class="bb__t">headline 0.99</i></span>
+                  <span class="bb" style="--x:76%;--y:33%;--w:18%;--h:49%;--ox:44px;--oy:30px;--sc:.6" data-l="memory" data-c="0.94"><i class="bb__t">memory 0.94</i></span>
+                </div>
+                <span class="cross" aria-hidden="true"></span><span class="wipe" aria-hidden="true"></span>
+              </figure>
+              <div class="proj__body">
+                <p class="proj__id">exp_01 · live</p>
+                <h3>Synapse</h3>
+                <p>A workspace for project tracking, GitHub repository intelligence, and preserving context between AI-assisted work sessions.</p>
+                <ul class="tags"><li>React</li><li>TypeScript</li><li>FastAPI</li><li>LLMs</li></ul>
+                <a class="tlink" href="https://synapse1167.vercel.app/" target="_blank" rel="noopener noreferrer">Open live site<span class="sr"> (Synapse)</span></a>
+              </div>
+            </article>
+
+            <article class="proj" data-i="1">
+              <figure class="proj__shot">
+                <img src="img/preview-sachet.webp" width="1917" height="971" alt="" loading="lazy" decoding="async">
+                <div class="det" aria-hidden="true">
+                  <span class="bb" style="--x:15%;--y:3%;--w:70%;--h:21%;--ox:0px;--oy:-30px;--sc:.25" data-l="balance" data-c="0.98"><i class="bb__t">balance 0.98</i></span>
+                  <span class="bb" style="--x:15%;--y:38%;--w:36%;--h:42%;--ox:-36px;--oy:24px;--sc:.4" data-l="services" data-c="0.95"><i class="bb__t">services 0.95</i></span>
+                  <span class="bb" style="--x:52%;--y:38%;--w:33%;--h:42%;--ox:40px;--oy:20px;--sc:.4" data-l="payments" data-c="0.96"><i class="bb__t">payments 0.96</i></span>
+                </div>
+                <span class="cross" aria-hidden="true"></span><span class="wipe" aria-hidden="true"></span>
+              </figure>
+              <div class="proj__body">
+                <p class="proj__id">exp_02 · source</p>
+                <h3>SACHET <span class="win">Nirmaan 4.0 winner</span></h3>
+                <p>A digital wallet that scores transaction risk from behavioral signals, adds OTP verification, and surfaces scam intelligence.</p>
+                <ul class="tags"><li>FastAPI</li><li>React</li><li>Machine Learning</li><li>Python</li></ul>
+                <a class="tlink" href="https://github.com/Chirayu1167/SACHET" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (SACHET)</span></a>
+              </div>
+            </article>
+
+            <article class="proj" data-i="2">
+              <figure class="proj__shot">
+                <img src="img/preview-prephire.webp" width="1917" height="973" alt="" loading="lazy" decoding="async">
+                <div class="det" aria-hidden="true">
+                  <span class="bb" style="--x:3%;--y:25%;--w:40%;--h:21%;--ox:-30px;--oy:-20px;--sc:.35" data-l="headline" data-c="0.99"><i class="bb__t">headline 0.99</i></span>
+                  <span class="bb" style="--x:55%;--y:17%;--w:42%;--h:42%;--ox:40px;--oy:-26px;--sc:.45" data-l="interview" data-c="0.97"><i class="bb__t">interview 0.97</i></span>
+                  <span class="bb" style="--x:6%;--y:64%;--w:88%;--h:23%;--ox:0px;--oy:34px;--sc:.2" data-l="stats" data-c="0.93"><i class="bb__t">stats 0.93</i></span>
+                </div>
+                <span class="cross" aria-hidden="true"></span><span class="wipe" aria-hidden="true"></span>
+              </figure>
+              <div class="proj__body">
+                <p class="proj__id">exp_03 · live</p>
+                <h3>PrepHire AI</h3>
+                <p>A placement-preparation platform with mock interviews, coding challenges, and structured learning resources.</p>
+                <ul class="tags"><li>React</li><li>Python</li><li>Mock Interviews</li></ul>
+                <a class="tlink" href="https://prephire-ai.web.app/" target="_blank" rel="noopener noreferrer">Open live site<span class="sr"> (PrepHire AI)</span></a>
+              </div>
+            </article>
+
+            <article class="proj" data-i="3">
+              <figure class="proj__shot">
+                <img src="img/preview-orca.webp" width="1917" height="977" alt="" loading="lazy" decoding="async">
+                <div class="det" aria-hidden="true">
+                  <span class="bb" style="--x:4%;--y:8%;--w:34%;--h:80%;--ox:-40px;--oy:20px;--sc:.3" data-l="chat" data-c="0.96"><i class="bb__t">chat 0.96</i></span>
+                  <span class="bb" style="--x:40%;--y:11%;--w:55%;--h:45%;--ox:30px;--oy:-24px;--sc:.4" data-l="ocean-map" data-c="0.98"><i class="bb__t">ocean-map 0.98</i></span>
+                  <span class="bb" style="--x:40%;--y:60%;--w:55%;--h:30%;--ox:34px;--oy:30px;--sc:.3" data-l="query" data-c="0.92"><i class="bb__t">query 0.92</i></span>
+                </div>
+                <span class="cross" aria-hidden="true"></span><span class="wipe" aria-hidden="true"></span>
+              </figure>
+              <div class="proj__body">
+                <p class="proj__id">exp_04 · source</p>
+                <h3>ORCA</h3>
+                <p>An ocean-data assistant for fishing-zone, sea-surface-temperature and weather queries, built on INCOIS data with an agent-based backend, an ocean map interface, and AI-written answers.</p>
+                <ul class="tags"><li>Python</li><li>TypeScript</li><li>Firebase</li><li>LLMs</li></ul>
+                <a class="tlink" href="https://github.com/Chirayu1167/ORCA" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (ORCA)</span></a>
+              </div>
+            </article>
+
+            <article class="proj" data-i="4">
+              <figure class="proj__shot proj__shot--vista">
+                <svg viewBox="0 0 394 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <rect width="394" height="200" fill="#0f1c18"/>
+                  <rect y="116" width="394" height="84" fill="#162a22"/>
+                  <line x1="0" y1="116" x2="394" y2="116" stroke="#2a4339"/>
+                  <line x1="0" y1="170" x2="394" y2="170" stroke="#2a4339" stroke-dasharray="14 12"/>
+                  <g fill="#23392f" stroke="#3b5a4c"><rect x="40" y="122" width="90" height="34" rx="9"/><rect x="62" y="108" width="48" height="20" rx="6"/><rect x="152" y="122" width="84" height="34" rx="9"/><rect x="170" y="108" width="46" height="20" rx="6"/><rect x="226" y="124" width="72" height="32" rx="9" transform="rotate(-5 262 140)"/><rect x="244" y="111" width="40" height="19" rx="6" transform="rotate(-5 262 140)"/></g>
+                  <g fill="#0f1c18" stroke="#3b5a4c"><circle cx="60" cy="157" r="8"/><circle cx="112" cy="157" r="8"/><circle cx="172" cy="157" r="8"/><circle cx="216" cy="157" r="8"/><circle cx="246" cy="157" r="8"/><circle cx="286" cy="157" r="8"/></g>
+                  <path d="M228 124l10-14 4 12 12-10-4 14 14-2-12 10" fill="none" stroke="#ff7a45" stroke-width="2" stroke-linejoin="round"/>
+                  <text x="12" y="20" fill="#b6e07a" font-family="JetBrains Mono, monospace" font-size="9">CAM 04 · REC</text>
+                  <text x="382" y="20" fill="#b6e07a" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="end">00:14:32</text>
+                </svg>
+                <div class="det" aria-hidden="true">
+                  <span class="bb" style="--x:9%;--y:52%;--w:25%;--h:30%;--ox:-36px;--oy:20px;--sc:.5" data-l="car" data-c="0.97"><i class="bb__t">car 0.97</i></span>
+                  <span class="bb bb--alert" style="--x:38%;--y:52%;--w:22%;--h:30%;--ox:0px;--oy:-30px;--sc:.5" data-l="car" data-c="0.91"><i class="bb__t">car 0.91</i></span>
+                  <span class="bb bb--alert" style="--x:56%;--y:46%;--w:21%;--h:36%;--ox:36px;--oy:20px;--sc:.5" data-l="collision" data-c="0.94"><i class="bb__t">collision 0.94</i></span>
+                </div>
+                <span class="cross" aria-hidden="true"></span><span class="wipe" aria-hidden="true"></span>
+              </figure>
+              <div class="proj__body">
+                <p class="proj__id">exp_05 · source</p>
+                <h3>VISTA</h3>
+                <p>Vision-based Incident Surveillance for Traffic &amp; Assistance. A real-time CCTV AI system that detects road accidents and routes alerts to traffic police, hospital/EMS or police control based on severity.</p>
+                <ul class="tags"><li>Python</li><li>YOLO11</li><li>ByteTrack</li><li>PyQt5</li></ul>
+                <a class="tlink" href="https://github.com/Chirayu1167/V.I.S.T.A." target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (VISTA)</span></a>
+              </div>
+            </article>
+
+            <article class="proj" data-i="5">
+              <figure class="proj__shot">
+                <img src="phoenix.png" width="1919" height="1079" alt="" loading="lazy" decoding="async">
+                <div class="det" aria-hidden="true">
+                  <span class="bb" style="--x:39%;--y:27%;--w:24%;--h:42%;--ox:-30px;--oy:-20px;--sc:.5" data-l="wake-ring" data-c="0.97"><i class="bb__t">wake-ring 0.97</i></span>
+                  <span class="bb" style="--x:37%;--y:70%;--w:27%;--h:11%;--ox:0px;--oy:30px;--sc:.3" data-l="wordmark" data-c="0.95"><i class="bb__t">wordmark 0.95</i></span>
+                  <span class="bb" style="--x:67%;--y:18%;--w:30%;--h:62%;--ox:40px;--oy:-10px;--sc:.4" data-l="terminal" data-c="0.91"><i class="bb__t">terminal 0.91</i></span>
+                </div>
+                <span class="cross" aria-hidden="true"></span><span class="wipe" aria-hidden="true"></span>
+              </figure>
+              <div class="proj__body">
+                <p class="proj__id">exp_06 · source</p>
+                <h3>Phoenix</h3>
+                <p>A desktop voice assistant with wake-word activation, conversational commands, and productivity automation.</p>
+                <ul class="tags"><li>Python</li><li>Tkinter</li><li>Voice AI</li></ul>
+                <a class="tlink" href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (Phoenix)</span></a>
+              </div>
+            </article>
+
+          </div>
+          <div class="stage__foot" aria-hidden="false">
+            <p class="stage__count" id="proj-count" aria-hidden="true">exp_01 / 06</p>
+            <ol class="rail" id="rail" aria-label="Project navigation"></ol>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section class="section section--tint" id="projects">
-    <div class="wrap">
-      <h2 class="h2">Projects</h2>
-      <p class="sub">Real-world AI builds. <a class="tlink" href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer">More on GitHub</a></p>
-      <div class="grid">
-
-        <article class="card">
-          <a class="card__img" href="https://synapse1167.vercel.app/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="img/preview-synapse.webp" alt="" loading="lazy" decoding="async"></a>
-          <div class="card__body">
-            <h3>Synapse</h3>
-            <p>A workspace for project tracking, GitHub repository intelligence, and preserving context between AI-assisted work sessions.</p>
-            <ul class="tags"><li>React</li><li>TypeScript</li><li>FastAPI</li><li>LLMs</li></ul>
-            <a class="tlink" href="https://synapse1167.vercel.app/" target="_blank" rel="noopener noreferrer">Open live site<span class="sr"> (Synapse)</span></a>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="card__img" href="https://github.com/Chirayu1167/SACHET" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="img/preview-sachet.webp" alt="" loading="lazy" decoding="async"></a>
-          <div class="card__body">
-            <h3>SACHET <span class="win">Nirmaan 4.0 winner</span></h3>
-            <p>A digital wallet that scores transaction risk from behavioral signals, adds OTP verification, and surfaces scam intelligence.</p>
-            <ul class="tags"><li>FastAPI</li><li>React</li><li>Machine Learning</li><li>Python</li></ul>
-            <a class="tlink" href="https://github.com/Chirayu1167/SACHET" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (SACHET)</span></a>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="card__img" href="https://prephire-ai.web.app/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="img/preview-prephire.webp" alt="" loading="lazy" decoding="async"></a>
-          <div class="card__body">
-            <h3>PrepHire AI</h3>
-            <p>A placement-preparation platform with mock interviews, coding challenges, and structured learning resources.</p>
-            <ul class="tags"><li>React</li><li>Python</li><li>Mock Interviews</li></ul>
-            <a class="tlink" href="https://prephire-ai.web.app/" target="_blank" rel="noopener noreferrer">Open live site<span class="sr"> (PrepHire AI)</span></a>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="card__img" href="https://github.com/Chirayu1167/ORCA" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="img/preview-orca.webp" alt="" loading="lazy" decoding="async"></a>
-          <div class="card__body">
-            <h3>ORCA</h3>
-            <p>An ocean-data assistant for fishing-zone, sea-surface-temperature and weather queries, built on INCOIS data with an agent-based backend, an ocean map interface, and AI-written answers.</p>
-            <ul class="tags"><li>Python</li><li>TypeScript</li><li>Firebase</li><li>LLMs</li></ul>
-            <a class="tlink" href="https://github.com/Chirayu1167/ORCA" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (ORCA)</span></a>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="card__img card__img--vista" href="https://github.com/Chirayu1167/V.I.S.T.A." target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
-            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <line x1="0" y1="128" x2="320" y2="128" class="v-road"/><line x1="0" y1="150" x2="320" y2="150" class="v-road"/>
-              <rect x="44" y="92" width="86" height="40" rx="2" class="v-box"/><text x="44" y="86" class="v-txt">car 0.97</text>
-              <rect x="150" y="98" width="74" height="34" rx="2" class="v-box v-box--alert"/><text x="150" y="92" class="v-txt v-txt--alert">collision 0.94</text>
-              <rect x="244" y="104" width="52" height="28" rx="2" class="v-box"/><text x="244" y="98" class="v-txt">car 0.91</text>
-            </svg>
-          </a>
-          <div class="card__body">
-            <h3>VISTA</h3>
-            <p>Vision-based Incident Surveillance for Traffic &amp; Assistance. A real-time CCTV AI system that detects road accidents and routes alerts to traffic police, hospital/EMS or police control based on severity.</p>
-            <ul class="tags"><li>Python</li><li>YOLO11</li><li>ByteTrack</li><li>PyQt5</li></ul>
-            <a class="tlink" href="https://github.com/Chirayu1167/V.I.S.T.A." target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (VISTA)</span></a>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="card__img" href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="phoenix.png" alt="" loading="lazy" decoding="async"></a>
-          <div class="card__body">
-            <h3>Phoenix</h3>
-            <p>A desktop voice assistant with wake-word activation, conversational commands, and productivity automation.</p>
-            <ul class="tags"><li>Python</li><li>Tkinter</li><li>Voice AI</li></ul>
-            <a class="tlink" href="https://github.com/Chirayu1167/Pheonix-AI-Assistant" target="_blank" rel="noopener noreferrer">View on GitHub<span class="sr"> (Phoenix)</span></a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
+  <!-- EXPERIENCE: a signal travels the synapse; agents join the graph as you scroll -->
   <section class="section" id="experience">
     <div class="wrap">
-      <h2 class="h2">Experience</h2>
-      <ol class="xp">
-        <li class="xp__item">
-          <p class="xp__when">May 2026 – Present</p>
-          <h3>AI Developer Intern</h3>
-          <p class="xp__org">Tronocity Labs</p>
-          <p>Building Gigzs/Akhrot, a memory layer for multi-LLM agents. Helped benchmark up to 58% lower token use.</p>
-        </li>
-        <li class="xp__item">
-          <p class="xp__when">May – Jul 2026</p>
-          <h3>Product Development Intern</h3>
-          <p class="xp__org">MITAOE Entrepreneurial Development Foundation</p>
-          <p>Led planning, UI/UX and workflows for TrafficBuddy, a traffic complaint app.</p>
-        </li>
-      </ol>
+      <h2 class="h2" data-scan>Experience</h2>
+      <div class="xp" id="xp">
+        <svg class="xp__svg" id="xp-svg" aria-hidden="true"></svg>
+        <ol class="xp__list">
+          <li class="xp__item" data-scan>
+            <span class="xp__dot" aria-hidden="true"></span>
+            <p class="xp__when">May 2026 – Present</p>
+            <h3>AI Developer Intern</h3>
+            <p class="xp__org">Tronocity Labs</p>
+            <p>Building Gigzs/Akhrot, a memory layer for multi-LLM agents. Helped benchmark up to 58% lower token use.</p>
+          </li>
+          <li class="xp__item" data-scan>
+            <span class="xp__dot" aria-hidden="true"></span>
+            <p class="xp__when">May – Jul 2026</p>
+            <h3>Product Development Intern</h3>
+            <p class="xp__org">MITAOE Entrepreneurial Development Foundation</p>
+            <p>Led planning, UI/UX and workflows for TrafficBuddy, a traffic complaint app.</p>
+          </li>
+        </ol>
+      </div>
     </div>
   </section>
 
-  <!-- ACHIEVEMENTS -->
-  <section class="section section--tint" id="achievements">
+  <!-- ACHIEVEMENTS: the training curve converges; each result is a checkpoint -->
+  <section class="section ach-sec" id="achievements">
     <div class="wrap">
-      <h2 class="h2">Achievements</h2>
+      <h2 class="h2" data-scan>Achievements</h2>
       <div class="ach">
-      <article class="win-card">
-        <p class="win-card__badge">1st place</p>
-        <h3>Nirmaan 4.0 winner</h3>
-        <p>GDG MITAOE hackathon, for SACHET.</p>
-      </article>
-      <ul class="part">
-        <li><span>Velora 2026</span><span>Participant</span></li>
-        <li><span>Datathon 2026</span><span>Team Hellfire</span></li>
-        <li><span>TechSprint 2026</span><span>Participant</span></li>
-      </ul>
+        <div class="curve" id="curve">
+          <svg viewBox="0 0 800 340" aria-hidden="true">
+            <line class="curve__ax" x1="40" y1="300" x2="790" y2="300"/><line class="curve__ax" x1="40" y1="14" x2="40" y2="300"/>
+            <g id="curve-ticks"></g>
+            <path class="curve__raw" id="curve-raw"/><path class="curve__ema" id="curve-ema"/>
+            <g id="curve-marks"></g>
+          </svg>
+          <span class="curve__l curve__l--y" aria-hidden="true">loss</span>
+          <span class="curve__l curve__l--x" aria-hidden="true">epoch <b id="epoch">000</b></span>
+        </div>
+        <ol class="ck-list" id="ck-list">
+          <li class="ck" data-f=".2"><span class="ck__dot" aria-hidden="true"></span><span class="ck__n">Velora 2026</span><span class="ck__m">Participant</span></li>
+          <li class="ck" data-f=".42"><span class="ck__dot" aria-hidden="true"></span><span class="ck__n">Datathon 2026</span><span class="ck__m">Team Hellfire</span></li>
+          <li class="ck" data-f=".64"><span class="ck__dot" aria-hidden="true"></span><span class="ck__n">TechSprint 2026</span><span class="ck__m">Participant</span></li>
+          <li class="ck ck--best" data-f=".94">
+            <span class="ck__dot" aria-hidden="true"></span>
+            <div><p class="ck__tag">1st place</p><h3>Nirmaan 4.0 winner</h3><p>GDG MITAOE hackathon, for SACHET.</p></div>
+          </li>
+        </ol>
       </div>
 
-      <!-- Certifications: hidden in the original site, kept hidden. Remove `hidden` to show. -->
-      <ul class="part" hidden>
+      <!-- Certifications: hidden in the original site, kept hidden. Remove `hidden` to show it. -->
+      <ul class="certs" hidden>
         <li><span>AI Fluency Framework &amp; Foundations</span><span>Anthropic</span></li>
         <li><span>Claude 101</span><span>Anthropic</span></li>
         <li><span>Introduction to Modern AI</span><span>Cisco</span></li>
@@ -207,15 +283,18 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="section section--dark" id="contact">
-    <div class="wrap">
-      <h2 class="h2">Contact</h2>
-      <p class="sub">Open to internships and AI projects.</p>
-      <div class="links">
-        <a href="mailto:mahajanchirayu1167@gmail.com"><span>Email</span><b>mahajanchirayu1167@gmail.com</b></a>
-        <a href="https://linkedin.com/in/chirayu-mahajan-390766309" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><b>Chirayu Mahajan</b></a>
-        <a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer"><span>GitHub</span><b>Chirayu1167</b></a>
+  <!-- CONTACT: lights go out, the network settles into a monogram and opens channels -->
+  <section class="contact" id="contact">
+    <div class="contact__stick">
+      <div class="wrap contact__in" id="contact-in">
+        <h2 class="h2">Contact</h2>
+        <p class="sub">Open to internships and AI projects.</p>
+        <div class="links" id="links">
+          <a href="mailto:mahajanchirayu1167@gmail.com"><span>Email</span><b>mahajanchirayu1167@gmail.com</b><i class="led" aria-hidden="true"></i></a>
+          <a href="https://linkedin.com/in/chirayu-mahajan-390766309" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><b>Chirayu Mahajan</b><i class="led" aria-hidden="true"></i></a>
+          <a href="https://github.com/Chirayu1167" target="_blank" rel="noopener noreferrer"><span>GitHub</span><b>Chirayu1167</b><i class="led" aria-hidden="true"></i></a>
+        </div>
+        <p class="status" aria-hidden="true"><span id="status-t">connection established</span><i class="caret"></i></p>
       </div>
     </div>
   </section>
@@ -226,6 +305,7 @@
   <div class="wrap"><p>© 2026 Chirayu Mahajan</p><a href="#top">Back to top</a></div>
 </footer>
 
+<script src="js/system.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
